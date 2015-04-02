@@ -6,3 +6,6 @@ __pycache__/
 _build/
 *.ods
 *.xls
+venv/
+.Python
+include/python2.7

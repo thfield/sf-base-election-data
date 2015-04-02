@@ -16,6 +16,9 @@ from the repo root.
 ### Setup
 
 You should use Python 3.4, which is what the project was developed against.
+If you are using a Mac and don't already have Python 3.4 installed, you 
+might find [this install guide][pyosx] to be useful.
+
 We also recommend first setting up a virtual environment (e.g. using
 [virtualenv][virtualenv]) in which to install dependencies.  Then--
 
@@ -124,3 +127,4 @@ See also the screen shot below:
 [public_data]: develop.md
 [libre_office]: http://www.libreoffice.org/
 [virtualenv]: https://pypi.python.org/pypi/virtualenv/
+[pyosx]: http://docs.python-guide.org/en/latest/starting/install/osx/
