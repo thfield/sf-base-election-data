@@ -1,9 +1,18 @@
 TODO
 ====
 
-* Work out way to manually add translations.
-  - Process additions.yaml.
+* Include an "edge" flag in the HTML and JSON?
+* Make sure all non-English extras are accounted for (e.g. after updates).
+* Add Languages object with notes attribute.
+* Make a page to display all translations:
+  id
+    - en
+    - sp
+    - ch
+    - notes
+* Add a source for each translation.
 * Settle the language stuff.
+* Review `office_bart_director` id.
 * Add a `seat_name` attribute to Office that distinguishes members from
   one another (and `office_name` is the more generic name).
 * Think about whether internationalized text should be mandatory

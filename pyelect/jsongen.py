@@ -5,10 +5,10 @@ import glob
 import json
 import os
 from pprint import pprint
+import textwrap
 
 from pyelect import lang
 from pyelect import utils
-
 
 
 COURT_OF_APPEALS_ID = 'ca_court_app'
@@ -18,97 +18,66 @@ KEY_ID = '_id'
 KEY_OFFICES = 'offices'
 
 DIR_NAME_OBJECTS = 'objects'
+_REL_PATH_JSON_DATA = "data/sf.json"
 
 
-def dd_dict():
-    """A factory function that returns a defaultdict(dict)."""
-    return defaultdict(dict)
+def get_rel_path_json_data():
+    return _REL_PATH_JSON_DATA
 
 
-def get_data_dir(dir_name):
-    return os.path.join(utils.get_pre_data_dir(), dir_name)
+def get_rel_path_objects_dir():
+    return os.path.join(utils.DIR_PRE_DATA, DIR_NAME_OBJECTS)
 
 
-def get_yaml_path(dir_name, file_base):
-    file_name = "{0}.yaml".format(file_base)
-    return os.path.join(get_data_dir(dir_name), file_name)
+def get_json():
+    """Read and return the JSON data."""
+    repo_dir = utils.get_repo_dir()
+    rel_path = get_rel_path_json_data()
+    json_path = os.path.join(repo_dir, rel_path)
+    with open(json_path) as f:
+        data = json.load(f)
 
-
-def get_object_path(name):
-    return get_yaml_path(DIR_NAME_OBJECTS, name)
+    return data
 
 
 def get_object_data(base_name):
-    dir_path = get_data_dir('objects')
-    data, meta = utils.get_yaml_data(dir_path, base_name)
-    return data, meta
+    rel_path = get_rel_path_objects_dir()
+    data = utils.read_yaml_rel(rel_path, file_base=base_name)
+    meta = utils.get_yaml_meta(data)
+    objects = utils.get_required(data, base_name)
+
+    return objects, meta
 
 
-def make_node_categories(node_name):
-    categories, meta = get_object_data(node_name)
-
+def make_node_categories(objects, meta):
     name_i18n_format = meta['name_i18n_format']
 
     node = {}
-    for category_id, category in categories.items():
-        name_i18n = name_i18n_format.format(category_id)
-        category['name_i18n'] = name_i18n
+    for category_id, category in objects.items():
+        if 'name' not in category and 'name_i18n' not in category:
+            name_i18n = name_i18n_format.format(category_id)
+            category['name_i18n'] = name_i18n
         node[category_id] = category
 
     return node
 
 
-def path_to_langcode(path):
-    """Extract the language code from a path and return it."""
-    head, tail = os.path.split(path)
-    base, ext = os.path.splitext(tail)
-    return base
-
-
-def yaml_to_words(data, lang):
-    """Return a dict from: text_id to word in the given language."""
-    text_node = data['texts']
-    # Each trans_map is a dict from: language code to translation.
-    words = {text_id: trans_map[lang] for text_id, trans_map in text_node.items()}
-    return words
-
-
-def read_phrases(path):
-    """Read a file, and return a dict of: text_id to translation."""
-    lang_code = path_to_langcode(path)
-    yaml_data = utils.read_yaml(path)
-    words = yaml_to_words(yaml_data, lang_code)
-    return lang_code, words
-
-
-def make_node_i18n(node_name):
+def make_node_i18n():
     """Return the node containing internationalized data."""
-    lang_dir = lang.get_lang_dir()
-    auto_dir = os.path.join(lang_dir, lang.DIR_LANG_AUTO)
-    glob_path = os.path.join(auto_dir, "*.yaml")
-    paths = glob.glob(glob_path)
-
-    data = defaultdict(dd_dict)
-    for path in paths:
-        lang_code, phrases = read_phrases(path)
-        for text_id, phrase in phrases.items():
-            data[text_id][lang_code] = phrase
-
+    data = lang.get_phrases()
     return data
 
 
-def make_node_bodies(node_name):
+def make_node_bodies(objects, meta):
     """Return the node containing internationalized data."""
-    bodies, meta = get_object_data('bodies')
-
     node = {}
-    for body_id, body in bodies.items():
+    for body_id, body in objects.items():
         node[body_id] = body
 
     return node
 
 
-def make_node_offices(node_name, mixins):
+def make_node_offices(objects, meta, mixins):
     """Return the node containing internationalized data."""
     offices, meta = get_object_data('offices')
 
@@ -126,6 +95,17 @@ def make_node_offices(node_name, mixins):
             office = office_new
 
         node[office_id] = office
+
+    return node
+
+
+def make_node_languages(objects, meta):
+    fields = ('name', 'code', 'notes')
+
+    node = {}
+    for lang_id, lang in objects.items():
+        node_obj = {k: v for k, v in lang.items() if k in fields}
+        node[lang_id] = node_obj
 
     return node
 
@@ -196,30 +176,52 @@ def add_source(data, source_name):
         data[key] = value
 
 
-def check_node(node):
+def check_node(node, node_name):
+    allowed_types = (bool, int, str)
     for object_id, obj in node.items():
         for attr, value in obj.items():
-            if type(value) not in (bool, int, str):
-                raise Exception("bad value type {0} for {1} in: {2}"
-                                 .format(type(value), value, obj))
+            if type(value) not in allowed_types:
+                err = textwrap.dedent("""\
+                json node with key "{node_name}" failed sanity check.
+                  object_id: "{object_id}"
+                  object attribute name: "{attr_name}"
+                  attribute value has type {value_type} (only allowed types are: {allowed_types})
+                  object:
+                -->{object}
+                """.format(node_name=node_name, object_id=object_id, attr_name=attr,
+                           value_type=type(value), allowed_types=allowed_types,
+                           object=obj))
+                raise Exception(err)
 
-def add_node(json_data, node_name, **kwargs):
+
+def _add_node_base(json_data, node, node_name):
+    check_node(node, node_name)
+    json_data[node_name] = node
+
+
+def add_node_object(json_data, node_name, **kwargs):
     make_node_function_name = "make_node_{0}".format(node_name)
     make_node_func = globals()[make_node_function_name]
-    node = make_node_func(node_name, **kwargs)
-    check_node(node)
-    json_data[node_name] = node
+    objects, meta = get_object_data(node_name)
+    node = make_node_func(objects, meta=meta, **kwargs)
+    _add_node_base(json_data, node, node_name)
+
+
+def add_node_i18n(json_data):
+    node = make_node_i18n()
+    _add_node_base(json_data, node, 'i18n')
 
 
 def make_all_data():
     mixins, meta = get_object_data('mixins')
 
-    data ={}  # JSON data.
+    data ={}
 
-    add_node(data, 'categories')
-    add_node(data, 'i18n')
-    add_node(data, 'bodies')
-    add_node(data, 'offices', mixins=mixins)
+    add_node_object(data, 'categories')
+    add_node_i18n(data)
+    add_node_object(data, 'languages')
+    add_node_object(data, 'bodies')
+    add_node_object(data, 'offices', mixins=mixins)
 
     return data
 

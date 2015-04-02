@@ -27,24 +27,42 @@ site URL, along with several others.  The sections below document the
 attributes recognized by each type of object.
 
 
-## Languages (i18n)
+## Internationalization (aka "i18n")
 
-The string "i18n" stands for "[internationalization][i18n]," which is one
-of the words commonly used to describe making a web site or application
-display correctly in multiple languages.
+The JSON file contains translations of many phrases into a number
+of [languages](#languages).  These translations are all in the top
+level JSON node with key "i18n," which we call the internationalization
+node.
 
-In the JSON, the value of an internationalized attribute takes the form
-of a dictionary whose
-keys are string language ID's and whose values are the translations
-of the given text into the corresponding language.  For example,
-the value of ...
+(The string "i18n" stands for "[internationalization][i18n]," which is
+the word commonly used to describe making a web site or application render
+in multiple languages or countries.)
+
+### Translations node
+
+The internationalization node is a dictionary of translations.  The keys
+of the dictionary are text ID's, each of which corresponds to a word or
+phrase.  The values ...
+
+
+### Internationalized attributes
 
 An object attribute whose name ends in `_i18n` is what we call an
 internationalized attribute.  The value of such an attribute corresponds
 to text that has been translated into possibly several languages.
 
+In the JSON, the value of an internationalized attribute takes the form
+of a dictionary whose
+keys are language codes and whose values are the translations
+of the given text into the corresponding language.  For example,
+the value of ...
+
+
 
 TODO
+
+## Languages
+
 
 
 ## Objects

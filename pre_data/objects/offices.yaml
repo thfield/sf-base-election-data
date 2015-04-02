@@ -1,6 +1,6 @@
 _meta:
-  _auto_comment: 'WARNING: normalization will remove YAML comments.'
-  type: auto_updated
+  _type: auto_updated
+  _type_comment: 'WARNING: this file is auto-updated. Any YAML comments will be deleted.'
 offices:
   CA_CourtApp_D1_Div1_AJ:
     district: 1
@@ -186,7 +186,7 @@ offices:
     body_id: US_HR
     district: 14
   office_usa_president_of_the_united_states:
-    category_id: federal
+    category_id: category_federal
     name_i18n: text_office_usa_president_of_the_united_states
     seed_year: 2016
     term_length: 4

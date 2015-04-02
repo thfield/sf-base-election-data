@@ -10,6 +10,7 @@ import logging
 import os
 import subprocess
 import sys
+import textwrap
 
 import init_path
 from pyelect import htmlgen
@@ -22,31 +23,32 @@ _log = logging.getLogger()
 
 _DEFAULT_OUTPUT_DIR_NAME = '_build'
 _FORMATTER_CLASS = argparse.RawDescriptionHelpFormatter
-_REL_PATH_JSON_DATA = "data/sf.json"
 
 
-def get_default_json_path():
-    repo_dir = utils.get_repo_dir()
-    return os.path.join(repo_dir, _REL_PATH_JSON_DATA)
+def _wrap(text):
+    """Format text for help outuput."""
+    paras = text.split("\n\n")
+    paras = [textwrap.fill(p) for p in paras]
+    text = "\n\n".join(paras)
+
+    return text
 
 
 def get_sample_html_default_rel_dir():
     return os.path.join(utils.DIR_NAME_OUTPUT, htmlgen.DIR_NAME_HTML_OUTPUT)
 
 
-def command_lang_convert_csv(ns):
-    path = ns.input_path
-    lang.lang_contest_csv_to_yaml(path)
-
-
-def command_lang_make_ids(ns):
+def command_lang_csv_ids(ns):
     path = ns.input_path
     data = lang.create_text_ids(path)
     print(utils.yaml_dump(data))
 
+def command_lang_text_csv(ns):
+    lang.update_csv_translations()
 
-def command_lang_update_adds(ns):
-    lang.update_adds()
+
+def command_lang_text_extras(ns):
+    lang.update_extras()
 
 
 def command_make_json(ns):
@@ -63,24 +65,20 @@ def command_parse_csv(ns):
 
 
 def command_sample_html(ns):
-    page_name = ns.page_name
-
     dir_path = ns.output_dir
     open_browser = ns.open_browser
+    page_name = ns.page_name
+    print_html = ns.print_html
 
     if dir_path is None:
-        dir_path = os.path.join(utils.get_repo_dir(), get_sample_html_default_rel_dir())
-        if not os.path.exists(dir_path):
-            os.makedirs(dir_path)
+        repo_dir = utils.get_repo_dir()
+        dir_path = os.path.join(repo_dir, get_sample_html_default_rel_dir())
 
-    # Load JSON data.
-    json_path = get_default_json_path()
-    with open(json_path) as f:
-        json_data = json.load(f)
     # Make and output HTML.
-    start_path = htmlgen.make_html(json_data, dir_path, page_name=page_name)
+    html_path = htmlgen.make_html(dir_path, page_name=page_name,
+                                  print_html=print_html)
     if open_browser:
-        subprocess.call(["open", start_path])
+        subprocess.call(["open", html_path])
 
 
 def _get_all_files(dir_path):
@@ -99,7 +97,10 @@ def command_yaml_norm(ns):
         paths = _get_all_files(data_dir)
         paths = [p for p in paths if os.path.splitext(p)[1] == '.yaml']
     else:
-        paths = [ns.path]
+        path = ns.path
+        if not utils.is_yaml_file_normalizable(path):
+            raise Exception("not normalizable: {0}".format(path))
+        paths = [path]
     for path in paths:
         utils.normalize_yaml(path, stdout=True)
 
@@ -135,12 +136,6 @@ def command_yaml_temp(ns):
     utils.write_yaml(data, path)
 
 
-def command_yaml_update_lang(ns):
-    path = ns.path
-    data = utils.read_yaml(path)
-    utils.write_yaml(data, path, stdout=True)
-
-
 def make_subparser(sub, command_name, help, command_func=None, details=None, **kwargs):
     if command_func is None:
         command_func_name = "command_{0}".format(command_name)
@@ -150,6 +145,7 @@ def make_subparser(sub, command_name, help, command_func=None, details=None, **k
     desc = help[0].upper() + help[1:]
     if details is not None:
         desc += "\n\n{0}".format(details)
+    desc = _wrap(desc)
     parser = sub.add_parser(command_name, formatter_class=_FORMATTER_CLASS,
                             help=help, description=desc, **kwargs)
     parser.set_defaults(run_command=command_func)
@@ -162,25 +158,37 @@ def create_parser():
             description="command script for repo contributors")
     sub = root_parser.add_subparsers(help='sub-command help')
 
-    parser = make_subparser(sub, "lang_convert_csv",
-                help="generate the automated translations from a CSV file.")
-    parser.add_argument('input_path', metavar='CSV_PATH',
-        help="a path to a CSV file.")
-
-    parser = make_subparser(sub, "lang_make_ids",
+    parser = make_subparser(sub, "lang_csv_ids",
                 help="create text ID's from a CSV file.")
     parser.add_argument('input_path', metavar='CSV_PATH',
         help="a path to a CSV file.")
 
-    parser = make_subparser(sub, "lang_update_adds",
-                help="update the manual language files from additions.yaml.")
+    csv_dir = lang.get_rel_path_csv_dir()
+    csv_trans_dir = lang.get_rel_path_translations_csv()
+    details = textwrap.dedent("""\
+    Update the translation files in the directory {0} with the information
+    in the CSV files in the directory: {1}.
+    """.format(csv_trans_dir, csv_dir))
+    parser = make_subparser(sub, "lang_text_csv",
+                help="update the i18n files for the CSV phrases.",
+                details=details)
 
-    default_output = _REL_PATH_JSON_DATA
+    extra_phrases_path = lang.get_rel_path_phrases_extra()
+    extra_trans_dir = lang.get_rel_path_translations_extra()
+    details = textwrap.dedent("""\
+    Add to the translation files in the directory {0} any new phrases in
+    the file: {1}.
+    """.format(extra_trans_dir, extra_phrases_path))
+    parser = make_subparser(sub, "lang_text_extras",
+                help='update the i18n files for the "extra" phrases.',
+                details=details)
+
+    rel_path_default = jsongen.get_rel_path_json_data()
     parser = make_subparser(sub, "make_json",
                 help="create or update a JSON data file.")
-    parser.add_argument('output_path', metavar='PATH', nargs="?", default=default_output,
+    parser.add_argument('output_path', metavar='PATH', nargs="?", default=rel_path_default,
         help=("the output path. Defaults to the following path relative to the "
-              "repo root: {0}.".format(default_output)))
+              "repo root: {0}.".format(rel_path_default)))
 
     parser = make_subparser(sub, "parse_csv",
                 help="parse a CSV language file from the Department.")
@@ -196,9 +204,11 @@ def create_parser():
               "to the repo: {0}".format(get_sample_html_default_rel_dir())))
     parser.add_argument('--no-browser', dest='open_browser', action='store_false',
         help='suppress opening the browser.')
+    parser.add_argument('--print-html', dest='print_html', action='store_true',
+        help='write the HTML to stdout.')
 
     parser = make_subparser(sub, "yaml_norm",
-                help="normalize YAML files.")
+                help="normalize one or more YAML files.")
     parser.add_argument('--all', dest='all', action='store_true',
         help='normalize all YAML files.')
     parser.add_argument('path', metavar='PATH', nargs='?',
@@ -207,11 +217,6 @@ def create_parser():
     parser = make_subparser(sub, "yaml_temp",
                 help="temporary scratch command.")
     parser.add_argument('path', metavar='PATH', nargs='?',
-        help="the target path of a non-English YAML file.")
-
-    parser = make_subparser(sub, "yaml_update_lang",
-                help="update a YAML translation file from the English.")
-    parser.add_argument('path', metavar='PATH',
         help="the target path of a non-English YAML file.")
 
     return root_parser

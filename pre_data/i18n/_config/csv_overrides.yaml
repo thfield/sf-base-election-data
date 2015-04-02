@@ -21,8 +21,8 @@
 # ('JUDICIAL', '', 'JUDICIAL (Omitted on ballot)', '', '', '', '司法')
 # ('JUDICIAL', '', 'JUDICIAL', '', '', '', '司法')
 _meta:
-  type: manual
-override:
+  _type: manual
+overrides:
   text_category_judicial:
     es: JUDICIAL
   text_office_city_treasurer:

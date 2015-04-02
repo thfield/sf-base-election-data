@@ -2,88 +2,48 @@
 
 from collections import defaultdict
 from datetime import date
+import json
+import logging
 import os
 from pprint import pprint
 
-import django
-from django.conf import settings
-import django.template
 from django.template import Context
-import django.template.defaulttags as defaulttags
 from django.template.loader import get_template
 
+from pyelect import jsongen
 from pyelect import lang
+from pyelect.lang import LANG_ENGLISH
+from pyelect import templateconfig
 from pyelect import utils
-from pyelect.templatetags import custom_tags
 
 
-CATEGORY_ORDER = ["federal", "state", "city_county", "school", "bart", "judicial", "party"]
+CATEGORY_ORDER = """\
+category_federal
+category_state
+category_city_county
+category_school
+category_bart
+category_judicial
+category_party
+""".strip().splitlines()
+
 DIR_NAME_HTML_OUTPUT = 'html'
-DIR_NAME_TEMPLATE_PAGE = 'pages'
-NON_ENGLISH_ORDER = [lang.LANG_CH, lang.LANG_ES, lang.LANG_FI]
+NON_ENGLISH_ORDER = [lang.LANG_CHINESE, lang.LANG_SPANISH, lang.LANG_FILIPINO]
 
+_log = logging.getLogger()
 
-@defaulttags.register.filter
-def get_item(dict_, key):
-    return dict_.get(key)
-
-
-def init_django():
-    """Initialize Django."""
-    search_dirs = _get_template_search_dirs()
-    settings.configure(
-        INSTALLED_APPS=('pyelect', ),
-        TEMPLATE_DIRS=search_dirs,
-        TEMPLATE_STRING_IF_INVALID="NOT_FOUND: '%s'",
-        # The default setting contains this:
-        #   'django.template.loaders.app_directories.Loader'
-        # See this issue for more information:
-        #   https://code.djangoproject.com/ticket/24527
-        TEMPLATE_LOADERS=('django.template.loaders.filesystem.Loader', ),
-    )
-    django.setup()
-
-
-def _get_templates_dir():
-    repo_dir = utils.get_repo_dir()
-    return os.path.join(repo_dir, 'templates')
-
-
-def _get_template_page_dir():
-    templates_dir = _get_templates_dir()
-    return os.path.join(templates_dir, DIR_NAME_TEMPLATE_PAGE)
-
-
-def _get_template_search_dirs():
-    return [_get_templates_dir()]
-
-
-def get_template_page_file_names():
-    dir_path = _get_template_page_dir()
-    file_names = os.listdir(dir_path)
-    return file_names
-
-
-def _get_translations(trans, text_id):
-    try:
-        dict_ = trans[text_id]
-    except KeyError:
-        raise Exception("json translations node does not have text_id: {0!r}".format(text_id))
-    return dict_
-
-
+# TODO: remove this function.
 def _get_i18n(trans, obj_json, key_base):
-    key = '{0}_i18n'.format(key_base)
-    text_id = utils.get_from(obj_json, key, message="translation")
-    # TODO: remove this hack and insist that everything appear in the i18n dict.
-    if text_id not in trans:
-        english = utils.get_from(obj_json, 'name')
-        words = {lang.LANG_EN: english}
+    if key_base in obj_json:
+        english = utils.get_required(obj_json, 'name')
+        words = {LANG_ENGLISH: english}
         non_english = []
     else:
-        words = utils.get_from(trans, text_id)
-        english = words[lang.LANG_EN]
-        non_english = [words[lang] for lang in NON_ENGLISH_ORDER]
+        field_name = lang.get_i18n_field_name(key_base)
+        text_id = utils.get_required(obj_json, field_name, message="translation")
+        words = utils.get_required(trans, text_id)
+        non_english = [words[lang] for lang in words.keys() if lang in NON_ENGLISH_ORDER]
+    english = words[LANG_ENGLISH]
     # Remove empty strings.
     non_english = list(filter(None, non_english))
 
@@ -93,6 +53,21 @@ def _get_i18n(trans, obj_json, key_base):
     }
 
     return i18n
+
+
+def make_languages_one(lang_id, data):
+    keys = ('name', 'code', 'notes')
+    # TODO: make this into a helper function.
+    lang = {k: data.setdefault(k, None) for k in keys}
+    lang['id'] = lang_id
+    return lang
+
+
+def make_translations_one(id_, json_data):
+    if not json_data[LANG_ENGLISH]:
+        return None
+    json_data['id'] = id_
+    return json_data
 
 
 def make_district(value):
@@ -160,25 +135,28 @@ def _make_election_info(data):
     return list(filter(None, [term_length, next_election_text, vote_method, partisan_text]))
 
 
-def make_bodies_one(body_id, data, **kwargs):
+def add_i18n_field(obj, json_data, field_name, phrases):
+    # We require that the simple field be present in the JSON.
+    english = json_data[field_name]
+    obj[field_name] = english
 
-    # TODO: make this into a function and DRY up with others.
+    i18n_field_name = lang.get_i18n_field_name(field_name)
     try:
-        category_id = data['category_id']
+        text_id = json_data[i18n_field_name]
     except KeyError:
-        raise Exception(data)
+        return
+    translations = phrases[text_id]
+    obj[i18n_field_name] = translations
 
-    name = data['name']
-    try:
-        name = name['en']
-    except TypeError:
-        pass
+
+def make_bodies_one(body_id, data, phrases, **kwargs):
+
+    category_id = utils.get_required(data, 'category_id')
 
     body = {
         'category_id': category_id,
         'district_count': data.get('district_count'),
         'election_info': _make_election_info(data),
-        'name': name,
         'notes': data.get('notes'),
         'seat_count': data.get('seat_count'),
         'twitter': data.get('twitter'),
@@ -186,10 +164,12 @@ def make_bodies_one(body_id, data, **kwargs):
         'wikipedia': data.get('wikipedia')
     }
 
+    add_i18n_field(body, data, 'name', phrases=phrases)
+
     return body
 
 
-def make_offices_one(office_id, data, trans=None):
+def make_offices_one(office_id, data, trans):
     # TODO: remove this logic.
     if 'name_i18n' not in data:
         return None
@@ -210,11 +190,13 @@ def make_offices_one(office_id, data, trans=None):
     return office
 
 
-def add_objects(template_data, json_data, node_name, **kwargs):
+def add_objects(template_data, json_data, node_name, json_key=None, **kwargs):
+    if json_key is None:
+        json_key = node_name
     make_object_func_name = "make_{0}_one".format(node_name)
     make_object = globals()[make_object_func_name]
 
-    json_node = json_data[node_name]
+    json_node = json_data[json_key]
 
     objects = []
     object_ids = sorted(json_node.keys())
@@ -245,15 +227,51 @@ def _group_by(objects, key):
     return grouped
 
 
-def make_template_data(json_data):
+def make_translations(json_data):
+    translations = json_data['i18n']
+    new_translations = {}
+    for text_id, text in translations.items():
+        if not text[LANG_ENGLISH]:
+            continue
+        text['id'] = text_id
+    return translations
+
+
+def add_english_fields(json_data, phrases):
+    """Add a simple field for each internationalized field."""
+    for node_name, objects in json_data.items():
+        for object_id, obj in objects.items():
+            i18n_attrs = [(field, value) for field, value in obj.items() if
+                          field.endswith(lang.I18N_SUFFIX)]
+            for field_name, text_id in i18n_attrs:
+                simple_name = field_name.rstrip(lang.I18N_SUFFIX)
+                # TODO: make a general helper function out of this?
+                try:
+                    translations = phrases[text_id]
+                except KeyError:
+                    raise Exception("object (node={node_name!r}, id={object_id!r}): {0}"
+                                    .format(obj, node_name=node_name, object_id=object_id))
+                english = translations[LANG_ENGLISH]
+                _log.debug("Setting field: {0}.{1}={2}".format(object_id, simple_name, english))
+                obj[simple_name] = english
+
+
+def make_template_data():
     """Return the context to use when rendering the template."""
+    json_data = jsongen.get_json()
+
+    phrases = json_data['i18n']
+    add_english_fields(json_data, phrases)
+
+    phrases = make_translations(json_data)
+
     data = {}
-    bodies = add_objects(data, json_data, 'bodies')
+    bodies = add_objects(data, json_data, 'bodies', phrases=phrases)
 
-    trans = json_data['i18n']
-    categories = make_categories(json_data, trans)
+    categories = make_categories(json_data, phrases)
 
-    offices = add_objects(data, json_data, 'offices', trans=trans)
+
+    offices = add_objects(data, json_data, 'offices', trans=phrases)
     office_count = sum([o['seat_count'] for o in offices])
 
     bodies_by_category = _group_by(bodies, 'category_id')
@@ -262,7 +280,7 @@ def make_template_data(json_data):
     all_categories = set()
     for d in (bodies_by_category, offices_by_category):
         all_categories.update(d.keys())
-    if all_categories > set(CATEGORY_ORDER):
+    if not all_categories <= set(CATEGORY_ORDER):
         extra = all_categories - set(CATEGORY_ORDER)
         raise Exception("unrecognized categories: {0}".format(extra))
 
@@ -273,9 +291,13 @@ def make_template_data(json_data):
         'category_ids': CATEGORY_ORDER,
         'offices_by_category': offices_by_category,
 #        'districts': make_districts(input_data),
-        'offices': offices,
         'office_count': office_count,
+        'non_english_codes': lang.LANGS_NON_ENGLISH,
+        'translations': phrases,
     }
+
+    language_list = add_objects(data, json_data, 'languages')
+    data['language_map'] = {lang['code']: lang for lang in language_list}
 
     return data
 
@@ -286,25 +308,31 @@ def render_template(file_name, data):
     Argument:
       data: a dict of template variables.
     """
-    template_name = os.path.join(DIR_NAME_TEMPLATE_PAGE, file_name)
+    template_name = templateconfig.get_page_template_name(file_name)
     template = get_template(template_name)
     context = Context(data)
     context['current_page'] = os.path.basename(template_name)
     return template.render(context)
 
 
-def make_html(json_data, output_dir, page_name=None):
+def make_html(output_dir, page_name=None, print_html=False):
+
     if page_name is None:
-        file_names = get_template_page_file_names()
+        file_names = templateconfig.get_template_page_file_names()
     else:
         file_names = [page_name]
 
-    init_django()
-    data = make_template_data(json_data)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    data = make_template_data()
+
+    templateconfig.init_django()
 
     for file_name in file_names:
         html = render_template(file_name, data=data)
-        print(html)
+        if print_html:
+            print(html)
         output_path = os.path.join(output_dir, file_name)
         utils.write(output_path, html)
     if len(file_names) == 1:

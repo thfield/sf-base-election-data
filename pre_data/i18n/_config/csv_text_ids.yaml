@@ -1,6 +1,11 @@
 _meta:
-  _auto_comment: 'WARNING: normalization will remove YAML comments.'
-  type: auto_updated
+  _type: auto_updated
+  _type_comment: 'WARNING: this file is auto-updated. Any YAML comments will be deleted.'
+  comments: |
+    This file contains the text ID's for all the phrases we are interested
+    in that appear in the various CSV files (specifically all English
+    phrases in the CSV except for the ones that are marked "skipped"
+    in the configuration file for skips).
 text_ids:
   text_category_city_county: CITY AND COUNTY
   text_category_federal: FEDERAL
@@ -50,12 +55,10 @@ text_ids:
   text_office_usa_senator: UNITED STATES SENATOR
   text_preference_party: 'Party Preference:'
   text_preference_presidential: Presidential Preference
-  text_vote_for_no_more_than_three_or_four: Vote for no more than (Three or Four)
   text_vote_for_one: Vote for One
   text_vote_for_one_party: Vote for One Party
   text_vote_rcv_choice_2: 'Vote for One: Must be different than your first choice'
   text_vote_rcv_choice_3: 'Vote for One: Must be different than your first and second
     choices'
-  text_vote_yes_or_no_for_each_office: Vote YES or NO for each office
-  text_vote_your_first_second_and_third_choices: Vote your first, second, and third
-    choices
+  text_vote_rcv_choices: Vote your first, second, and third choices
+  text_vote_yes_or_no: Vote YES or NO for each office

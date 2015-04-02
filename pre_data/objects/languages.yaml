@@ -1,0 +1,26 @@
+_meta:
+  _type: auto_updated
+  _type_comment: 'WARNING: this file is auto-updated. Any YAML comments will be deleted.'
+languages:
+  language_chinese:
+    code: zh
+    name: Chinese
+    notes: Test
+  language_english:
+    code: en
+    name: English
+  language_filipino:
+    code: fil
+    name: Filipino
+  language_japanese:
+    code: jp
+    name: Japanese
+  language_korean:
+    code: ko
+    name: Korean
+  language_spanish:
+    code: es
+    name: Spanish
+  language_vietnamese:
+    code: vi
+    name: Vietnamese
