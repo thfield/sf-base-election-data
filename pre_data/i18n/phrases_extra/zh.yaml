@@ -8,7 +8,7 @@ texts:
   text_body_ca_court_app:
     _en: California Court of Appeal, First District
     zh: null
-  text_body_ca_sc:
+  text_body_ca_court_supreme:
     _en: Supreme Court of California
     zh: null
   text_body_sf_boe:
@@ -17,7 +17,7 @@ texts:
   text_body_sf_bos:
     _en: Board of Supervisors
     zh: null
-  text_body_sf_ccb:
+  text_body_sf_college_board:
     _en: Community College Board
     zh: null
   text_body_sf_sc:
@@ -43,6 +43,9 @@ texts:
     zh: null
   text_language_korean:
     _en: Korean
+    zh: null
+  text_language_notes_facsimile:
+    _en: Available on a translated "facsimile" ballot by request.
     zh: null
   text_language_spanish:
     _en: Spanish

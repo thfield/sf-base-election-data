@@ -1,0 +1,8 @@
+_meta:
+  _type: auto_updated
+  _type_comment: 'WARNING: this file is auto-updated. Any YAML comments will be deleted.'
+election_methods:
+  election_method_presidential:
+    name: Presidential Primary
+    notes: There is a Presidential Primary followed by a General Election in November.  The
+      winner in November receives all 55 of California's electoral votes.

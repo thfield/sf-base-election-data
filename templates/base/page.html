@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE html>{% load custom_tags %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>SFBED Sample - {% block title_head %}{% endblock %}</title>
+    <title>SFBED - {% block title_head %}{{ current_title }}{% endblock %}</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ bootstrap_prefix }}css/bootstrap.min.css">
     <!-- Optional theme -->
     <!--
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{{ bootstrap_prefix }}css/bootstrap-theme.min.css">
     -->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -21,52 +21,59 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+<body>
 
-    <div class="container">
+<div class="container">
 
-      <h1>SF Base Election Data (SFBED)</h1>
+<h1>SF Base Election Data (SFBED)</h1>
 
-      <p>
-        This is a sample web site to illustrate using the data from the
-        <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
-          open data project.
+<p>
+This is a sample web site to illustrate using the data from the
+<a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
+open data project.
 
-        The data for this web site comes from a single, static
-        <a href="https://github.com/cjerdonek/sf-elected-offices/blob/master/data/sf.json">JSON file</a>
-        of structured data about San Francisco elections.
-      <p>
-        If you notice any issues about the data or have a suggestion,
-        please file an issue in the
-        <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+The data for this web site comes from a single, static
+<a href="https://github.com/cjerdonek/sf-elected-offices/blob/master/data/sf.json">JSON file</a>
+of structured data about San Francisco elections.
+<p>
+If you notice any issues about the data or have a suggestion,
+please file an issue in the
+<a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
 
-      <h3 class="text-center">Site Contents</h3>
+<h3 class="text-center">Site Contents</h3>
 
-      {% load custom_tags %}
-      {% page_nav current_page 'index.html' 'Offices' %}
-      {% page_nav current_page 'bodies.html' 'Bodies' %}
-      {% page_nav current_page 'translations.html' 'Translations' %}
-      {% page_nav current_page 'languages.html' 'Languages' %}
+{% for page_base in page_bases %}
+{% page_nav page_base %}
+{% endfor %}
 
-      <h2 class="text-center">{% block content_title %}{% endblock %}</h2>
+<h2 class="text-center">{% block content_title %}{{ current_title }}{% endblock %}</h2>
 
-      {% block content_intro %}
-        <p>
-          {% block content_intro_para %}
-          {% endblock %}
-        <p>
-          Current count: {% block current_count_value %}{% endblock %}
-      {% endblock %}
+{% block content_intro %}
+<p>
+{% block content_intro_para %}
+{% comment %}
+TODO: replace current_title with "current_noun"?
+{% endcomment %}
+Below are the {{ current_title|lower }} included in the JSON file.
+{% endblock %}
+<p>
+Current count: {% block object_count_text %}
+{% block object_count_number %}{{ current_objects|length }}{% endblock %}
+{{ current_title|lower }}
+{% endblock object_count_text %}
+{% endblock %}
 
-      {% block content_body %}
-      {% endblock %}
+{% block content_body %}
+{% list_objects current_objects.values|dictsort:'name' 'name' %}
+{% endblock %}
 
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <!-- Latest compiled and minified JavaScript -->
-      <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
-    </div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{{ jquery_prefix }}jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Latest compiled and minified JavaScript -->
+<!-- JS is needed for the collapsable navigation bar. -->
+<script src="{{ bootstrap_prefix }}js/bootstrap.min.js"></script>
+</div>
 
-  </body>
+</body>
 </html>

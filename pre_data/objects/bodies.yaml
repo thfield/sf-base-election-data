@@ -3,7 +3,8 @@ _meta:
   _type_comment: 'WARNING: this file is auto-updated. Any YAML comments will be deleted.'
 bodies:
   body_bart:
-    category_id: category_bart
+    category_id: category_transit
+    district_type_id: district_type_bart
     jurisdiction_id: BART
     name: BART Board of Directors
     office_name: BART Director
@@ -13,7 +14,7 @@ bodies:
     vote_method: FPTP
   body_ca_court_app:
     category_id: category_judicial
-    district_count: 5
+    district_type_id: district_type_ca_court_app_d1
     jurisdiction_id: CA
     name_i18n: text_body_ca_court_app
     notes: The state has six geographic appellate districts. The first district, which
@@ -25,19 +26,20 @@ bodies:
     url: http://www.courts.ca.gov/courtsofappeal.htm
     vote_method: retention
     wikipedia: http://en.wikipedia.org/wiki/California_courts_of_appeal
-  body_ca_sa:
-    category_id: category_state
+  body_ca_court_supreme:
+    category_id: category_judicial
     jurisdiction_id: CA
-    name: State Assembly
-    office_name: Member of the State Assembly
-    partisan: true
-    qualified_name: California State Assembly
-    seat_count: 80
-    url: http://assembly.ca.gov/
-    wikipedia: http://en.wikipedia.org/wiki/California_State_Assembly
+    name_i18n: text_body_ca_court_supreme
+    notes: The Court has six Associate Justices and one Chief Justice. Each is appointed
+      by the Governor and subject to retention elections.
+    seat_count: 7
+    term_length: 12
+    url: http://www.courts.ca.gov/supremecourt.htm
+    vote_method: retention
+    wikipedia: http://en.wikipedia.org/wiki/Supreme_Court_of_California
   body_ca_sboe:
     category_id: category_state
-    district_count: 4
+    district_type_id: district_type_ca_sboe
     jurisdiction_id: CA
     name: State Board of Equalization
     notes: The State Controller is the fifth member of this body.
@@ -47,26 +49,27 @@ bodies:
     term_length: 4
     url: http://www.boe.ca.gov/
     wikipedia: http://en.wikipedia.org/wiki/State_Board_of_Equalization_%28California%29
-  body_ca_sc:
-    category_id: category_judicial
-    jurisdiction_id: CA
-    name_i18n: text_body_ca_sc
-    notes: The Court has six Associate Justices and one Chief Justice. Each is appointed
-      by the Governor and subject to retention elections.
-    seat_count: 7
-    term_length: 12
-    url: http://www.courts.ca.gov/supremecourt.htm
-    vote_method: retention
-    wikipedia: http://en.wikipedia.org/wiki/Supreme_Court_of_California
-  body_ca_ss:
+  body_ca_state_senate:
     category_id: category_state
+    district_type_id: district_type_ca_ss
     jurisdiction_id: CA
-    name: State Senate
+    name: California State Senate
     partisan: true
-    qualified_name: California State Senate
     seat_count: 40
+    term_length: 4
     url: http://senate.ca.gov/
     wikipedia: http://en.wikipedia.org/wiki/California_State_Senate
+  body_ca_state_assembly:
+    category_id: category_state
+    district_type_id: district_type_ca_sa
+    jurisdiction_id: CA
+    name: California State Assembly
+    office_name: Member of the State Assembly
+    partisan: true
+    seat_count: 80
+    term_length: 2
+    url: http://assembly.ca.gov/
+    wikipedia: http://en.wikipedia.org/wiki/California_State_Assembly
   body_sf_boe:
     category_id: category_school
     jurisdiction_id: SF
@@ -80,6 +83,7 @@ bodies:
     wikipedia: http://en.wikipedia.org/wiki/San_Francisco_Board_of_Education
   body_sf_bos:
     category_id: category_city_county
+    district_type_id: district_type_sf_bos
     jurisdiction_id: SF
     localwiki: https://localwiki.org/sf/Board_of_Supervisors
     name_i18n: text_body_sf_bos
@@ -91,10 +95,10 @@ bodies:
     url: http://www.sfbos.org
     vote_method: RCV
     wikipedia: http://en.wikipedia.org/wiki/San_Francisco_Board_of_Supervisors
-  body_sf_ccb:
+  body_sf_college_board:
     category_id: category_school
     jurisdiction_id: SFCC
-    name_i18n: text_body_sf_ccb
+    name_i18n: text_body_sf_college_board
     office_name_i18n: text_office_member_community_college_board
     seat_count: 7
     term_length: 4
@@ -130,20 +134,25 @@ bodies:
     term_length: 6
     url: http://www.sfsuperiorcourt.org/
     wikipedia: http://en.wikipedia.org/wiki/San_Francisco_County_Superior_Court
-  body_us_hr:
+  body_us_house:
     category_id: category_federal
+    district_type_id: district_type_us_hr
     jurisdiction_id: US
     name: United States House of Representatives
+    notes: There are also 6 non-voting members.
     office_name: United States Representative
     partisan: true
     seat_count: 435
+    term_length: 2
     url: http://www.house.gov/
     wikipedia: http://en.wikipedia.org/wiki/United_States_House_of_Representatives
-  body_us_s:
+  body_us_senate:
     category_id: category_federal
+    district_type_id: district_type_us_states
     jurisdiction_id: US
     name: United States Senate
     partisan: true
     seat_count: 100
+    term_length: 6
     url: http://www.senate.gov/
     wikipedia: http://en.wikipedia.org/wiki/United_States_Senate

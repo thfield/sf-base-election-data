@@ -1,0 +1,21 @@
+{% comment %}
+Display a list of objects.
+
+This template is meant to be included with the `include` tag with the
+following arguments.
+
+Variables:
+
+  objects: an iterable of objects to display.
+  title_attr: the attribute name to access for the title.
+
+{% endcomment %}{% load custom_tags %}
+{% comment %}
+{% for object in objects.values|dictsort:title_attr %}
+{% endcomment %}
+{% for object in objects %}
+{% spaceless %}
+{% header_item object title_attr object.id %}
+{% include current_show_template %}<p>
+{% endspaceless %}
+{% endfor %}

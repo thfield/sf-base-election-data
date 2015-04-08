@@ -7,13 +7,13 @@ _meta:
 texts:
   text_body_ca_court_app:
     en: California Court of Appeal, First District
-  text_body_ca_sc:
+  text_body_ca_court_supreme:
     en: Supreme Court of California
   text_body_sf_boe:
     en: Board of Education
   text_body_sf_bos:
     en: Board of Supervisors
-  text_body_sf_ccb:
+  text_body_sf_college_board:
     en: Community College Board
   text_body_sf_sc:
     en: Superior Court of San Francisco
@@ -31,6 +31,8 @@ texts:
     en: Japanese
   text_language_korean:
     en: Korean
+  text_language_notes_facsimile:
+    en: Available on a translated "facsimile" ballot by request.
   text_language_spanish:
     en: Spanish
   text_language_vietnamese:

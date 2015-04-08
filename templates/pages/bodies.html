@@ -1,17 +1,12 @@
 {% extends "base/page.html" %}
-{% block title_head %}Bodies{% endblock %}
-{% block content_title %}
-San Francisco Bodies
-{% endblock %}
+
+{% load custom_tags %}
+
 {% block content_intro_para %}
-Below is a list of government bodies having at least one seat who
+Below is a list of government bodies having at least one seat that
 can be on a San Francisco ballot.
 {% endblock %}
-{% block current_count_value %}
-{{ bodies_count }} bodies
-{% endblock %}
+
 {% block content_body %}
-{% with objects_by_category=bodies_by_category %}
-{% include 'partials/bodies_list.html' %}
-{% endwith %}
+{% include 'list_objects_by_category.html' with by_category=bodies_by_category %}
 {% endblock %}

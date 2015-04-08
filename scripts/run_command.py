@@ -13,7 +13,7 @@ import sys
 import textwrap
 
 import init_path
-from pyelect import htmlgen
+from pyelect.html import generator as htmlgen
 from pyelect import jsongen
 from pyelect import lang
 from pyelect import utils
@@ -24,6 +24,16 @@ _log = logging.getLogger()
 _DEFAULT_OUTPUT_DIR_NAME = '_build'
 _FORMATTER_CLASS = argparse.RawDescriptionHelpFormatter
 
+DESCRIPTION = """\
+Helper script for repository contributors.
+
+The normal workflow is--
+
+1. TODO
+2. Run `make_json` to update the JSON from the YAML.
+3. Run `sample_html` to generate HTML from the JSON.
+
+"""
 
 def _wrap(text):
     """Format text for help outuput."""
@@ -53,8 +63,8 @@ def command_lang_text_extras(ns):
 
 def command_make_json(ns):
     path = ns.output_path
-    data = jsongen.make_all_data()
-    text = json.dumps(data, indent=4, sort_keys=True)
+    json_data = jsongen.make_json_data()
+    text = json.dumps(json_data, indent=4, sort_keys=True)
     utils.write(path, text)
 
 
@@ -65,10 +75,23 @@ def command_parse_csv(ns):
 
 
 def command_sample_html(ns):
+    debug = ns.debug
+    local = ns.local
     dir_path = ns.output_dir
     open_browser = ns.open_browser
     page_name = ns.page_name
     print_html = ns.print_html
+
+    if page_name:
+        # Only require that the user type a matching prefix.
+        names = htmlgen.get_template_page_file_names()
+        for name in names:
+            if name.startswith(page_name):
+                page_name = name
+                break
+        else:
+            raise Exception("no page begins with: {0!r} (choose from: {1})"
+                            .format(page_name, ", ".join(names)))
 
     if dir_path is None:
         repo_dir = utils.get_repo_dir()
@@ -76,7 +99,8 @@ def command_sample_html(ns):
 
     # Make and output HTML.
     html_path = htmlgen.make_html(dir_path, page_name=page_name,
-                                  print_html=print_html)
+                                  print_html=print_html, local_assets=local,
+                                  debug=debug)
     if open_browser:
         subprocess.call(["open", html_path])
 
@@ -92,15 +116,15 @@ def _get_all_files(dir_path):
 
 
 def command_yaml_norm(ns):
-    if ns.all:
-        data_dir = utils.get_pre_data_dir()
-        paths = _get_all_files(data_dir)
-        paths = [p for p in paths if os.path.splitext(p)[1] == '.yaml']
-    else:
-        path = ns.path
+    path = ns.path
+    if path:
         if not utils.is_yaml_file_normalizable(path):
             raise Exception("not normalizable: {0}".format(path))
         paths = [path]
+    else:
+        data_dir = utils.get_pre_data_dir()
+        paths = _get_all_files(data_dir)
+        paths = [p for p in paths if os.path.splitext(p)[1] == '.yaml']
     for path in paths:
         utils.normalize_yaml(path, stdout=True)
 
@@ -155,7 +179,7 @@ def make_subparser(sub, command_name, help, command_func=None, details=None, **k
 def create_parser():
     """Return an ArgumentParser object."""
     root_parser = argparse.ArgumentParser(formatter_class=_FORMATTER_CLASS,
-            description="command script for repo contributors")
+            description=DESCRIPTION)
     sub = root_parser.add_subparsers(help='sub-command help')
 
     parser = make_subparser(sub, "lang_csv_ids",
@@ -194,18 +218,25 @@ def create_parser():
                 help="parse a CSV language file from the Department.")
     parser.add_argument('path', metavar='PATH', help="a path to a CSV file.")
 
+    page_bases = htmlgen.get_template_page_bases()
     parser = make_subparser(sub, "sample_html",
                 help="make sample HTML from the JSON data.",
                 details="Uses the repo JSON file as input.")
     parser.add_argument('--page', dest='page_name',
-        help='the page to generate (e.g. "bodies.html").  Defaults to all pages.')
+        help=('the page to generate (from: {0}).  Defaults to all pages.'
+              .format(", ".join(page_bases))))
     parser.add_argument('--output_dir', metavar='OUTPUT_DIR',
         help=("the output directory.  Defaults to the following directory relative "
               "to the repo: {0}".format(get_sample_html_default_rel_dir())))
+    parser.add_argument('--local', action='store_true',
+        help=('link to assets locally rather than via a CDN.  This is useful '
+              'for developing locally without internet access.'))
     parser.add_argument('--no-browser', dest='open_browser', action='store_false',
         help='suppress opening the browser.')
     parser.add_argument('--print-html', dest='print_html', action='store_true',
         help='write the HTML to stdout.')
+    parser.add_argument('--debug', action='store_true',
+        help="set Django's TEMPLATE_DEBUG to True.")
 
     parser = make_subparser(sub, "yaml_norm",
                 help="normalize one or more YAML files.")

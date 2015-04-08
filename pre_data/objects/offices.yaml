@@ -21,11 +21,11 @@ offices:
     division: 2
     office_type_id: CA_CourtApp_PJ
   CA_SC_AJ:
-    body_id: CA_SC
+    body_id: body_ca_court_supreme
     name: Associate Justice
     seat_count: 6
   CA_SC_CJ:
-    body_id: CA_SC
+    body_id: body_ca_court_supreme
     name: Chief Justice
   office_assessor_recorder:
     mixin_id: sf_common
@@ -36,22 +36,22 @@ offices:
     name: Attorney General
     url: http://www.oag.ca.gov/
   office_bart_7:
-    body_id: BART
+    body_id: body_bart
     district: 7
   office_bart_8:
-    body_id: BART
+    body_id: body_bart
     district: 8
   office_bart_9:
-    body_id: BART
+    body_id: body_bart
     district: 9
   office_ca_sa_17:
-    body_id: CA_SA
+    body_id: body_ca_state_assembly
     district: 17
   office_ca_sa_19:
-    body_id: CA_SA
+    body_id: body_ca_state_assembly
     district: 19
   office_ca_ss_11:
-    body_id: CA_SS
+    body_id: body_ca_state_senate
     district: 11
   office_city_attorney:
     mixin_id: sf_common
@@ -89,63 +89,63 @@ offices:
     twitter: sfdefender
     url: http://sfpublicdefender.org
   office_sf_boe_seats_3:
-    body_id: SF_BOE
+    body_id: body_sf_boe
     seat_count: 3
     seed_year: 2014
   office_sf_boe_seats_4:
-    body_id: SF_BOE
+    body_id: body_sf_boe
     seat_count: 4
     seed_year: 2012
   office_sf_bos_1:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 1
     seed_year: 2012
   office_sf_bos_10:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 10
     seed_year: 2014
   office_sf_bos_11:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 11
     seed_year: 2012
   office_sf_bos_2:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 2
     seed_year: 2014
   office_sf_bos_3:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 3
     seed_year: 2012
   office_sf_bos_4:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 4
     seed_year: 2014
   office_sf_bos_5:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 5
     seed_year: 2012
   office_sf_bos_6:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 6
     seed_year: 2014
   office_sf_bos_7:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 7
     seed_year: 2012
   office_sf_bos_8:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 8
     seed_year: 2014
   office_sf_bos_9:
-    body_id: SF_BOS
+    body_id: body_sf_bos
     district: 9
     seed_year: 2012
   office_sf_ccb_seats_3:
-    body_id: SF_CCB
+    body_id: body_sf_college_board
     seat_count: 3
     seed_year: 2014
   office_sf_ccb_seats_4:
-    body_id: SF_CCB
+    body_id: body_sf_college_board
     seat_count: 4
     seed_year: 2012
   office_sheriff:
@@ -180,23 +180,24 @@ offices:
     name: Treasurer
     url: http://www.treasurer.ca.gov/
   office_us_hr_12:
-    body_id: US_HR
+    body_id: body_us_house
     district: 12
   office_us_hr_14:
-    body_id: US_HR
+    body_id: body_us_house
     district: 14
   office_usa_president_of_the_united_states:
     category_id: category_federal
+    election_method_id: election_method_presidential
     name_i18n: text_office_usa_president_of_the_united_states
     seed_year: 2016
     term_length: 4
     twitter: WhiteHouse
     url: https://www.whitehouse.gov/
   office_usa_senate_1:
-    body_id: USA_S
+    body_id: body_us_senate
     district: CA
     seed_year: 2014
   office_usa_senate_2:
-    body_id: USA_S
+    body_id: body_us_senate
     district: CA
     seed_year: 2012
