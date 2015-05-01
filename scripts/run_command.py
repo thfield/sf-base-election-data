@@ -18,6 +18,7 @@ from pyelect import jsongen
 from pyelect import lang
 from pyelect import utils
 
+import shutil
 
 _log = logging.getLogger()
 
@@ -101,6 +102,12 @@ def command_sample_html(ns):
     html_path = htmlgen.make_html(dir_path, page_name=page_name,
                                   print_html=print_html, local_assets=local,
                                   debug=debug)
+    # thf-lookhere
+    # to copy entire directory structure -- look at os.listdir 
+    js_path = "static_files/translate.js"
+    dest_path = "_build/js/translate.js"
+    shutil.copy(js_path, dest_path)
+
     if open_browser:
         subprocess.call(["open", html_path])
 
