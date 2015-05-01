@@ -12,20 +12,13 @@ bodies:
     term_length: 4
     url: http://www.bart.gov/about/bod
     vote_method: FPTP
-  body_ca_court_app:
+  body_ca_court_of_appeal_d1:
     category_id: category_judicial
-    district_type_id: district_type_ca_court_app_d1
-    jurisdiction_id: CA
-    name_i18n: text_body_ca_court_app
-    notes: The state has six geographic appellate districts. The first district, which
-      covers San Francisco, is divided into five non-geographical divisions with four
-      justices each.
+    name_i18n: text_body_ca_court_of_appeal_d1
+    notes: The district covers San Francisco and is divided into five non-geographical
+      divisions with four justices each.
     partisan: false
     seat_count: 20
-    term_length: 12
-    url: http://www.courts.ca.gov/courtsofappeal.htm
-    vote_method: retention
-    wikipedia: http://en.wikipedia.org/wiki/California_courts_of_appeal
   body_ca_court_supreme:
     category_id: category_judicial
     jurisdiction_id: CA
@@ -37,6 +30,16 @@ bodies:
     url: http://www.courts.ca.gov/supremecourt.htm
     vote_method: retention
     wikipedia: http://en.wikipedia.org/wiki/Supreme_Court_of_California
+  body_ca_courts_of_appeal:
+    category_id: category_judicial
+    district_type_id: district_type_ca_court_appeal
+    jurisdiction_id: CA
+    name_i18n: text_body_ca_courts_of_appeal
+    partisan: false
+    term_length: 12
+    url: http://www.courts.ca.gov/courtsofappeal.htm
+    vote_method: retention
+    wikipedia: http://en.wikipedia.org/wiki/California_courts_of_appeal
   body_ca_sboe:
     category_id: category_state
     district_type_id: district_type_ca_sboe
@@ -49,16 +52,6 @@ bodies:
     term_length: 4
     url: http://www.boe.ca.gov/
     wikipedia: http://en.wikipedia.org/wiki/State_Board_of_Equalization_%28California%29
-  body_ca_state_senate:
-    category_id: category_state
-    district_type_id: district_type_ca_ss
-    jurisdiction_id: CA
-    name: California State Senate
-    partisan: true
-    seat_count: 40
-    term_length: 4
-    url: http://senate.ca.gov/
-    wikipedia: http://en.wikipedia.org/wiki/California_State_Senate
   body_ca_state_assembly:
     category_id: category_state
     district_type_id: district_type_ca_sa
@@ -70,10 +63,21 @@ bodies:
     term_length: 2
     url: http://assembly.ca.gov/
     wikipedia: http://en.wikipedia.org/wiki/California_State_Assembly
-  body_sf_boe:
+  body_ca_state_senate:
+    category_id: category_state
+    district_type_id: district_type_ca_ss
+    jurisdiction_id: CA
+    name: California State Senate
+    office_name_format: State Senator
+    partisan: true
+    seat_count: 40
+    term_length: 4
+    url: http://senate.ca.gov/
+    wikipedia: http://en.wikipedia.org/wiki/California_State_Senate
+  body_sf_board_of_education:
     category_id: category_school
     jurisdiction_id: SF
-    name_i18n: text_body_sf_boe
+    name_i18n: text_body_city_board_of_education
     office_name_i18n: text_office_member_board_of_education
     partisan: false
     seat_count: 7
@@ -81,12 +85,12 @@ bodies:
     url: http://www.sfusd.edu/en/about-sfusd/board-of-education
     vote_method: FPTP
     wikipedia: http://en.wikipedia.org/wiki/San_Francisco_Board_of_Education
-  body_sf_bos:
+  body_sf_board_of_supervisors:
     category_id: category_city_county
-    district_type_id: district_type_sf_bos
+    district_type_id: district_type_sf_board_of_supervisors
     jurisdiction_id: SF
     localwiki: https://localwiki.org/sf/Board_of_Supervisors
-    name_i18n: text_body_sf_bos
+    name_i18n: text_body_city_board_of_supervisors
     office_name_i18n: text_office_member_board_of_supervisors
     partisan: false
     qualified_name: San Francisco Board of Supervisors
@@ -98,7 +102,7 @@ bodies:
   body_sf_college_board:
     category_id: category_school
     jurisdiction_id: SFCC
-    name_i18n: text_body_sf_college_board
+    name_i18n: text_body_city_college_board
     office_name_i18n: text_office_member_community_college_board
     seat_count: 7
     term_length: 4
@@ -127,32 +131,39 @@ bodies:
   body_sf_sc:
     category_id: category_judicial
     jurisdiction_id: SF
-    name_i18n: text_body_sf_sc
+    name_i18n: text_body_city_sc
     notes: The San Francisco Superior Court Bench is comprised of 52 Judges and one
       Commissioner.
     office_name_i18n: text_office_member_body_sf_sc
     term_length: 6
     url: http://www.sfsuperiorcourt.org/
     wikipedia: http://en.wikipedia.org/wiki/San_Francisco_County_Superior_Court
-  body_us_house:
+  body_usa_house:
     category_id: category_federal
-    district_type_id: district_type_us_hr
+    district_type_id: district_type_usa_house
+    election_method_id: election_method_top_two
     jurisdiction_id: US
+    member_name: U.S. Representative
     name: United States House of Representatives
     notes: There are also 6 non-voting members.
-    office_name: United States Representative
+    office_name_format: '{member_name}, {district_name}'
     partisan: true
     seat_count: 435
+    seed_year: 2010
     term_length: 2
     url: http://www.house.gov/
     wikipedia: http://en.wikipedia.org/wiki/United_States_House_of_Representatives
-  body_us_senate:
+  body_usa_senate:
     category_id: category_federal
-    district_type_id: district_type_us_states
+    district_type_id: district_type_usa_states
+    election_method_id: election_method_top_two
     jurisdiction_id: US
+    member_name: U.S. Senator
     name: United States Senate
+    office_name_format: '{member_name}, {district_name} ({seat_name})'
     partisan: true
     seat_count: 100
+    seat_name_format: Class {seat}
     term_length: 6
     url: http://www.senate.gov/
     wikipedia: http://en.wikipedia.org/wiki/United_States_Senate

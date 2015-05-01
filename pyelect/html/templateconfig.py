@@ -1,3 +1,7 @@
+"""Configures Django template settings.
+
+Also contains definitions for custom filters.
+"""
 
 import os
 
@@ -8,7 +12,7 @@ import django.template.defaulttags as defaulttags
 from pyelect import utils
 
 
-_TEMPLATE_DIR_NAMES = ('base', 'objects', 'partials')
+_TEMPLATE_DIR_NAMES = ('base', 'objects', 'partials', 'tags')
 
 
 def get_templates_dir():

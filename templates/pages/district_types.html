@@ -1,5 +1,11 @@
 {% extends "base/page.html" %}
 
+{% load custom_tags %}
+
+{% block content_intro_para %}
+Below are the types of districts that appear in the JSON file.
+{% endblock %}
+
 {% block content_body %}
-{% include 'list_objects_by_category.html' with by_category=district_types_by_category %}
+{% show_by_category current_objects %}
 {% endblock %}

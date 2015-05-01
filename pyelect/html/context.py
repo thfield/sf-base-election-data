@@ -7,7 +7,7 @@ from pprint import pprint
 
 from django.template import Context
 
-from pyelect.html.common import NON_ENGLISH_ORDER
+from pyelect.html.common import CATEGORY_ORDER, NON_ENGLISH_ORDER
 from pyelect.html import pages
 from pyelect import lang
 from pyelect.lang import I18N_SUFFIX, LANG_ENGLISH
@@ -16,9 +16,12 @@ from pyelect import utils
 
 _log = logging.getLogger()
 
+_JQUERY_LOCAL = 'js/'
 _JQUERY_REMOTE = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/"
 _BOOTSTRAP_REMOTE = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/"
 _BOOTSTRAP_LOCAL = 'bootstrap/'
+
+JSON_OUTPUT_PATH = 'data/sf.json'
 
 _TABLE_OF_CONTENTS = """\
 index
@@ -30,15 +33,19 @@ areas
 election_methods
 """.strip().splitlines()
 
-CATEGORY_ORDER = """\
-category_federal
-category_state
-category_city_county
-category_school
-category_transit
-category_judicial
-category_party
-""".strip().splitlines()
+OFFICE_BODY_COMMON_KEYS = [
+    'category_id',
+    'election_method_id',
+    'jurisdiction_id',
+    'name',
+    'notes',
+    'partisan',
+    'seed_year',
+    'term_length',
+    'twitter',
+    'url',
+    'wikipedia'
+]
 
 
 class NodeNames(object):
@@ -57,9 +64,6 @@ def make_template_context(data, page_base):
     if not objects:
         raise Exception("no objects for: {0}".format(page_base))
     context['current_objects'] = objects
-
-    objects_by_category = page.get_objects_by_category(data, categories=CATEGORY_ORDER)
-    context['current_objects_by_category'] = objects_by_category
 
     context['current_show_template'] = page.get_show_template()
 
@@ -95,19 +99,18 @@ def make_category_map(all_json, phrases):
 
     category_map = {}
     for category_id, category_json in categories_json.items():
-        category = _init_context(category_json, keys, category_id)
-        _set_context_election_info(category, category_json)
+        category = _init_html_object_data(category_json, keys, category_id)
         category_map[category_id] = category
 
     return category_map
 
 
-def _compute_next_election_year(office_json):
-    term_length = office_json.get('term_length')
+def _compute_next_election_year(json_data):
+    term_length = json_data.get('term_length')
     # TODO: make this required.
     if not term_length:
         return None
-    seed_year = office_json.get('seed_year')
+    seed_year = json_data.get('seed_year')
     if seed_year is None:
         return None
 
@@ -137,62 +140,58 @@ def make_phrases(json_data):
     """Return the phrases dict for the context."""
     phrases = json_data['phrases']
     for text_id, phrase in phrases.items():
+        # TODO: put this validation logic elsewhere.
+        if " " in text_id:
+            raise Exception("white space: {0}".format(text_id))
         phrase['id'] = text_id
     return phrases
 
 
-def _set_context(context, json_data, keys):
+def _set_html_object_data(html_data, json_data, keys):
     for key in keys:
-        context[key] = json_data.get(key, None)
+        value = json_data.get(key, None)
+        html_data[key] = value
         # Include internationalized values when they are available, for all fields.
         i18n_key = lang.get_i18n_field_name(key)
-        context[i18n_key] = json_data.get(i18n_key, None)
+        html_data[i18n_key] = json_data.get(i18n_key, None)
 
 
-def _init_context(json_data, keys, object_id):
+def _init_html_object_data(json_data, keys, object_id):
     context = {'id': object_id}
-    _set_context(context, json_data, keys)
+    _set_html_object_data(context, json_data, keys)
     return context
 
 
-def _set_context_election_info(context, json_data):
-    keys = [
-        'election_method_id',
-        'partisan',
-        'term_length',  # "* year term"
-        'vote_method',  # TODO: remove this.
-    ]
-    _set_context(context, json_data, keys)
-    context['next_election_year'] = _compute_next_election_year(json_data)
+def _set_html_election_data(html_data, json_data):
+    html_data['next_election_year'] = _compute_next_election_year(json_data)
 
 
 def make_one_areas(object_id, json_data, html_data=None):
     keys = ('name', 'notes', 'wikipedia')
-    context = _init_context(json_data, keys, object_id)
+    context = _init_html_object_data(json_data, keys, object_id)
     return context
 
 
 def make_one_bodies(object_id, json_data, phrases, html_data=None):
     keys = [
-        'category_id',
         'district_type_id',
-        'name',
-        'notes',
+        'member_name',
+        'office_name',
+        'office_name_format',
         'seat_count',
-        'twitter',
-        'url',
-        'wikipedia'
+        'seat_name_format',
     ]
-    context = _init_context(json_data, keys, object_id)
-    _set_context_election_info(context, json_data)
+    keys.extend(OFFICE_BODY_COMMON_KEYS)
+    html_data = _init_html_object_data(json_data, keys, object_id)
+    _set_html_election_data(html_data, json_data)
 
-    return context
+    return html_data
 
 
 def make_one_district_types(object_id, json_data, bodies, html_data=None):
     keys = ('body_id', 'category_id', 'district_count', 'district_name_format', 'geographic',
             'name', 'parent_area_id', 'wikipedia')
-    context = _init_context(json_data, keys, object_id)
+    context = _init_html_object_data(json_data, keys, object_id)
     if not context['category_id']:
         body_id = context.get('body_id')
         body = bodies[body_id]
@@ -204,29 +203,35 @@ def make_one_district_types(object_id, json_data, bodies, html_data=None):
 
 
 def make_one_election_methods(object_id, json_data, html_data=None):
-    keys = ('name', 'notes')
-    context = _init_context(json_data, keys, object_id)
+    keys = [
+        'name',
+        'notes',
+        'wikipedia',
+    ]
+    context = _init_html_object_data(json_data, keys, object_id)
     return context
 
 
 def make_one_languages(object_id, json_data, html_data=None):
     keys = ('name', 'code', 'notes')
-    context = _init_context(json_data, keys, object_id)
+    context = _init_html_object_data(json_data, keys, object_id)
     return context
 
 
+# TODO: simplify this and DRY up with make_one_bodies().
 def make_one_offices(object_id, json_data, html_data=None):
-    keys = (
-        'category_id',
-        'election_method_id',
-        'name',
-        'notes',
-        'twitter',
-        'url',
-        'wikipedia'
-    )
-    html_item = _init_context(json_data, keys, object_id)
-    _set_context_election_info(html_item, json_data)
+    keys = [
+        'body_id',
+        'district_id',
+        'seat',
+        'seat_name',
+    ]
+    keys.extend(OFFICE_BODY_COMMON_KEYS)
+    html_item = _init_html_object_data(json_data, keys, object_id)
+    html_item['district_name'] = html_item['district_id']
+
+    inherited_keys = ('seed_year', 'term_length')
+    effective = {k: html_item[k] for k in inherited_keys}
 
     phrases = html_data[NodeNames.phrases]
     if 'body_id' in json_data:
@@ -234,36 +239,67 @@ def make_one_offices(object_id, json_data, html_data=None):
         bodies = html_data['bodies']
         body = utils.get_required(bodies, body_id)
         html_item['category_id'] = body['category_id']
-        html_item['name'] = body['name']
+        member_name = body['member_name']
+        html_item['member_name'] = member_name
 
-    # TODO: remove these temporary measure.
-    if not html_item['category_id']:
+        seat_name_format = body['seat_name_format']
+        if seat_name_format is not None:
+            seat_name = seat_name_format.format(**html_item)
+            html_item['seat_name'] = seat_name
+
+        office_name_format = body['office_name_format']
+        if office_name_format is None:
+            html_item['name'] = body['office_name']
+        else:
+            office_name = office_name_format.format(**html_item)
+            html_item['name'] = office_name
+        for k in inherited_keys:
+            if effective[k] is None:
+                effective[k] = body[k]
+
+    _set_html_election_data(html_item, effective)
+
+    # TODO: remove this temporary check.
+    if not html_item['category_id'] or not html_item['name']:
         return None
-    assert html_item['name']
 
     # TODO: use a real seat count.
     html_item['seat_count'] = 1
 
+    assert html_item['name']
     return html_item
+
+
+def _add_english_fields_object(phrases, object_id, obj):
+    # TODO: put this validation logic elsewhere.
+    if " " in object_id:
+        raise Exception("white space: {0}".format(object_id))
+    i18n_attrs = [(field, value) for field, value in obj.items() if
+                  field.endswith(I18N_SUFFIX)]
+    for field_name, text_id in i18n_attrs:
+        simple_name = field_name.rstrip(I18N_SUFFIX)
+        # TODO: make a general helper function out of this?
+        try:
+            translations = phrases[text_id]
+        except KeyError:
+            raise Exception("object (node={node_name!r}, id={object_id!r}): {0}"
+                            .format(obj, node_name=node_name, object_id=object_id))
+        english = translations[LANG_ENGLISH]
+        _log.debug("Setting field: {0}.{1}={2}".format(object_id, simple_name, english))
+        obj[simple_name] = english
 
 
 def add_english_fields(json_data, phrases):
     """Add a simple field for each internationalized field."""
     for node_name, objects in json_data.items():
+        if node_name.startswith("_"):
+            # Skip metadata.
+            continue
         for object_id, obj in objects.items():
-            i18n_attrs = [(field, value) for field, value in obj.items() if
-                          field.endswith(I18N_SUFFIX)]
-            for field_name, text_id in i18n_attrs:
-                simple_name = field_name.rstrip(I18N_SUFFIX)
-                # TODO: make a general helper function out of this?
-                try:
-                    translations = phrases[text_id]
-                except KeyError:
-                    raise Exception("object (node={node_name!r}, id={object_id!r}): {0}"
-                                    .format(obj, node_name=node_name, object_id=object_id))
-                english = translations[LANG_ENGLISH]
-                _log.debug("Setting field: {0}.{1}={2}".format(object_id, simple_name, english))
-                obj[simple_name] = english
+            try:
+                _add_english_fields_object(phrases, object_id, obj)
+            except:
+                raise Exception("object (id={0}): {1}".format(object_id, obj))
 
 
 def add_context_node(context, json_data, node_name, json_key=None, **kwargs):
@@ -300,11 +336,12 @@ def make_template_data(json_data, local_assets=False):
     categories = [category_map[id_] for id_ in CATEGORY_ORDER]
 
     bootstrap_prefix = _BOOTSTRAP_LOCAL if local_assets else _BOOTSTRAP_REMOTE
-    jquery_prefix = "" if local_assets else _JQUERY_REMOTE
+    jquery_prefix = _JQUERY_LOCAL if local_assets else _JQUERY_REMOTE
 
     context = {
         'categories': categories,
         'jquery_prefix': jquery_prefix,
+        'json_path': JSON_OUTPUT_PATH,
         'language_codes': [LANG_ENGLISH] + NON_ENGLISH_ORDER,
         'bootstrap_prefix': bootstrap_prefix,
         'page_bases': _TABLE_OF_CONTENTS,

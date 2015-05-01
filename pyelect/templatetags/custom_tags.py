@@ -16,7 +16,7 @@ import traceback
 
 from django import template
 
-from pyelect.html.common import NON_ENGLISH_ORDER
+from pyelect.html.common import CATEGORY_ORDER, NON_ENGLISH_ORDER
 from pyelect.html import pages
 from pyelect import lang
 
@@ -43,8 +43,52 @@ def log_errors(func):
             raise
     return wrapper
 
+
 def _pprint(text):
     pprint(text, stream=sys.stderr)
+
+
+# TODO: update the return value to what is documented.
+@register.assignment_tag(takes_context=True)
+@log_errors
+def translations(context, item, attr_name):
+    """Returns i18n info for an object attribute.
+
+    Usage:
+
+        {% translations office 'name' as text %}
+
+    Returns (for example):
+
+        {
+            "en": "Mayor",
+            "non_english": [
+                {
+                    "lang": "zh",
+                    "text": "Alcalde",
+                },
+                {
+                    "lang": "es",
+                    "text": "Alcalde",
+                }
+            ]
+        }
+    """
+    assert 'phrases' in context
+    if isinstance(item, str):
+        raise Exception("item cannot be str: {0!r}".format(item))
+    i18n_field_name = lang.get_i18n_field_name(attr_name)
+    phrase_id = item.get(i18n_field_name)
+    non_english = []
+    if phrase_id:
+        phrases = context.get('phrases')
+        phrase = phrases[phrase_id]
+        non_english = [phrase[lang] for lang in NON_ENGLISH_ORDER if lang in phrase]
+    text = {
+        "en": "bar",
+        "non_english": non_english,
+    }
+    return text
 
 
 def get_page_href(page_base):
@@ -86,6 +130,13 @@ def anchor(id_):
     }
 
 
+def _init_cond_include_context(template_name, should_include):
+    return {
+        'should_include': should_include,
+        'template_name': template_name,
+    }
+
+
 def update_context(context, extra):
     # We do not use context.update() since that pushes onto the contest stack.
     for key, value in extra.items():
@@ -93,42 +144,22 @@ def update_context(context, extra):
     return context
 
 
-def _header_context(context, item_data, field_name, item_id):
-    assert 'phrases' in context
-    try:
-        name = item_data[field_name]
-    except Exception as err:
-        _log.warn("error: key={0}, item_data={1}".format(field_name, item_data))
-        raise
-    i18n_field_name = lang.get_i18n_field_name(field_name)
-    phrase_id = item_data.get(i18n_field_name)
-    non_english = []
-    if phrase_id:
-        phrases = context.get('phrases')
-        phrase = phrases[phrase_id]
-        non_english = [phrase[lang] for lang in NON_ENGLISH_ORDER if lang in phrase]
-
-    extra = {
-        'header': name,
-        'header_non_english': non_english,
-        'header_id': item_id,
-    }
+@register.inclusion_tag('cond_include.html', takes_context=True)
+@log_errors
+def lang_object_header(context, template_name, item, attr_name, header_id):
+    extra = _init_cond_include_context(template_name, should_include=True)
+    header = item.get(attr_name)
+    extra.update({
+        'header': header,
+        'header_id': header_id,
+        'item': item,
+        'attr_name': attr_name,
+    })
     update_context(context, extra)
     return context
 
 
-@register.inclusion_tag('header_section.html', takes_context=True)
-@log_errors
-def header_section(context, item_data, field_name, item_id):
-    return _header_context(context, item_data, field_name, item_id)
-
-
-@register.inclusion_tag('header_item.html', takes_context=True)
-@log_errors
-def header_item(context, item_data, field_name, item_id):
-    return _header_context(context, item_data, field_name, item_id)
-
-
+# TODO: DRY up with _init_cond_include_context().
 @register.inclusion_tag('tags/cond_include.html')
 def cond_include(should_include, template_name, data):
     """A tag to conditionally include a template."""
@@ -139,6 +170,7 @@ def cond_include(should_include, template_name, data):
     }
 
 
+# TODO: DRY up with _init_cond_include_context().
 def _cond_include_context(template_name, header, value):
     return {
         'header': header,
@@ -148,6 +180,7 @@ def _cond_include_context(template_name, header, value):
     }
 
 
+# TODO: DRY up with _init_cond_include_context().
 def _cond_include_context_url(label, href, href_text=None):
     if href_text is None:
         href_text = href
@@ -200,6 +233,95 @@ def list_objects(context, objects, title_attr):
         'current_show_template': context['current_show_template'],
         'objects': objects,
         'title_attr': title_attr
+    }
+    update_context(context, extra)
+    return context
+
+
+def _group_by_category(objects):
+    by_category = {c: {} for c in CATEGORY_ORDER}
+    for obj in objects.values():
+        category_id = obj['category_id']
+        # Raises an exception if the object has an unrecognized category.
+        group = by_category[category_id]
+        object_id = obj['id']
+        group[object_id] = obj
+    return by_category
+
+
+def _by_category_context(context, objects):
+    assert 'phrases' in context
+    by_category = _group_by_category(objects)
+    extra = {
+        'current_show_template': context['current_show_template'],
+        'objects_by_category': by_category,
+    }
+    update_context(context, extra)
+    return context
+
+@register.inclusion_tag('list_objects_by_category.html', takes_context=True)
+@log_errors
+def show_by_category(context, objects):
+    return _by_category_context(context, objects)
+
+
+@register.inclusion_tag('list_offices.html', takes_context=True)
+@log_errors
+def list_offices(context, offices):
+    return _by_category_context(context, offices)
+
+
+def _group_by_attribute(objects, attr_name):
+    by_attr = {}
+    for obj in objects:
+        attr_value = obj.get(attr_name)
+        group = by_attr.setdefault(attr_value, [])
+        group.append(obj)
+    return by_attr
+
+
+@register.inclusion_tag('show_offices_category.html', takes_context=True)
+@log_errors
+def show_offices_category(context, category_info):
+    """
+    Arguments:
+      category_info: a map from office_id to office object.
+    """
+    assert 'phrases' in context
+    bodies = context['bodies']
+    offices = category_info.values()
+    # Map from body_id to list of offices.
+    by_body_id = _group_by_attribute(offices, 'body_id')
+    body_ids = by_body_id.keys()
+
+    def body_cmp_key(body_id):
+        """Sort by body name."""
+        if body_id is None:
+            return ""
+        body = bodies[body_id]
+        body_name = body['name']
+        return body_name
+
+    body_ids = sorted(body_ids, key=body_cmp_key)
+
+    groups = []
+    for body_id in body_ids:
+        offices = by_body_id[body_id]
+        try:
+            body = bodies[body_id]
+        except KeyError:
+            body_name = None
+        else:
+            body_name = body['name']
+        group = {
+            'body_id': body_id,
+            'body_name': body_name,
+            'offices': offices,
+        }
+        groups.append(group)
+
+    extra = {
+        'grouped_offices': groups
     }
     update_context(context, extra)
     return context

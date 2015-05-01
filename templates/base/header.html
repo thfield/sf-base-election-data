@@ -1,0 +1,18 @@
+{% load custom_tags %}
+{% comment %}
+
+Variables:
+  header:
+  header_id:
+  subheader:
+
+{% endcomment %}
+{% block header %}
+{{ header }}
+{% endblock %}
+{% anchor header_id %}
+{% block subheader %}
+{% if subheader %}<br/>
+{% block subheader_contents %}{{ subheader }}{% endblock %}
+{% endif %}
+{% endblock %}

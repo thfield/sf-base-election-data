@@ -7,13 +7,12 @@ district_types:
     district_count: 9
     name: BART Districts
     parent_area_id: area_state_ca_bart
-  district_type_ca_court_app_d1:
-    body_id: body_ca_court_app
-    district_count: 5
-    district_name_format: Division {0}
-    geographic: false
-    name: Court of Appeal Divisions, First District
-    parent_area_id: area_state_ca_court_app_d1
+  district_type_ca_court_appeal:
+    body_id: body_ca_courts_of_appeal
+    district_count: 6
+    district_name_format: '{district_code} District'
+    name: Courts of Appeal Districts
+    parent_area_id: area_state_ca
   district_type_ca_sa:
     body_id: body_ca_state_assembly
     district_count: 80
@@ -30,19 +29,20 @@ district_types:
     district_count: 40
     name: State Senate Districts
     parent_area_id: area_state_ca
-  district_type_sf_bos:
-    body_id: body_sf_bos
+  district_type_sf_board_of_supervisors:
+    body_id: body_sf_board_of_supervisors
     district_count: 11
     district_name_format_i18n: text_district_numbered_format
     name: Supervisorial Districts
     parent_area_id: area_county_sf
-  district_type_us_hr:
-    body_id: body_us_house
+  district_type_usa_house:
+    body_id: body_usa_house
     district_count: 435
+    district_name_format: District {number}
     name: US Congressional Districts
-    parent_area_id: area_country_us
-  district_type_us_states:
+    parent_area_id: area_country_usa
+  district_type_usa_states:
     category_id: category_federal
     district_count: 50
     name: US States
-    parent_area_id: area_country_us
+    parent_area_id: area_country_usa

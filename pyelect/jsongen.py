@@ -20,6 +20,10 @@ KEY_OFFICES = 'offices'
 DIR_NAME_OBJECTS = 'objects'
 _REL_PATH_JSON_DATA = "data/sf.json"
 
+_LICENSE = ("The database consisting of this file is made available under "
+"the Public Domain Dedication and License v1.0 whose full text can be "
+"found at: http://www.opendatacommons.org/licenses/pddl/1.0/ .")
+
 
 def get_rel_path_json_data():
     return _REL_PATH_JSON_DATA
@@ -29,11 +33,16 @@ def _get_rel_path_objects_dir():
     return os.path.join(utils.DIR_PRE_DATA, DIR_NAME_OBJECTS)
 
 
-def get_json():
-    """Read and return the JSON data."""
+def get_json_path():
     repo_dir = utils.get_repo_dir()
     rel_path = get_rel_path_json_data()
     json_path = os.path.join(repo_dir, rel_path)
+    return json_path
+
+
+def get_json():
+    """Read and return the JSON data."""
+    json_path = get_json_path()
     with open(json_path) as f:
         data = json.load(f)
 
@@ -64,7 +73,6 @@ def make_object_areas(yaml_data):
 
 
 def make_object_district_types(yaml_data):
-    yaml_data.setdefault('geographic', True)
     return yaml_data
 
 
@@ -266,7 +274,12 @@ def add_json_node_simple(json_data, base_name, **kwargs):
 def make_json_data():
     mixins, meta = _get_yaml_data('mixins')
 
-    json_data ={}
+    json_data ={
+        '_meta': {
+            'license': _LICENSE
+        }
+    }
+
     for base_name in ('areas', 'district_types', 'election_methods', 'languages'):
         add_json_node_simple(json_data, base_name)
 
