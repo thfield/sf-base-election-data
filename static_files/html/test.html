@@ -9,6 +9,11 @@
   <title>SFBED - Offices</title>
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+    }
+  </style>
   <!-- Optional theme -->
   <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
@@ -22,52 +27,60 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>SF Base Election Data (SFBED)</h1>
-    <p>
-      This is a sample web site to illustrate using the data from the
-      <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a> open data project. The data for this web site comes from a single, static
-      <a href="https://github.com/cjerdonek/sf-elected-offices/blob/master/data/sf.json">JSON file</a> of structured data about San Francisco elections.
-    </p>
-    <p>
-      If you notice any issues about the data or have a suggestion, please file an issue in the
-      <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
-    </p>
-    <p>
-      <nav class="navbar navbar-default">
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="index.html">Offices</a></li>
-                <li><a href="bodies.html">Bodies</a></li>
-                <li><a href="district_types.html">District Types</a></li>
-                <li><a href="phrases.html">Translated Phrases</a></li>
-                <li><a href="languages.html">Languages</a></li>
-                <li><a href="areas.html">Areas</a></li>
-                <li><a href="election_methods.html">Election Methods</a></li>
-              </ul>
-            </li>
-            <li>
-              <p class="navbar-text">Translate available phrases into:</p>
-            </li>
-            <li>
-              <form class="navbar-form">
-                <select class="form-control" id="i18n-selector">
-                  <option value="en" selected>English</option>
-                  <option value="es">Spanish</option>
-                  <option value="zh">Chinese</option>
-                  <option value="fil">Filipino</option>
-                  <option value="jp">Japanese</option>
-                  <option value="ko">Korean</option>
-                  <option value="vi">Vietnamese</option>
-                </select>
-              </form>
-            </li>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">SFBED</a>
+        <p class="navbar-text">Offices (test)</p>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="index.html">Offices</a></li>
+            <li><a href="bodies.html">Bodies</a></li>
+            <li><a href="district_types.html">District Types</a></li>
+            <li><a href="phrases.html">Translated Phrases</a></li>
+            <li><a href="languages.html">Languages</a></li>
+            <li><a href="areas.html">Areas</a></li>
+            <li><a href="election_methods.html">Election Methods</a></li>
           </ul>
-        </div>
-      </nav>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <p class="navbar-text">Translate available phrases into:</p>
+        </li>
+        <li>
+          <form class="navbar-form">
+            <select class="form-control" id="i18n-selector">
+              <option value="en" selected>English</option>
+              <option value="es">Spanish</option>
+              <option value="zh">Chinese</option>
+              <option value="fil">Filipino</option>
+              <option value="jp">Japanese</option>
+              <option value="ko">Korean</option>
+              <option value="vi">Vietnamese</option>
+            </select>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="page-header">
+      <h1>SF Base Election Data (SFBED)</h1>
+      <p>
+        This is a sample web site to illustrate using the data from the
+        <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a> open data project. The data for this web site comes from a single, static
+        <a href="https://github.com/cjerdonek/sf-elected-offices/blob/master/data/sf.json">JSON file</a> of structured data about San Francisco elections.
+      </p>
+      <p>
+        If you notice any issues about the data or have a suggestion, please file an issue in the
+        <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+      </p>
+    </div>
+    <p>
       <h2 class="text-center">Offices</h2>
     </p>
     <p>
@@ -75,1117 +88,1154 @@
     </p>
     <p>
       Current count: 41 seats
-      <div class="row text-center">
-        <h3>
-          <span data-i18n="category_federal">FEDERAL</span>
-          <a name="category_federal" href="#category_federal">¶</a>
-          <br/>
-        </h3>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_usa_president_of_the_united_states">PRESIDENT OF THE UNITED STATES</span></b>
-          <a name="office_usa_president_of_the_united_states" href="#office_usa_president_of_the_united_states">¶</a>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>
+            <span data-i18n="category_federal">FEDERAL</span>
+            <a name="category_federal" href="#category_federal">¶</a>
+            <br/>
+          </h3>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Election Method</b></div>
-        <div class="col-md-10"><a href="election_methods.html#election_method_presidential">Presidential Primary</a>
+        <div class="panel-body">
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_usa_president_of_the_united_states">PRESIDENT OF THE UNITED STATES</span></b>
+                <a name="office_usa_president_of_the_united_states" href="#office_usa_president_of_the_united_states">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Election Method</b></div>
+              <div class="col-md-10"><a href="election_methods.html#election_method_presidential">Presidential Primary</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2000
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="https://www.whitehouse.gov/">https://www.whitehouse.gov/</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/WhiteHouse/">@WhiteHouse</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Wikipedia</b></div>
+              <div class="col-md-10"><a href="http://en.wikipedia.org/wiki/President_of_the_United_States">http://en.wikipedia.org/wiki/President_of_the_United_States</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <h4>
+              United States House of Representatives
+              <a name="body_usa_house" href="#body_usa_house">¶</a>
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n-b="office_usa_representative">U.S. REPRESENTATIVE</span>, DISTRICT_USA_HOUSE_12</b>
+                <a name="office_usa_house_12" href="#office_usa_house_12">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10">
+                <a href="bodies.html#body_usa_house">United States House of Representatives</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>District ID</b></div>
+              <div class="col-md-10">
+                district_usa_house_12
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n-b="office_usa_representative">U.S. REPRESENTATIVE</span>, DISTRICT_USA_HOUSE_14</b>
+                <a name="office_usa_house_14" href="#office_usa_house_14">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_usa_house">United States House of Representatives</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info">
+                <b>District ID</b>
+              </div>
+              <div class="col-md-10">
+                district_usa_house_14
+              </div>
+            </div>
+          </p>
+          <p>
+            <h4>
+              United States Senate
+              <a name="body_usa_senate" href="#body_usa_senate">¶</a>
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n-b="office_usa_senator">U.S. SENATOR</span>, DISTRICT_STATE_CA (CLASS 1)</b>
+                <a name="office_usa_senate_1" href="#office_usa_senate_1">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_usa_senate">United States Senate</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2000
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>District ID</b></div>
+              <div class="col-md-10">
+                district_state_ca
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seat</b></div>
+              <div class="col-md-10">
+                Class 1
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n-b="office_usa_senator">U.S. SENATOR</span>, DISTRICT_STATE_CA (CLASS 3)</b>
+                <a name="office_usa_senate_2" href="#office_usa_senate_2">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_usa_senate">United States Senate</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2004
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>District ID</b></div>
+              <div class="col-md-10">
+                district_state_ca
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seat</b></div>
+              <div class="col-md-10">
+                Class 3
+              </div>
+            </div>
+          </p>
+
         </div>
+        <!-- end panel-body -->
       </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2000
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="https://www.whitehouse.gov/">https://www.whitehouse.gov/</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/WhiteHouse/">@WhiteHouse</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Wikipedia</b></div>
-        <div class="col-md-10"><a href="http://en.wikipedia.org/wiki/President_of_the_United_States">http://en.wikipedia.org/wiki/President_of_the_United_States</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <h4>
-        United States House of Representatives
-        <a name="body_usa_house" href="#body_usa_house">¶</a>
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n-b="office_usa_representative">U.S. REPRESENTATIVE</span>, DISTRICT_USA_HOUSE_12</b>
-          <a name="office_usa_house_12" href="#office_usa_house_12">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10">
-          <a href="bodies.html#body_usa_house">United States House of Representatives</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>District ID</b></div>
-        <div class="col-md-10">
-          district_usa_house_12
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n-b="office_usa_representative">U.S. REPRESENTATIVE</span>, DISTRICT_USA_HOUSE_14</b>
-          <a name="office_usa_house_14" href="#office_usa_house_14">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_usa_house">United States House of Representatives</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info">
-          <b>District ID</b>
-        </div>
-        <div class="col-md-10">
-          district_usa_house_14
-        </div>
-      </div>
-    </p>
-    <p>
-      <h4>
-        United States Senate
-        <a name="body_usa_senate" href="#body_usa_senate">¶</a>
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n-b="office_usa_senator">U.S. SENATOR</span>, DISTRICT_STATE_CA (CLASS 1)</b>
-          <a name="office_usa_senate_1" href="#office_usa_senate_1">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_usa_senate">United States Senate</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2000
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>District ID</b></div>
-        <div class="col-md-10">
-          district_state_ca
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seat</b></div>
-        <div class="col-md-10">
-          Class 1
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n-b="office_usa_senator">U.S. SENATOR</span>, DISTRICT_STATE_CA (CLASS 3)</b>
-          <a name="office_usa_senate_2" href="#office_usa_senate_2">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_usa_senate">United States Senate</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2004
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>District ID</b></div>
-        <div class="col-md-10">
-          district_state_ca
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seat</b></div>
-        <div class="col-md-10">
-          Class 3
-        </div>
-      </div>
-    </p>
-    <p>
+      <!-- end panel federal -->
+
+
       <hr>
-      <div class="row text-center">
-        <h3>
-          <span data-i18n="category_state">STATE</span>
-          <a name="category_state" href="#category_state">¶</a>
-        </h3>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_attorney_general">ATTORNEY GENERAL</span></b>
-          <a name="office_ca_attorney_general" href="#office_ca_attorney_general">¶</a>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>
+            <span data-i18n="category_state">STATE</span>
+            <a name="category_state" href="#category_state">¶</a>
+          </h3>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+              <b><span data-i18n="office_ca_attorney_general">ATTORNEY GENERAL</span></b>
+              <a name="office_ca_attorney_general" href="#office_ca_attorney_general">¶</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 bg-info"><b>Term Length</b></div>
+            <div class="col-md-10">
+              4 years
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 bg-info"><b>Web</b></div>
+            <div class="col-md-10"><a href="http://www.oag.ca.gov/">http://www.oag.ca.gov/</a>
+            </div>
+          </div>
+
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_ca_controller">CONTROLLER</span></b>
+                <a name="office_ca_controller" href="#office_ca_controller">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sco.ca.gov/">http://www.sco.ca.gov/</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_ca_governor">GOVERNOR</span></b>
+                <a name="office_ca_governor" href="#office_ca_governor">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.gov.ca.gov">http://www.gov.ca.gov</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_ca_insurance_commissioner">INSURANCE COMMISSIONER</span></b>
+                <a name="office_ca_insurance_commissioner" href="#office_ca_insurance_commissioner">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10">
+                <a href="http://www.insurance.ca.gov/">http://www.insurance.ca.gov/</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_ca_lieutenant_governor">LIEUTENANT GOVERNOR</span></b>
+                <a name="office_ca_lieutenant_governor" href="#office_ca_lieutenant_governor">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.ltg.ca.gov/">http://www.ltg.ca.gov/</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_ca_secretary">SECRETARY OF STATE</span></b>
+                <a name="office_ca_secretary" href="#office_ca_secretary">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sos.ca.gov/">http://www.sos.ca.gov/</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/sosnews/">@sosnews</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b><span data-i18n="office_ca_superintendent_of_public_instruction">SUPERINTENDENT OF PUBLIC INSTRUCTION</span></b>
+                <a name="office_ca_superintendent_of_public_instruction" href="#office_ca_superintendent_of_public_instruction">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Partisan</b></div>
+              <div class="col-md-10">
+                False
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.cde.ca.gov/eo">http://www.cde.ca.gov/eo</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2">
+                <b>STATE TREASURER</b>
+                <a name="office_ca_treasurer" href="#office_ca_treasurer">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.treasurer.ca.gov/">http://www.treasurer.ca.gov/</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <h4>
+              California State Assembly
+              <a name="body_ca_state_assembly" href="#body_ca_state_assembly">¶</a>
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER OF THE STATE ASSEMBLY</b><a name="office_ca_state_assembly_17" href="#office_ca_state_assembly_17">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_ca_state_assembly">California State Assembly</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER OF THE STATE ASSEMBLY</b><a name="office_ca_state_assembly_19" href="#office_ca_state_assembly_19">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_ca_state_assembly">California State Assembly</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <h4>
+              California State Senate
+              <a name="body_ca_state_senate" href="#body_ca_state_senate">¶</a>
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>STATE SENATOR</b><a name="office_ca_state_senate_11" href="#office_ca_state_senate_11">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_ca_state_senate">California State Senate</a>
+              </div>
+            </div>
+          </p>
         </div>
+        <!-- end panel-body -->
       </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.oag.ca.gov/">http://www.oag.ca.gov/</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_controller">CONTROLLER</span></b>
-          <a name="office_ca_controller" href="#office_ca_controller">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sco.ca.gov/">http://www.sco.ca.gov/</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_governor">GOVERNOR</span></b>
-          <a name="office_ca_governor" href="#office_ca_governor">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.gov.ca.gov">http://www.gov.ca.gov</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_insurance_commissioner">INSURANCE COMMISSIONER</span></b>
-          <a name="office_ca_insurance_commissioner" href="#office_ca_insurance_commissioner">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10">
-          <a href="http://www.insurance.ca.gov/">http://www.insurance.ca.gov/</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_lieutenant_governor">LIEUTENANT GOVERNOR</span></b>
-          <a name="office_ca_lieutenant_governor" href="#office_ca_lieutenant_governor">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.ltg.ca.gov/">http://www.ltg.ca.gov/</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_secretary">SECRETARY OF STATE</span></b>
-          <a name="office_ca_secretary" href="#office_ca_secretary">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sos.ca.gov/">http://www.sos.ca.gov/</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/sosnews/">@sosnews</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b><span data-i18n="office_ca_superintendent_of_public_instruction">SUPERINTENDENT OF PUBLIC INSTRUCTION</span></b>
-          <a name="office_ca_superintendent_of_public_instruction" href="#office_ca_superintendent_of_public_instruction">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Partisan</b></div>
-        <div class="col-md-10">
-          False
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.cde.ca.gov/eo">http://www.cde.ca.gov/eo</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2">
-          <b>STATE TREASURER</b>
-          <a name="office_ca_treasurer" href="#office_ca_treasurer">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.treasurer.ca.gov/">http://www.treasurer.ca.gov/</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <h4>
-        California State Assembly
-        <a name="body_ca_state_assembly" href="#body_ca_state_assembly">¶</a>
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER OF THE STATE ASSEMBLY</b><a name="office_ca_state_assembly_17" href="#office_ca_state_assembly_17">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_ca_state_assembly">California State Assembly</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER OF THE STATE ASSEMBLY</b><a name="office_ca_state_assembly_19" href="#office_ca_state_assembly_19">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_ca_state_assembly">California State Assembly</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <h4>
-        California State Senate
-        <a name="body_ca_state_senate" href="#body_ca_state_senate">¶</a>
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>STATE SENATOR</b><a name="office_ca_state_senate_11" href="#office_ca_state_senate_11">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_ca_state_senate">California State Senate</a>
-        </div>
-      </div>
-    </p>
-    <p>
+      <!-- end panel state-->
+
       <hr>
-      <div class="row text-center">
-        <h3>
-          CITY AND COUNTY
-          <a name="category_city_county" href="#category_city_county">¶</a>
-          <br/> (市縣 | CIUDAD Y CONDADO)
-        </h3>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>ASSESSOR-RECORDER</b><a name="office_sf_assessor_recorder" href="#office_sf_assessor_recorder">¶</a>
-          <br/> (估值官-記錄官 | TASADOR-REGISTRADOR)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sfassessor.org">http://www.sfassessor.org</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>CITY ATTORNEY</b><a name="office_sf_city_attorney" href="#office_sf_city_attorney">¶</a>
-          <br/> (市府律師 | ABOGADO DE LA CIUDAD)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sfcityattorney.org">http://www.sfcityattorney.org</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/SFCityAttorney/">@SFCityAttorney</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>DISTRICT ATTORNEY</b><a name="office_sf_district_attorney" href="#office_sf_district_attorney">¶</a>
-          <br/> (地方檢察官 | FISCAL DEL DISTRITO)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sfdistrictattorney.org">http://www.sfdistrictattorney.org</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/SFDAOffice/">@SFDAOffice</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MAYOR</b><a name="office_sf_mayor" href="#office_sf_mayor">¶</a>
-          <br/> (市長 | ALCALDE)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sfmayor.org">http://www.sfmayor.org</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>PUBLIC DEFENDER</b><a name="office_sf_public_defender" href="#office_sf_public_defender">¶</a>
-          <br/> (公共辯護律師 | DEFENSOR PÚBLICO)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://sfpublicdefender.org">http://sfpublicdefender.org</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/sfdefender/">@sfdefender</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>SHERIFF</b><a name="office_sf_sheriff" href="#office_sf_sheriff">¶</a>
-          <br/> (縣警長 | ALGUACIL)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://www.sfsheriff.com">http://www.sfsheriff.com</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/SheriffSF/">@SheriffSF</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>TREASURER</b><a name="office_sf_treasurer" href="#office_sf_treasurer">¶</a>
-          <br/> (財政官 | TESORERO)
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Term Length</b></div>
-        <div class="col-md-10">
-          4 years
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2015
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Web</b></div>
-        <div class="col-md-10"><a href="http://sftreasurer.org">http://sftreasurer.org</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Twitter</b></div>
-        <div class="col-md-10"><a href="https://twitter.com/TreasurerSF/">@TreasurerSF</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <h4>
-        Board of Supervisors
-        <a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">¶</a>
-        <br/> (Consejo de Supervisores)
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_9" href="#office_sf_board_of_supervisors_9">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_7" href="#office_sf_board_of_supervisors_7">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_3" href="#office_sf_board_of_supervisors_3">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_5" href="#office_sf_board_of_supervisors_5">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_10" href="#office_sf_board_of_supervisors_10">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_8" href="#office_sf_board_of_supervisors_8">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_6" href="#office_sf_board_of_supervisors_6">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_4" href="#office_sf_board_of_supervisors_4">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_1" href="#office_sf_board_of_supervisors_1">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_2" href="#office_sf_board_of_supervisors_2">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_11" href="#office_sf_board_of_supervisors_11">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3>
+            CITY AND COUNTY
+            <a name="category_city_county" href="#category_city_county">¶</a>
+            <br/> (市縣 | CIUDAD Y CONDADO)
+          </h3>
+        </div>
+        <div class="panel-body">
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>ASSESSOR-RECORDER</b><a name="office_sf_assessor_recorder" href="#office_sf_assessor_recorder">¶</a>
+                <br/> (估值官-記錄官 | TASADOR-REGISTRADOR)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sfassessor.org">http://www.sfassessor.org</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>CITY ATTORNEY</b><a name="office_sf_city_attorney" href="#office_sf_city_attorney">¶</a>
+                <br/> (市府律師 | ABOGADO DE LA CIUDAD)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sfcityattorney.org">http://www.sfcityattorney.org</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/SFCityAttorney/">@SFCityAttorney</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>DISTRICT ATTORNEY</b><a name="office_sf_district_attorney" href="#office_sf_district_attorney">¶</a>
+                <br/> (地方檢察官 | FISCAL DEL DISTRITO)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sfdistrictattorney.org">http://www.sfdistrictattorney.org</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/SFDAOffice/">@SFDAOffice</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MAYOR</b><a name="office_sf_mayor" href="#office_sf_mayor">¶</a>
+                <br/> (市長 | ALCALDE)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sfmayor.org">http://www.sfmayor.org</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>PUBLIC DEFENDER</b><a name="office_sf_public_defender" href="#office_sf_public_defender">¶</a>
+                <br/> (公共辯護律師 | DEFENSOR PÚBLICO)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://sfpublicdefender.org">http://sfpublicdefender.org</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/sfdefender/">@sfdefender</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>SHERIFF</b><a name="office_sf_sheriff" href="#office_sf_sheriff">¶</a>
+                <br/> (縣警長 | ALGUACIL)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://www.sfsheriff.com">http://www.sfsheriff.com</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/SheriffSF/">@SheriffSF</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>TREASURER</b><a name="office_sf_treasurer" href="#office_sf_treasurer">¶</a>
+                <br/> (財政官 | TESORERO)
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Term Length</b></div>
+              <div class="col-md-10">
+                4 years
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2015
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Web</b></div>
+              <div class="col-md-10"><a href="http://sftreasurer.org">http://sftreasurer.org</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Twitter</b></div>
+              <div class="col-md-10"><a href="https://twitter.com/TreasurerSF/">@TreasurerSF</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <h4>
+              Board of Supervisors
+              <a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">¶</a>
+              <br/> (Consejo de Supervisores)
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_9" href="#office_sf_board_of_supervisors_9">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_7" href="#office_sf_board_of_supervisors_7">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_3" href="#office_sf_board_of_supervisors_3">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_5" href="#office_sf_board_of_supervisors_5">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_10" href="#office_sf_board_of_supervisors_10">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_8" href="#office_sf_board_of_supervisors_8">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_6" href="#office_sf_board_of_supervisors_6">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_4" href="#office_sf_board_of_supervisors_4">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_1" href="#office_sf_board_of_supervisors_1">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_2" href="#office_sf_board_of_supervisors_2">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF SUPERVISORS</b><a name="office_sf_board_of_supervisors_11" href="#office_sf_board_of_supervisors_11">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_supervisors">Board of Supervisors</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
+        </div>
+        <!-- end panel-body -->
+      </div>
+      <!-- end panel state -->
       <hr>
-      <div class="row text-center">
-        <h3>
-          SCHOOL
-          <a name="category_school" href="#category_school">¶</a>
-          <br/> (學校 | ESCUELA)
-        </h3>
-      </div>
-      <h4>
-        Board of Education
-        <a name="body_sf_board_of_education" href="#body_sf_board_of_education">¶</a>
-        <br/> (Consejo de Educación)
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF EDUCATION</b><a name="office_sf_board_of_education_seats_4" href="#office_sf_board_of_education_seats_4">¶</a>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>
+            SCHOOL
+            <a name="category_school" href="#category_school">¶</a>
+            <br/> (學校 | ESCUELA)
+          </h3>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_education">Board of Education</a>
+        <div class="panel-body">
+          <h4>
+            Board of Education
+            <a name="body_sf_board_of_education" href="#body_sf_board_of_education">¶</a>
+            <br/> (Consejo de Educación)
+          </h4>
+          <div class="row">
+            <div class="col-md-10 col-md-offset-2">
+              <b>MEMBER, BOARD OF EDUCATION</b>
+              <a name="office_sf_board_of_education_seats_4" href="#office_sf_board_of_education_seats_4">¶</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 bg-info"><b>Body</b></div>
+            <div class="col-md-10"><a href="bodies.html#body_sf_board_of_education">Board of Education</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 bg-info"><b>Next Election</b></div>
+            <div class="col-md-10">
+              2016
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+            <div class="col-md-10">
+              2012
+            </div>
+          </div>
+
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF EDUCATION</b><a name="office_sf_board_of_education_seats_3" href="#office_sf_board_of_education_seats_3">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_board_of_education">Board of Education</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <h4>
+              Community College Board
+              <a name="body_sf_college_board" href="#body_sf_college_board">¶</a>
+              <br/> (Consejo del Colegio Comunitario)
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, COMMUNITY COLLEGE BOARD</b><a name="office_sf_college_board_seats_3" href="#office_sf_college_board_seats_3">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_college_board">Community College Board</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2018
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2014
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>MEMBER, COMMUNITY COLLEGE BOARD</b><a name="office_sf_college_board_seats_4" href="#office_sf_college_board_seats_4">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_sf_college_board">Community College Board</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Next Election</b></div>
+              <div class="col-md-10">
+                2016
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Seed Year</b></div>
+              <div class="col-md-10">
+                2012
+              </div>
+            </div>
+          </p>
         </div>
+        <!-- end panel-body -->
       </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, BOARD OF EDUCATION</b><a name="office_sf_board_of_education_seats_3" href="#office_sf_board_of_education_seats_3">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_board_of_education">Board of Education</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <h4>
-        Community College Board
-        <a name="body_sf_college_board" href="#body_sf_college_board">¶</a>
-        <br/> (Consejo del Colegio Comunitario)
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, COMMUNITY COLLEGE BOARD</b><a name="office_sf_college_board_seats_3" href="#office_sf_college_board_seats_3">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_college_board">Community College Board</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2018
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2014
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>MEMBER, COMMUNITY COLLEGE BOARD</b><a name="office_sf_college_board_seats_4" href="#office_sf_college_board_seats_4">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_sf_college_board">Community College Board</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Next Election</b></div>
-        <div class="col-md-10">
-          2016
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Seed Year</b></div>
-        <div class="col-md-10">
-          2012
-        </div>
-      </div>
-    </p>
-    <p>
+      <!-- end panel school -->
+
       <hr>
-      <div class="row text-center">
-        <h3>
-          TRANSIT
-          <a name="category_transit" href="#category_transit">¶</a></h3>
-      </div>
-      <h4>
-        BART Board of Directors
-        <a name="body_bart" href="#body_bart">¶</a>
-      </h4>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>BART DIRECTOR</b><a name="office_bart_8" href="#office_bart_8">¶</a>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>
+            TRANSIT
+            <a name="category_transit" href="#category_transit">¶</a></h3>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_bart">BART Board of Directors</a>
+        <div class="panel-body">
+          <p>
+            <h4>
+              BART Board of Directors
+              <a name="body_bart" href="#body_bart">¶</a>
+            </h4>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>BART DIRECTOR</b><a name="office_bart_8" href="#office_bart_8">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_bart">BART Board of Directors</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>BART DIRECTOR</b><a name="office_bart_7" href="#office_bart_7">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_bart">BART Board of Directors</a>
+              </div>
+            </div>
+          </p>
+          <p>
+            <div class="row">
+              <div class="col-md-10 col-md-offset-2"><b>BART DIRECTOR</b><a name="office_bart_9" href="#office_bart_9">¶</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2 bg-info"><b>Body</b></div>
+              <div class="col-md-10"><a href="bodies.html#body_bart">BART Board of Directors</a>
+              </div>
+            </div>
+          </p>
         </div>
+        <!-- end panel-body -->
       </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>BART DIRECTOR</b><a name="office_bart_7" href="#office_bart_7">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_bart">BART Board of Directors</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-2"><b>BART DIRECTOR</b><a name="office_bart_9" href="#office_bart_9">¶</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2 bg-info"><b>Body</b></div>
-        <div class="col-md-10"><a href="bodies.html#body_bart">BART Board of Directors</a>
-        </div>
-      </div>
-    </p>
-    <p>
-      <hr>
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <!-- Latest compiled and minified JavaScript -->
-      <!-- JS is needed for the collapsable navigation bar. -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-      <script src="js/translate.js"></script>
-    </p>
+      <!-- end panel TRANSIT -->
+      <p>
+        <hr>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <!-- Latest compiled and minified JavaScript -->
+        <!-- JS is needed for the collapsable navigation bar. -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="js/translate.js"></script>
+      </p>
   </div>
 </body>
 
