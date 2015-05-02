@@ -26,7 +26,9 @@
     .panel-heading {
       cursor: pointer;
     }
-
+    .sidebar.affix {
+      top: 50px;
+    }
   </style>
   <!-- Optional theme -->
   <!--
@@ -107,7 +109,7 @@
     </div>
     <div class="row">
       <hr />
-      <div class="col-md-2 sidebar" style="position:fixed; left:0">
+      <div class="col-md-2 sidebar" data-spy="affix" data-offset-top="430" data-offset-bottom="200">
         <ul class="nav nav-sidebar">
           <li><a href="#headingFederal">Federal</a></li>
           <li><a href="#headingState">State</a></li>
