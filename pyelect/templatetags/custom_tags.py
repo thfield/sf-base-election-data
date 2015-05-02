@@ -16,7 +16,7 @@ import traceback
 
 from django import template
 
-from pyelect.html.common import CATEGORY_ORDER, NON_ENGLISH_ORDER
+from pyelect.html.common import NON_ENGLISH_ORDER
 from pyelect.html import pages
 from pyelect import lang
 
@@ -41,6 +41,26 @@ def log_errors(func):
             _log.warn("exception: {0}".format(err))
             traceback.print_exc()
             raise
+    return wrapper
+
+
+def _update_context(context, extra):
+    # We do not use context.update() since that pushes onto the contest stack.
+    for key, value in extra.items():
+        context[key] = value
+    return context
+
+
+def pass_context(func):
+    """Pass the full context through, in addition to whatever is added."""
+    # We need to decorate with functools.wraps() so as not to break tag
+    # registration, for example when using @register.inclusion_tag().
+    # See also: https://code.djangoproject.com/ticket/24586
+    @wraps(func)
+    def wrapper(context, *args, **kwargs):
+        extra = func(context, *args, **kwargs)
+        _update_context(context, extra)
+        return context
     return wrapper
 
 
@@ -137,25 +157,19 @@ def _init_cond_include_context(template_name, should_include):
     }
 
 
-def update_context(context, extra):
-    # We do not use context.update() since that pushes onto the contest stack.
-    for key, value in extra.items():
-        context[key] = value
-    return context
-
-
 @register.inclusion_tag('cond_include.html', takes_context=True)
 @log_errors
-def lang_object_header(context, template_name, item, attr_name, header_id):
+def header_with_translation(context, template_name, item, attr_name):
     extra = _init_cond_include_context(template_name, should_include=True)
     header = item.get(attr_name)
+    header_id = item['id']
     extra.update({
         'header': header,
         'header_id': header_id,
         'item': item,
         'attr_name': attr_name,
     })
-    update_context(context, extra)
+    _update_context(context, extra)
     return context
 
 
@@ -213,7 +227,6 @@ def url_row_object(context, label, object_id, type_name):
     href = None
     name = None
     if object_id is not None:
-        context = context['context']
         objects = context[type_name]
         obj = objects[object_id]
         name = obj['name']
@@ -228,100 +241,26 @@ def url_row_object(context, label, object_id, type_name):
 def list_objects(context, objects, title_attr):
     assert 'phrases' in context
     extra = {
-        # TODO: do not pass context like this.
-        'context': context,
-        'current_show_template': context['current_show_template'],
         'objects': objects,
         'title_attr': title_attr
     }
-    update_context(context, extra)
+    _update_context(context, extra)
     return context
 
 
-def _group_by_category(objects):
-    by_category = {c: {} for c in CATEGORY_ORDER}
-    for obj in objects.values():
-        category_id = obj['category_id']
-        # Raises an exception if the object has an unrecognized category.
-        group = by_category[category_id]
-        object_id = obj['id']
-        group[object_id] = obj
-    return by_category
-
-
-def _by_category_context(context, objects):
-    assert 'phrases' in context
-    by_category = _group_by_category(objects)
+@register.inclusion_tag('list_by_subcategory.html', takes_context=True)
+@log_errors
+@pass_context
+def list_by_subcategory(context, items, sub_group_attr, sub_group_map):
     extra = {
-        'current_show_template': context['current_show_template'],
-        'objects_by_category': by_category,
+        'items': items,
+        'sub_group_attr': sub_group_attr,
+        'sub_group_map': sub_group_map,
     }
-    update_context(context, extra)
-    return context
+    return extra
 
-@register.inclusion_tag('list_objects_by_category.html', takes_context=True)
+
+@register.inclusion_tag('list_by_category.html', takes_context=True)
 @log_errors
 def show_by_category(context, objects):
     return _by_category_context(context, objects)
-
-
-@register.inclusion_tag('list_offices.html', takes_context=True)
-@log_errors
-def list_offices(context, offices):
-    return _by_category_context(context, offices)
-
-
-def _group_by_attribute(objects, attr_name):
-    by_attr = {}
-    for obj in objects:
-        attr_value = obj.get(attr_name)
-        group = by_attr.setdefault(attr_value, [])
-        group.append(obj)
-    return by_attr
-
-
-@register.inclusion_tag('show_offices_category.html', takes_context=True)
-@log_errors
-def show_offices_category(context, category_info):
-    """
-    Arguments:
-      category_info: a map from office_id to office object.
-    """
-    assert 'phrases' in context
-    bodies = context['bodies']
-    offices = category_info.values()
-    # Map from body_id to list of offices.
-    by_body_id = _group_by_attribute(offices, 'body_id')
-    body_ids = by_body_id.keys()
-
-    def body_cmp_key(body_id):
-        """Sort by body name."""
-        if body_id is None:
-            return ""
-        body = bodies[body_id]
-        body_name = body['name']
-        return body_name
-
-    body_ids = sorted(body_ids, key=body_cmp_key)
-
-    groups = []
-    for body_id in body_ids:
-        offices = by_body_id[body_id]
-        try:
-            body = bodies[body_id]
-        except KeyError:
-            body_name = None
-        else:
-            body_name = body['name']
-        group = {
-            'body_id': body_id,
-            'body_name': body_name,
-            'offices': offices,
-        }
-        groups.append(group)
-
-    extra = {
-        'grouped_offices': groups
-    }
-    update_context(context, extra)
-    return context
