@@ -1,0 +1,13 @@
+*.pyc
+__pycache__/
+.DS_Store
+
+# Project-specific
+_build/
+*.ods
+# Extension *.ods# is for LibreOffice "lock" files.
+*.ods#
+*.xls
+venv/
+.Python
+include/python2.7
