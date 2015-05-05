@@ -21,9 +21,38 @@ from pyelect.html import pages
 from pyelect import lang
 
 
+_LABEL_TEXTS = {
+    'none': 'Single',
+    'unknown': 'Unknown',
+}
+
 _log = logging.getLogger()
 
 register = template.Library()
+
+
+def label_to_text(label):
+    text = None
+    try:
+        starts = label.startswith('=')
+    except AttributeError:
+        return text
+    if starts:
+        key = label[1:]
+        text = _LABEL_TEXTS[key]
+    return text
+
+
+def get_page_href(page_base, fragment=None):
+    page = pages.get_page_object(page_base)
+    href = page.make_href(fragment=fragment)
+    return href
+
+
+def get_page_title(page_base):
+    page = pages.get_page_object(page_base)
+    title = page.title
+    return title
 
 
 # This is a decorator to deal with the fact that by default Django silently
@@ -66,6 +95,16 @@ def pass_context(func):
 
 def _pprint(text):
     pprint(text, stream=sys.stderr)
+
+
+@register.assignment_tag()
+@log_errors
+def ternary(value, true, false):
+    if value is None:
+        return None
+    if value:
+        return true
+    return false
 
 
 # TODO: update the return value to what is documented.
@@ -111,16 +150,12 @@ def translations(context, item, attr_name):
     return text
 
 
-def get_page_href(page_base):
-    page = pages.get_page_object(page_base)
-    href = page.make_href()
-    return href
+@register.simple_tag()
+@log_errors
+def page_href(page_base, fragment):
+    url = get_page_href(page_base, fragment=fragment)
+    return url
 
-
-def get_page_title(page_base):
-    page = pages.get_page_object(page_base)
-    title = page.title
-    return title
 
 
 @register.simple_tag(takes_context=True)
@@ -159,6 +194,7 @@ def _init_cond_include_context(template_name, should_include):
 
 @register.inclusion_tag('cond_include.html', takes_context=True)
 @log_errors
+@pass_context
 def header_with_translation(context, template_name, item, attr_name):
     extra = _init_cond_include_context(template_name, should_include=True)
     header = item.get(attr_name)
@@ -169,8 +205,7 @@ def header_with_translation(context, template_name, item, attr_name):
         'item': item,
         'attr_name': attr_name,
     })
-    _update_context(context, extra)
-    return context
+    return extra
 
 
 # TODO: DRY up with _init_cond_include_context().
@@ -200,7 +235,7 @@ def _cond_include_context_url(label, href, href_text=None):
         href_text = href
     return {
         'header': label,
-        'should_include': href is not None,
+        'should_include': href_text is not None,
         'template_name': 'partials/row_url.html',
         'href': href,
         'href_text': href_text,
@@ -208,59 +243,71 @@ def _cond_include_context_url(label, href, href_text=None):
 
 
 @register.inclusion_tag('tags/cond_include.html')
+@log_errors
 def info_row(header, value):
+    if label_to_text(value):
+        value = label_to_text(value)
     return _cond_include_context('partials/row_simple.html', header, value)
 
 
 @register.inclusion_tag('tags/cond_include.html')
+@log_errors
 def url_row(header, value):
     return _cond_include_context_url(header, value)
 
 
 @register.inclusion_tag('tags/cond_include.html', takes_context=True)
 @log_errors
-def url_row_object(context, label, object_id, type_name):
+def url_row_object(context, label, object_id, page_base_name):
     """
     Arguments:
-      type_name: for example, "languages".
+      page_base_name: for example, "languages".
     """
     href = None
     name = None
-    if object_id is not None:
-        objects = context[type_name]
+    text = None
+    if object_id is None:
+        pass
+    elif label_to_text(object_id):
+        text = label_to_text(object_id)
+    else:
+        objects = context[page_base_name]
         obj = objects[object_id]
-        name = obj['name']
-        page = pages.get_page_object(type_name)
-        href = page.make_href(object_id)
+        text = obj['name']
+        page = pages.get_page_object(page_base_name)
+        href = page.make_href(fragment=object_id)
 
-    return _cond_include_context_url(label, href, href_text=name)
+    return _cond_include_context_url(label, href, href_text=text)
 
 
 @register.inclusion_tag('list_objects.html', takes_context=True)
 @log_errors
+@pass_context
 def list_objects(context, objects, title_attr):
-    assert 'phrases' in context
     extra = {
         'objects': objects,
         'title_attr': title_attr
-    }
-    _update_context(context, extra)
-    return context
-
-
-@register.inclusion_tag('list_by_subcategory.html', takes_context=True)
-@log_errors
-@pass_context
-def list_by_subcategory(context, items, sub_group_attr, sub_group_map):
-    extra = {
-        'items': items,
-        'sub_group_attr': sub_group_attr,
-        'sub_group_map': sub_group_map,
     }
     return extra
 
 
 @register.inclusion_tag('list_by_category.html', takes_context=True)
 @log_errors
-def show_by_category(context, objects):
-    return _by_category_context(context, objects)
+@pass_context
+def list_by_category(context, items):
+    extra = {
+        'items': items,
+    }
+    return extra
+
+
+@register.inclusion_tag('list_by_subcategory.html', takes_context=True)
+@log_errors
+@pass_context
+def list_by_subcategory(context, items, sub_group_attr=None, sub_group_map=None):
+    extra = {
+        'items': items,
+        'sub_group_attr': sub_group_attr,
+        'sub_group_map': sub_group_map,
+    }
+    return extra

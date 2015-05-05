@@ -1,29 +1,24 @@
 TODO
 ====
 
-* Order categories.
+* DRY up `district_type.district_name_short_format`?
+* Get translated phrases working again.
+* Check Twitter for bodies.
+* Change seats to SF seats, e.g. 2 of 80.
+* Flesh out Body more
+  - Election method, etc.
+  - Try documenting it.
+  - Should the `district_type` "object" be a property?
+* Make partisan required in Office only if no Body (and must be different).
 * Compute translations in header tag code?
-* Link to district in each office.
-* Work out a DRY pattern for category/sub-category display, maybe
-  by adding more parameters to the tag currently used for the index page.
-* Address `_set_html_object_data()` setting all fields to be internationalizable.
-* Add order_number to HTML category object.
-* Contemplate generating more of the HTML via config, specifically
-  the keys that should be copied from JSON.
-* Get district working for US Senate (with district that references area).
-  - include wiki links for House districts
-* Add jurisdiction to body and office (at least for national to start out).
-  - Maybe a jurisdiction is a name paired with a geographic area?
-* Flesh out President and then US Senate (with districts and election method).
-* Should CALIFORNIA COURTS OF APPEAL be made an office type?
+* Make jurisdiction a name paired with a geographic area?
 * Switch Court district and remove geographic label.
-* Seat count for school board.
+* Make a new type for CALIFORNIA COURTS OF APPEAL.
 * Clean up & simplify the office HTML and JSON generation.
 * Move "row" templates to a rows directory.
 * Add jurisdiction to office & body (inherit from district type)?
 * Edit notes for body: California Court of Appeal, First District
 * Change the i18n fields on body from the translations to the ID.
-* Add a way to check that all info is present on each object.
 * Add the following to SF Community College:
     name: San Francisco Community College District
     wikipedia: `http://en.wikipedia.org/wiki/City_College_of_San_Francisco`
@@ -44,9 +39,6 @@ TODO
 * Show the seat name (that distinguishes among body members)
   - at the top, but below the overall name.
 * Add voting method enum (with Wikipedia link).
-* Change seats to SF seats, e.g. 2 of 80.
 * Have a way to note when translations are missing.
 * Document the JSON objects as I go.
 * Document Court of Appeals.
-* Do Supreme Court.
-* Mark partisan.

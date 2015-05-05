@@ -3,11 +3,12 @@ from collections import defaultdict
 from datetime import date
 import logging
 import os
-from pprint import pprint
+from pprint import pformat, pprint
 
 from django.template import Context
 import yaml
 
+from pyelect.html import common
 from pyelect.html.common import NON_ENGLISH_ORDER
 from pyelect.html import pages
 from pyelect import lang
@@ -23,6 +24,7 @@ _BOOTSTRAP_REMOTE = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/"
 _BOOTSTRAP_LOCAL = 'bootstrap/'
 
 JSON_OUTPUT_PATH = 'data/sf.json'
+LICENSE_PATH = 'data/LICENSE.txt'
 
 # The base names of the pages in the order they should be listed in the
 # table of contents on each page.
@@ -37,6 +39,7 @@ areas
 election_methods
 """.strip().splitlines()
 
+# The categories in the order they should appear in any page.
 CATEGORY_ORDER = """\
 category_federal
 category_state
@@ -47,23 +50,6 @@ category_judicial
 category_party
 """.splitlines()
 
-TYPE_NAME_TO_NODE_NAME = {
-    'body': 'bodies',
-}
-
-OFFICE_BODY_COMMON_KEYS = [
-    'category_id',
-    'election_method_id',
-    'jurisdiction_id',
-    'name',
-    'notes',
-    'partisan',
-    'seed_year',
-    'term_length',
-    'twitter',
-    'url',
-    'wikipedia'
-]
 
 OFFICE_BODY_COMMON_FIELDS_YAML = """\
   -
@@ -71,14 +57,10 @@ OFFICE_BODY_COMMON_FIELDS_YAML = """\
   -
     name: election_method_id
   -
-    name: jurisdiction_id
-  -
     name: name
     type: i18n
   -
     name: notes
-  -
-    name: partisan
   -
     name: seed_year
   -
@@ -92,23 +74,79 @@ OFFICE_BODY_COMMON_FIELDS_YAML = """\
 """
 
 TYPE_FIELDS_YAML = """\
-categories:
+body:
+{office_body_yaml}
+  -
+    name: district_type_id
+    required: true
+  -
+    name: jurisdiction_area_id
+    required: true
+  -
+    name: member_name
+  -
+    name: office_name
+  -
+    name: office_name_format
+  -
+    name: partisan
+    required: true
+  -
+    name: seat_count
+    required: true
+  -
+    name: seat_name_format
+category:
   -
     name: name
     type: i18n
-districts:
+district:
+  -
+    name: district_code
   -
     name: district_type_id
+  -
+    name: name
+    required: true
   -
     name: number
   -
     name: wikipedia
-offices:
+district_type:
+  -
+    name: body_id
+  -
+    name: category_id
+  -
+    name: district_count
+  -
+    name: district_name_short_format
+  -
+    name: district_name_full_format
+    # Require this because it is used to generate the name.
+    required: true
+  -
+    name: geographic
+  -
+    name: name
+  -
+    name: name_singular
+    required: true
+  -
+    name: parent_area_id
+  -
+    name: wikipedia
+office:
 {office_body_yaml}
   -
     name: body_id
   -
     name: district_id
+  -
+    # TODO: make this required.
+    name: jurisdiction_area_id
+  -
+    name: partisan
   -
     name: seat
   -
@@ -152,18 +190,6 @@ def make_translations(id_, json_data):
     return json_data
 
 
-def make_district(value):
-    data = {
-        'name': value['district_code']
-    }
-    return data
-
-
-def make_districts(data):
-    districts = [make_district(v) for v in data['districts']]
-    return districts
-
-
 def _compute_next_election_year(json_data):
     term_length = json_data.get('term_length')
     # TODO: make this required.
@@ -181,18 +207,6 @@ def _compute_next_election_year(json_data):
     while seed_year < year:
         seed_year += term_length
     return seed_year
-
-
-def _group_by(objects, key):
-    grouped = defaultdict(list)
-    for obj in objects.values():
-        try:
-            value = obj[key]
-        except KeyError:
-            raise Exception(repr(obj))
-        seq = grouped[value]
-        seq.append(obj)
-    return grouped
 
 
 def make_phrases(json_data):
@@ -245,24 +259,15 @@ def _set_html_election_data(html_data, json_data):
     html_data['next_election_year'] = _compute_next_election_year(json_data)
 
 
-def get_node_name(type_name):
-    """Return the node name given an object type name.
-
-    For example, "body" yields "bodies".
-    """
-    try:
-        return TYPE_NAME_TO_NODE_NAME[type_name]
-    except KeyError:
-        return "{0}s".format(type_name)
-
-
 def get_from_html_data(html_data, json_obj, id_attr_name):
     """Retrieve an object by ID from the given template data."""
     assert id_attr_name.endswith('_id')
-    object_id = json_obj[id_attr_name]
+    object_id = json_obj.get(id_attr_name)
+    if object_id is None:
+        return None
 
     type_name = id_attr_name[:-3]
-    node_name = get_node_name(type_name)
+    node_name = common.type_name_to_plural(type_name)
     object_map = html_data[node_name]
 
     obj = object_map[object_id]
@@ -280,59 +285,60 @@ def make_one_areas(object_id, json_data, html_data=None):
     return context
 
 
-def make_one_bodies(object_id, json_data, html_data=None):
-    keys = [
-        'district_type_id',
-        'member_name',
-        'office_name',
-        'office_name_format',
-        'seat_count',
-        'seat_name_format',
-    ]
-    keys.extend(OFFICE_BODY_COMMON_KEYS)
-    html_data = _make_html_object(json_data, keys, object_id)
-    _set_html_election_data(html_data, json_data)
+def make_one_bodies2(html_obj, html_data, json_obj):
+    # TODO: DRY this up with make_one_offices2().
+    _set_html_election_data(html_obj, html_obj)
+    _set_category_order(html_data, html_obj)
 
-    return html_data
-
-
-def make_one_categories2(html_data, html_obj, json_obj, ordering):
-    category_id = html_obj['id']
-    order = ordering[category_id]
-    html_obj['order'] = order
     return html_obj
 
 
-def make_one_district_types(object_id, json_data, html_data=None):
-    keys = ('body_id', 'category_id', 'district_count', 'district_name_format',
-            'district_name_format_full', 'geographic',
-            'name', 'parent_area_id', 'wikipedia')
-    context = _make_html_object(json_data, keys, object_id)
-    if not context['category_id']:
-        body = get_from_html_data(html_data, json_data, 'body_id')
-        category_id = body['category_id']
-        context['category_id'] = category_id
+def make_one_categories2(html_obj, html_data, json_obj, ordering):
+    category_id = html_obj['id']
+    order = ordering[category_id]
+    html_obj['order'] = order
+
+    return html_obj
+
+
+def make_one_district_types2(html_obj, html_data, json_obj):
+    name_format = html_obj['district_name_full_format']
+    if name_format is None:
+        name = html_obj['name_singular']
+        name_format = "{name} {{number}}".format(name=name)
+        html_obj['district_name_full_format'] = name_format
+
+    if not html_obj['category_id']:
+        body = get_from_html_data(html_data, json_obj, 'body_id')
+        category_id = body.get('category_id')
+        html_obj['category_id'] = category_id
+
+    _set_category_order(html_data, html_obj)
     # TODO: revisit message re: category_id.
-    if 'name' not in context:
+    if 'name' not in html_obj:
         raise Exception("name and category_id required: {0}".format(context))
-    return context
+
+    return html_obj
 
 
-def make_one_districts2(html_data, html_obj, json_obj):
-    district_number = html_obj['number']
-
+# TODO: inherit properties from district type (like office from body).
+def make_one_districts2(html_obj, html_data, json_obj):
     district_type = get_from_html_data(html_data, json_obj, 'district_type_id')
     category_id = district_type['category_id']
 
-    name_format = district_type['district_name_format_full']
-    name = name_format.format(number=district_number)
+    name_format = district_type['district_name_full_format']
+    if name_format is not None:
+        name = name_format.format(**html_obj)
+        html_obj['name'] = name
+
+    name_short_format = district_type['district_name_short_format']
+    if name_short_format is not None:
+        name_short = name_short_format.format(**html_obj)
+        html_obj['name_short'] = name_short
 
     html_obj['category_id'] = category_id
-    html_obj['name'] = name
+    _set_category_order(html_data, html_obj)
 
-    # TODO: figure out a DRY way to add this check (e.g. config-driven).
-    if 'name' not in html_obj:
-        raise Exception("name and category_id required: {0}".format(html_obj))
     return html_obj
 
 
@@ -364,17 +370,22 @@ def _set_category_order(html_data, html_obj):
 
 
 # TODO: simplify this and DRY up with make_one_bodies().
-def make_one_offices2(html_data, html_obj, json_obj):
-    html_obj['district_name'] = html_obj['district_id']
-
-    inherited_keys = ('seed_year', 'term_length')
+def make_one_offices2(html_obj, html_data, json_obj):
+    # TODO: come up with a pattern for inheriting properties between
+    # objects for which a relationship exists.
+    inherited_keys = ('partisan', 'seed_year', 'term_length')
     effective = {k: html_obj[k] for k in inherited_keys}
 
     phrases = html_data[NodeNames.phrases]
     if 'body_id' in json_obj:
-        body_id = json_obj['body_id']
-        bodies = html_data['bodies']
-        body = utils.get_required(bodies, body_id)
+        district = get_from_html_data(html_data, json_obj, 'district_id')
+        if district is None:
+            short_name = None
+        else:
+            short_name = district.get('name_short') or district['name']
+        html_obj['district_name_short'] = short_name
+
+        body = get_from_html_data(html_data, json_obj, 'body_id')
         html_obj['category_id'] = body['category_id']
         member_name = body['member_name']
         html_obj['member_name'] = member_name
@@ -396,7 +407,6 @@ def make_one_offices2(html_data, html_obj, json_obj):
 
     _set_html_election_data(html_obj, effective)
     _set_category_order(html_data, html_obj)
-    pprint(html_obj)
 
     # TODO: remove this temporary check.
     if not html_obj['category_id'] or not html_obj['name']:
@@ -405,7 +415,6 @@ def make_one_offices2(html_data, html_obj, json_obj):
     # TODO: use a real seat count.
     html_obj['seat_count'] = 1
 
-    assert html_obj['name']
     return html_obj
 
 
@@ -465,24 +474,42 @@ def add_context_node(context, json_data, node_name, json_key=None, **kwargs):
     return objects
 
 
+def check_object(html_obj, fields):
+    for field in fields:
+        field_name = field['name']
+        if field_name not in html_obj:
+            raise Exception("field {0!r} missing: {1}".format(field_name, html_obj))
+        if not field.get('required'):
+            continue
+        if html_obj[field_name] is None:
+            raise Exception("field {0!r} should not be None:\n{1}".format(field_name, pformat(html_obj)))
+
+
 def add_html_node(html_data, json_data, field_data, base_name, json_key=None, **kwargs):
     # TODO: document json_key vs. base_name.
     if json_key is None:
         json_key = base_name
     make_object_func_name = "make_one_{0}2".format(base_name, **kwargs)
-    make_object = globals()[make_object_func_name]
+    set_object_fields = globals()[make_object_func_name]
 
-    fields = field_data[base_name]
+    singular = common.type_name_to_singular(base_name)
+    fields = field_data[singular]
     json_node = json_data[json_key]
 
     objects = {}
-    for object_id, json_obj in json_node.items():
+
+    # Sort the items to get repeatability.  This helps when troubleshooting
+    # issues, so that the same item will error out when running a second time.
+    for object_id in sorted(json_node.keys()):
+        json_obj = json_node[object_id]
         html_obj = _make_html_object2(json_obj, fields, object_id)
-        obj = make_object(html_data, html_obj, json_obj, **kwargs)
+        set_object_fields(html_obj, html_data, json_obj, **kwargs)
+        # TODO: check the object.
+        check_object(html_obj, fields)
         # TODO: remove this hack (used to skip offices).
-        if not obj:
+        if html_obj['name'] is None:
             continue
-        objects[object_id] = obj
+        objects[object_id] = html_obj
 
     html_data[base_name] = objects
 
@@ -505,6 +532,7 @@ def make_html_data(json_data, local_assets=False):
         'jquery_prefix': jquery_prefix,
         'json_path': JSON_OUTPUT_PATH,
         'language_codes': [LANG_ENGLISH] + NON_ENGLISH_ORDER,
+        'license_path': LICENSE_PATH,
         'bootstrap_prefix': bootstrap_prefix,
         'page_bases': _TABLE_OF_CONTENTS,
         NodeNames.phrases: phrases,
@@ -513,9 +541,6 @@ def make_html_data(json_data, local_assets=False):
     base_names = [
         'areas',
         NodeNames.election_methods,
-        'bodies',
-        # TODO: get district_types working with cleaner pattern.
-        'district_types',
     ]
     for base_name in base_names:
         add_context_node(html_data, json_data, base_name)
@@ -528,6 +553,8 @@ def make_html_data(json_data, local_assets=False):
     _add_node('categories', ordering=category_ordering)
 
     base_names = [
+        'bodies',
+        'district_types',
         'districts',
         'offices',
     ]
@@ -539,6 +566,16 @@ def make_html_data(json_data, local_assets=False):
     for office in offices.values():
         office_count += office['seat_count']
     html_data['office_count'] = office_count
+
+    # Compute: district_count_sf
+    district_types = html_data['district_types']
+    for district in html_data['districts'].values():
+        district_type_id = district['district_type_id']
+        district_type = district_types[district_type_id]
+        try:
+            district_type['district_count_sf'] += 1
+        except KeyError:
+            district_type['district_count_sf'] = 1
 
     languages = add_context_node(html_data, json_data, 'languages')
 

@@ -52,10 +52,10 @@ class _Page(object):
             title = get_default_page_title(self.objects_name)
         return title
 
-    def make_href(self, object_id=None):
+    def make_href(self, fragment=None):
         url = "{0}.html".format(self.page_base_name)
-        if object_id is not None:
-            url += "#{0}".format(object_id)
+        if fragment is not None:
+            url += "#{0}".format(fragment)
         return url
 
     def get_singular(self):
@@ -90,6 +90,7 @@ class AreasPage(_Page):
 class BodiesPage(_Page):
     singular = 'body'
     title = "Bodies"
+    sorter = ('category_order', 'name')
 
 
 class DistrictsPage(_Page):
@@ -98,7 +99,7 @@ class DistrictsPage(_Page):
 
 
 class DistrictTypesPage(_Page):
-    pass
+    sorter = ('category_order', 'name')
 
 
 class ElectionMethodsPage(_Page):
@@ -107,7 +108,7 @@ class ElectionMethodsPage(_Page):
 
 class IndexPage(_Page):
     _objects_name = 'offices'
-    sorter = ('category_order', 'body_id', 'name')
+    sorter = ('category_order', 'body_id', 'id')
 
 
 class LanguagesPage(_Page):

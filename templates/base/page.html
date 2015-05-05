@@ -13,6 +13,8 @@
     <!--
     <link rel="stylesheet" href="{{ bootstrap_prefix }}css/bootstrap-theme.min.css">
     -->
+    <!-- Custom styling -->
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,19 +31,26 @@
     <h1>SF Base Election Data (SFBED)</h1>
 
     <p>
-    This is a sample web site to illustrate using the data from the
-    <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
-    open data project.
-
-    The data for this web site comes from a single, static
-    <a href="{{ json_path }}">JSON file</a>
-    of structured data about San Francisco elections.
+      This is a sample web site to illustrate using the data from the
+      <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
+      open data project.
+    </p>
     <p>
-    If you notice any issues about the data or have a suggestion,
-    please file an issue in the
-    <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+      The data for this web site comes from a single, static JSON file of
+      structured data about San Francisco elections, which can be seen here:
+      <a href="{{ json_path }}">{{ json_path }}</a>.
+      This file is made available under the Public Domain Dedication and License
+      v1.0, which can be read here:
+      <a href="{{ license_path }}">{{ license_path }}</a>.
+    </p>
+    <p>
+      If you notice any issues about the data or have a suggestion,
+      please file an issue in the
+      <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+    </p>
   </div>
 </div>
+
 
 <h3 class="text-center">Site Contents</h3>
 
