@@ -8,11 +8,14 @@ Variables:
 
 {% endcomment %}
 {% block header %}
-{{ header }}
+  {{ header }}
 {% endblock %}
+
 {% anchor header_id %}
 {% block subheader %}
-{% if subheader %}<br/>
-{% block subheader_contents %}{{ subheader }}{% endblock %}
-{% endif %}
+  {% if subheader %}<br/>
+    {% block subheader_contents %}
+      {{ subheader }}
+    {% endblock %}
+  {% endif %}
 {% endblock %}

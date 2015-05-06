@@ -178,6 +178,19 @@ def page_nav(context, page_base):
     return data
 
 
+@register.inclusion_tag('tags/page_nav_bar.html', takes_context=True)
+def page_nav_bar(context, page_base):
+    """A tag to use in site navigation."""
+    current_page_base = context['current_page']
+    data = {
+        'page_href': get_page_href(page_base),
+        'page_title': get_page_title(page_base),
+        'same_page': page_base == current_page_base
+    }
+
+    return data
+
+
 @register.inclusion_tag('anchor.html')
 def anchor(id_):
     return {

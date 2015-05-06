@@ -1,4 +1,24 @@
 code {
-    background-color: white;
-    color: black;
+  background-color: white;
+  color: black;
+}
+
+body {
+  padding-top: 70px;
+}
+.panel-heading a:after {
+  font-family:'Glyphicons Halflings';
+  content:"\e114";
+  float: left;
+  color: grey;
+  padding-right: 10px;
+}
+.panel-heading.collapsed a:after {
+    content:"\e080";
+}
+.panel-heading {
+  cursor: pointer;
+}
+.sidebar.affix {
+  top: 50px;
 }

@@ -1,91 +1,115 @@
 <!DOCTYPE html>{% load custom_tags %}
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>SFBED - {% block title_head %}{{ current_title }}{% endblock %}</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ bootstrap_prefix }}css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <!--
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>SFBED - {% block title_head %}{{ current_title }}{% endblock %}</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="{{ bootstrap_prefix }}css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <!--
     <link rel="stylesheet" href="{{ bootstrap_prefix }}css/bootstrap-theme.min.css">
     -->
-    <!-- Custom styling -->
-    <link rel="stylesheet" href="css/style.css">
+  <!-- Custom styling -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
+
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h1>SF Base Election Data (SFBED)</h1>
+        <p>
+          This is a sample web site to illustrate using the data from the
+          <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a> open data project.
+        </p>
+        <p>
+          The data for this web site comes from a single, static JSON file of structured data about San Francisco elections, which can be seen here:
+          <a href="{{ json_path }}">{{ json_path }}</a>. This file is made available under the Public Domain Dedication and License v1.0, which can be read here:
+          <a href="{{ license_path }}">{{ license_path }}</a>.
+        </p>
+        <p>
+          If you notice any issues about the data or have a suggestion, please file an issue in the
+          <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+        </p>
+      </div>
+    </div>
 
-<div class="container">
-<div class="row">
-  <div class="page-header"
-    <h1>SF Base Election Data (SFBED)</h1>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SFBED</a>
+          <p class="navbar-text">{{ current_title }}</p>
+        </div>
 
-    <p>
-      This is a sample web site to illustrate using the data from the
-      <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
-      open data project.
-    </p>
-    <p>
-      The data for this web site comes from a single, static JSON file of
-      structured data about San Francisco elections, which can be seen here:
-      <a href="{{ json_path }}">{{ json_path }}</a>.
-      This file is made available under the Public Domain Dedication and License
-      v1.0, which can be read here:
-      <a href="{{ license_path }}">{{ license_path }}</a>.
-    </p>
-    <p>
-      If you notice any issues about the data or have a suggestion,
-      please file an issue in the
-      <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
-    </p>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                {% for page_base in page_bases %} {% page_nav_bar page_base %} {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <h2 class="text-center">{% block content_title %}{{ current_title }}{% endblock %}</h2>
+
+    {% block content_intro %}
+      <p>
+        {% block content_intro_para %}
+          {% comment %}
+            TODO: replace current_title with "current_noun"?
+          {% endcomment %}
+          Below are the {{ current_title|lower }} included in the JSON file.
+        {% endblock %}
+      </p>
+      <p>
+        Current count:
+        {% block object_count_text %}
+          {% block object_count_number %}
+            {{ current_objects|length }}
+          {% endblock %}
+          {{ current_title|lower }}
+        {% endblock object_count_text %}
+      </p>
+    {% endblock %}
+
+    <div class="body-start">
+
+    {% block content_body %}
+      {% list_objects current_objects.values|dictsort:'name' 'name' %}
+    {% endblock %}
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ jquery_prefix }}jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- JS is needed for the collapsable navigation bar. -->
+    <script src="{{ bootstrap_prefix }}js/bootstrap.min.js"></script>
   </div>
-</div>
-
-
-<h3 class="text-center">Site Contents</h3>
-
-{% for page_base in page_bases %}
-{% page_nav page_base %}
-{% endfor %}
-
-<h2 class="text-center">{% block content_title %}{{ current_title }}{% endblock %}</h2>
-
-{% block content_intro %}
-<p>
-{% block content_intro_para %}
-{% comment %}
-TODO: replace current_title with "current_noun"?
-{% endcomment %}
-Below are the {{ current_title|lower }} included in the JSON file.
-{% endblock %}
-<p>
-Current count: {% block object_count_text %}
-{% block object_count_number %}{{ current_objects|length }}{% endblock %}
-{{ current_title|lower }}
-{% endblock object_count_text %}
-{% endblock %}
-
-{% block content_body %}
-{% list_objects current_objects.values|dictsort:'name' 'name' %}
-{% endblock %}
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{ jquery_prefix }}jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Latest compiled and minified JavaScript -->
-<!-- JS is needed for the collapsable navigation bar. -->
-<script src="{{ bootstrap_prefix }}js/bootstrap.min.js"></script>
-</div>
 
 </body>
+
 </html>
