@@ -10,21 +10,42 @@ TODO: skip the category if it has no entries, or does regroup already
 
 {% endcomment %}
 {% regroup items by category_id as main_list %}
-{% for group in main_list %}
-  <div class="panel panel-default">
-  {% with category=categories|get_item:group.grouper %}
-    {% if category %}
-      {% header_with_translation 'header_section.html' category 'name' %}
-    {% endif %}
-  {% endwith %}
-  {% with sub_group=group %}
-    <div id="collapse_{{ group.grouper }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-      {% block show_category %}
-        {% list_objects sub_group.list 'name' %}
-      {% endblock %}
-      </div>
-    </div>
-  {% endwith %}
+<div class="row">
+  <div class="col-md-2 sidebar" data-spy="affix" data-offset-top="430" data-offset-bottom="200">
+    <ul class="nav nav-sidebar">
+      <h4>Jump to section:</h4>
+      {% for group in main_list %}
+        {% with category=categories|get_item:group.grouper %}
+          {% if category %}
+            <li><a href="#{{ group.grouper }}">{{ group.grouper }}</a></li>
+          {% endif %}
+        {% endwith %}
+      {% endfor %}
+    </ul>
   </div>
-{% endfor %}
+
+
+  <div class="col-md-2">
+  </div>
+  {% regroup items by category_id as main_list %}
+  <div class="col-md-10 main">
+    {% for group in main_list %}
+      <div class="panel panel-default">
+      {% with category=categories|get_item:group.grouper %}
+        {% if category %}
+          {% header_with_translation 'header_section.html' category 'name' %}
+        {% endif %}
+      {% endwith %}
+      {% with sub_group=group %}
+        <div id="collapse_{{ group.grouper }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+          {% block show_category %}
+            {% list_objects sub_group.list 'name' %}
+          {% endblock %}
+          </div>
+        </div>
+      {% endwith %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
