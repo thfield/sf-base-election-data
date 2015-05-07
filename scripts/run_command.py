@@ -103,15 +103,16 @@ def command_sample_html(ns):
                                   print_html=print_html, local_assets=local,
                                   debug=debug)
 
-    # copy js file for in-browser translation
-    js_path = "static_files/js/translate.js"
-    js_dest_path = "_build/html/js/translate.js"
-    shutil.copy(js_path, js_dest_path)
 
-    # copy test.html file
-    testhtml_path = "static_files/html/test.html"
-    testhtml_dest_path = "_build/html/test.html"
-    shutil.copy(testhtml_path, testhtml_dest_path)
+    #copy js file for in-browser translation
+    # js_path = "static_files/js/translate.js"
+    # js_dest_path = "_build/html/js/translate.js"
+    # shutil.copy(js_path, js_dest_path)
+
+    #copy test.html file
+    # testhtml_path = "static_files/html/test.html"
+    # testhtml_dest_path = "_build/html/test.html"
+    # shutil.copy(testhtml_path, testhtml_dest_path)
 
     if open_browser:
 #        subprocess.call(["open", html_path])

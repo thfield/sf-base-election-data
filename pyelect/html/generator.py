@@ -89,10 +89,14 @@ def get_copy_info(source_dir, target_dir, root_dir, name):
 
 def copy_files(source_dir, target_dir):
     for root_dir, dir_names, file_names in os.walk(source_dir):
+        print("root_dir: {0}".format(root_dir))
         for dir_name in dir_names:
-            source_dir, target_dir = get_copy_info(source_dir, target_dir, root_dir, dir_name)
-            create_dir(target_dir)
+            source_dir_, target_dir_ = get_copy_info(source_dir, target_dir, root_dir, dir_name)
+            create_dir(target_dir_)
         for file_name in file_names:
+            print("source_dir: {0}".format(source_dir))
+            print("target_dir: {0}".format(target_dir))
+            print("file_name: {0}".format(file_name))
             source_path, target_path = get_copy_info(source_dir, target_dir, root_dir, file_name)
             _log.info("copying file to: {0}".format(target_path))
             shutil.copyfile(source_path, target_path)
@@ -115,8 +119,12 @@ def make_html(output_dir, page_name=None, print_html=False, local_assets=False,
     # Copy all static files.
     repo_dir = utils.get_repo_dir()
     for rel_source_dir, rel_target_dir in _STATIC_FILES_INFO:
+        print("rel_source_dir: {0}".format(rel_source_dir))
+        print("rel_target_dir: {0}".format(rel_target_dir))
         source_dir = os.path.join(repo_dir, rel_source_dir)
         target_dir = os.path.join(output_dir, rel_target_dir)
+        print("source_dir: {0}".format(source_dir))
+        print("target_dir: {0}".format(target_dir))
         copy_files(source_dir, target_dir)
 
     json_data = jsongen.get_json()
