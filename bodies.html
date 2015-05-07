@@ -1,149 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>SFBED - Bodies</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <!--
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>SFBED - Bodies</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     -->
+  <!-- Custom styling -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
+
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h1>SF Base Election Data (SFBED)</h1>
+        <p>
+          This is a sample web site to illustrate using the data from the
+          <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a> open data project.
+        </p>
+        <p>
+          The data for this web site comes from a single, static JSON file of structured data about San Francisco elections, which can be seen here:
+          <a href="data/sf.json">data/sf.json</a>. This file is made available under the Public Domain Dedication and License v1.0, which can be read here:
+          <a href="data/LICENSE.txt">data/LICENSE.txt</a>.
+        </p>
+        <p>
+          If you notice any issues about the data or have a suggestion, please file an issue in the
+          <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+        </p>
+      </div>
+    </div>
 
-<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SFBED</a>
+          <p class="navbar-text">Bodies</p>
+        </div>
 
-<h1>SF Base Election Data (SFBED)</h1>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="index.html">Offices</a></li>
+  <li><a href="bodies.html">Bodies</a></li>
+  <li><a href="districts.html">Districts</a></li>
+  <li><a href="district_types.html">District Types</a></li>
+  <li><a href="phrases.html">Translated Phrases</a></li>
+  <li><a href="languages.html">Languages</a></li>
+  <li><a href="areas.html">Areas</a></li>
+  <li><a href="election_methods.html">Election Methods</a></li>
+ 
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<p>
-This is a sample web site to illustrate using the data from the
-<a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
-open data project.
+    <h2 class="text-center">Bodies</h2>
 
-The data for this web site comes from a single, static
-<a href="data/sf.json">JSON file</a>
-of structured data about San Francisco elections.
-<p>
-If you notice any issues about the data or have a suggestion,
-please file an issue in the
-<a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
-
-<h3 class="text-center">Site Contents</h3>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="index.html">Offices</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12 bg-info">
-<a href="bodies.html">Bodies</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="district_types.html">District Types</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="phrases.html">Translated Phrases</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="languages.html">Languages</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="areas.html">Areas</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="election_methods.html">Election Methods</a>
-</div>
-</div>
-
-
-
-<h2 class="text-center">Bodies</h2>
-
-
-<p>
-
+    
+      <p>
+        
 Below is a list of government bodies having at least one seat that
 can be on a San Francisco ballot.
 
-<p>
-Current count: 
-17
-bodies
+      </p>
+      <p>
+        Current count:
+        
+          
+            17
+          
+          bodies
+        
+      </p>
+    
+
+    <div class="body-start">
+
+    
 
 
 
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_federal" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_federal"><h3>
 
 
+  FEDERAL
 
-
-
-
-<div class="row text-center"><h3>
-
-
-FEDERAL
 
 <a name="category_federal" href="#category_federal">
-¶</a><br/>
-
-(聯邦 | FEDERAL)
-
-
-
-
-
-</h3>
+¶</a><br/><span data-i18n="asdf">(
+      聯邦 | FEDERAL
+    )</span></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_federal" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-UNITED STATES HOUSE OF REPRESENTATIVES
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  UNITED STATES HOUSE OF REPRESENTATIVES
 </b><a name="body_usa_house" href="#body_usa_house">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_usa_house">
-US Congressional Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_usa_house</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_country_usa">United States of America</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_usa_house">US Congressional Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Member
 
@@ -164,20 +161,6 @@ Seats
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
-Election Method
-</b></div><div class="col-md-10"><a href="election_methods.html#election_method_top_two">
-Top-Two Primary
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-
-Next Election
-
-</b></div><div class="col-md-10">
-
-
-2016
-
-
-</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Term Length
 
@@ -189,33 +172,31 @@ Term Length
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
+Next Election
+
+</b></div><div class="col-md-10">
+
+
+2016
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Election Method
+</b></div><div class="col-md-10"><a href="election_methods.html#election_method_top_two">Top-Two Primary</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
 Partisan
 
 </b></div><div class="col-md-10">
 
 
-True
-
-
-</div></div><div class="row"><div class="col-md-2 bg-info"><b>
-
-Seed Year
-
-</b></div><div class="col-md-10">
-
-
-2010
+Partisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.house.gov/">
-http://www.house.gov/
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.house.gov/">http://www.house.gov/</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/United_States_House_of_Representatives">
-http://en.wikipedia.org/wiki/United_States_House_of_Representatives
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/United_States_House_of_Representatives">http://en.wikipedia.org/wiki/United_States_House_of_Representatives</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Notes
 
@@ -225,16 +206,19 @@ Notes
 There are also 6 non-voting members.
 
 
-</div></div><p>
+</div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-UNITED STATES SENATE
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  UNITED STATES SENATE
 </b><a name="body_usa_senate" href="#body_usa_senate">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_usa_states">
-US States
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_usa_senate</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_country_usa">United States of America</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_usa_states">US States</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Member
 
@@ -255,10 +239,6 @@ Seats
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
-Election Method
-</b></div><div class="col-md-10"><a href="election_methods.html#election_method_top_two">
-Top-Two Primary
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Term Length
 
@@ -269,64 +249,66 @@ Term Length
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Election Method
+</b></div><div class="col-md-10"><a href="election_methods.html#election_method_top_two">Top-Two Primary</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Partisan
 
 </b></div><div class="col-md-10">
 
 
-True
+Partisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.senate.gov/">
-http://www.senate.gov/
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.senate.gov/">http://www.senate.gov/</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/United_States_Senate">
-http://en.wikipedia.org/wiki/United_States_Senate
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/United_States_Senate">http://en.wikipedia.org/wiki/United_States_Senate</a></div></div></p>
 
 
 
+      
+      </div>
+    </div>
+  
+  </div>
 
-<hr>
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_state" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_state"><h3>
 
 
+  STATE
 
-
-
-<div class="row text-center"><h3>
-
-
-STATE
 
 <a name="category_state" href="#category_state">
-¶</a><br/>
-
-(州 | ESTADO)
-
-
-
-
-
-</h3>
+¶</a><br/><span data-i18n="asdf">(
+      州 | ESTADO
+    )</span></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_state" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-CALIFORNIA STATE ASSEMBLY
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  CALIFORNIA STATE ASSEMBLY
 </b><a name="body_ca_state_assembly" href="#body_ca_state_assembly">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_sa">
-State Assembly Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_ca_state_assembly</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca">State of California</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_state_assembly">State Assembly Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Seats
 
@@ -353,27 +335,26 @@ Partisan
 </b></div><div class="col-md-10">
 
 
-True
+Partisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://assembly.ca.gov/">
-http://assembly.ca.gov/
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://assembly.ca.gov/">http://assembly.ca.gov/</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/California_State_Assembly">
-http://en.wikipedia.org/wiki/California_State_Assembly
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/California_State_Assembly">http://en.wikipedia.org/wiki/California_State_Assembly</a></div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-CALIFORNIA STATE SENATE
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  CALIFORNIA STATE SENATE
 </b><a name="body_ca_state_senate" href="#body_ca_state_senate">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_ss">
-State Senate Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_ca_state_senate</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca">State of California</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_state_senate">State Senate Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Seats
 
@@ -400,27 +381,26 @@ Partisan
 </b></div><div class="col-md-10">
 
 
-True
+Partisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://senate.ca.gov/">
-http://senate.ca.gov/
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://senate.ca.gov/">http://senate.ca.gov/</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/California_State_Senate">
-http://en.wikipedia.org/wiki/California_State_Senate
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/California_State_Senate">http://en.wikipedia.org/wiki/California_State_Senate</a></div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-STATE BOARD OF EQUALIZATION
-</b><a name="body_ca_sboe" href="#body_ca_sboe">
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  STATE BOARD OF EQUALIZATION
+</b><a name="body_ca_board_of_equalization" href="#body_ca_board_of_equalization">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_sboe">
-Board of Equalization Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_ca_board_of_equalization</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca">State of California</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_board_of_equalization">Equalization Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Seats
 
@@ -441,14 +421,20 @@ Term Length
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Partisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.boe.ca.gov/">
-http://www.boe.ca.gov/
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.boe.ca.gov/">http://www.boe.ca.gov/</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/State_Board_of_Equalization_%28California%29">
-http://en.wikipedia.org/wiki/State_Board_of_Equalization_%28California%29
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/State_Board_of_Equalization_%28California%29">http://en.wikipedia.org/wiki/State_Board_of_Equalization_%28California%29</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Notes
 
@@ -458,57 +444,63 @@ Notes
 The State Controller is the fifth member of this body.
 
 
-</div></div><p>
+</div></div></p>
 
 
 
+      
+      </div>
+    </div>
+  
+  </div>
 
-<hr>
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_city_county" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_city_county"><h3>
 
 
+  CITY AND COUNTY
 
-
-
-<div class="row text-center"><h3>
-
-
-CITY AND COUNTY
 
 <a name="category_city_county" href="#category_city_county">
-¶</a><br/>
-
-(市縣 | CIUDAD Y CONDADO)
-
-
-
-
-
-</h3>
+¶</a><br/><span data-i18n="asdf">(
+      市縣 | CIUDAD Y CONDADO
+    )</span></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_city_county" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-BOARD OF SUPERVISORS
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  BOARD OF SUPERVISORS
 </b><a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">
-¶</a><br/>
+¶</a><br/><span data-i18n="asdf">(
+      Consejo de Supervisores
+    )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_sf_board_of_supervisors</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_sf_board_of_supervisors">Supervisorial Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
-(Consejo de Supervisores)
+Member
+
+</b></div><div class="col-md-10">
 
 
-
-
-
+MEMBER, BOARD OF SUPERVISORS
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_sf_board_of_supervisors">
-Supervisorial Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Seats
 
@@ -535,60 +527,64 @@ Partisan
 </b></div><div class="col-md-10">
 
 
-False
+Nonpartisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.sfbos.org">
-http://www.sfbos.org
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.sfbos.org">http://www.sfbos.org</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/San_Francisco_Board_of_Supervisors">
-http://en.wikipedia.org/wiki/San_Francisco_Board_of_Supervisors
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/San_Francisco_Board_of_Supervisors">http://en.wikipedia.org/wiki/San_Francisco_Board_of_Supervisors</a></div></div></p>
 
 
 
+      
+      </div>
+    </div>
+  
+  </div>
 
-<hr>
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_school" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_school"><h3>
 
 
+  SCHOOL
 
-
-
-<div class="row text-center"><h3>
-
-
-SCHOOL
 
 <a name="category_school" href="#category_school">
-¶</a><br/>
-
-(學校 | ESCUELA)
-
-
-
-
-
-</h3>
+¶</a><br/><span data-i18n="asdf">(
+      學校 | ESCUELA
+    )</span></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_school" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-BOARD OF EDUCATION
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  BOARD OF EDUCATION
 </b><a name="body_sf_board_of_education" href="#body_sf_board_of_education">
-¶</a><br/>
+¶</a><br/><span data-i18n="asdf">(
+      Consejo de Educación
+    )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_sf_board_of_education</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
 
-(Consejo de Educación)
 
 
-
-
+Single
 
 
 
@@ -619,29 +615,32 @@ Partisan
 </b></div><div class="col-md-10">
 
 
-False
+Nonpartisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.sfusd.edu/en/about-sfusd/board-of-education">
-http://www.sfusd.edu/en/about-sfusd/board-of-education
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.sfusd.edu/en/about-sfusd/board-of-education">http://www.sfusd.edu/en/about-sfusd/board-of-education</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/San_Francisco_Board_of_Education">
-http://en.wikipedia.org/wiki/San_Francisco_Board_of_Education
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/San_Francisco_Board_of_Education">http://en.wikipedia.org/wiki/San_Francisco_Board_of_Education</a></div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-COMMUNITY COLLEGE BOARD
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  COMMUNITY COLLEGE BOARD
 </b><a name="body_sf_college_board" href="#body_sf_college_board">
-¶</a><br/>
+¶</a><br/><span data-i18n="asdf">(
+      Consejo del Colegio Comunitario
+    )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_sf_college_board</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_sf_community_college">San Francisco Community College District</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
 
-(Consejo del Colegio Comunitario)
 
 
-
-
+Single
 
 
 
@@ -666,42 +665,80 @@ Term Length
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Nonpartisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.ccsf.edu/en/about-city-college/board-of-trustees.html">
-http://www.ccsf.edu/en/about-city-college/board-of-trustees.html
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://www.ccsf.edu/en/about-city-college/board-of-trustees.html">http://www.ccsf.edu/en/about-city-college/board-of-trustees.html</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Notes
+
+</b></div><div class="col-md-10">
+
+
+This is also known as the San Francisco Community College Board of Trustees.
+
+
+</div></div></p>
 
 
 
+      
+      </div>
+    </div>
+  
+  </div>
 
-<hr>
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_transit" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_transit"><h3>
 
 
+  TRANSIT
 
-
-
-<div class="row text-center"><h3>
-
-
-TRANSIT
 
 <a name="category_transit" href="#category_transit">
 ¶</a></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_transit" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-BART BOARD OF DIRECTORS
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  BART BOARD OF DIRECTORS
 </b><a name="body_bart" href="#body_bart">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_bart">
-BART Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_bart</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca_bart">San Francisco Bay Area Rapid Transit District</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_bart">BART Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Member
+
+</b></div><div class="col-md-10">
+
+
+BART Director
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Seats
 
@@ -722,46 +759,70 @@ Term Length
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Nonpartisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.bart.gov/about/bod">
-http://www.bart.gov/about/bod
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://www.bart.gov/about/bod">http://www.bart.gov/about/bod</a></div></div></p>
 
 
 
+      
+      </div>
+    </div>
+  
+  </div>
 
-<hr>
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_judicial" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_judicial"><h3>
 
 
+  JUDICIAL
 
-
-
-<div class="row text-center"><h3>
-
-
-JUDICIAL
 
 <a name="category_judicial" href="#category_judicial">
-¶</a><br/>
-
-(司法 | JUDICIAL)
-
-
-
-
-
-</h3>
+¶</a><br/><span data-i18n="asdf">(
+      司法 | JUDICIAL
+    )</span></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_judicial" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-CALIFORNIA COURT OF APPEAL, FIRST DISTRICT
-</b><a name="body_ca_court_of_appeal_d1" href="#body_ca_court_of_appeal_d1">
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  CALIFORNIA COURT OF APPEAL, FIRST DISTRICT
+</b><a name="body_ca_courts_of_appeal_d1" href="#body_ca_courts_of_appeal_d1">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_ca_courts_of_appeal_d1</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca_courts_of_appeal_d1">California Court of Appeal, First District</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
+
+
+
+Single
+
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Seats
 
@@ -778,7 +839,7 @@ Partisan
 </b></div><div class="col-md-10">
 
 
-False
+Nonpartisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
@@ -788,29 +849,34 @@ Notes
 </b></div><div class="col-md-10">
 
 
-The district covers San Francisco and is divided into five non-geographical divisions with four justices each.
+This body is divided into five non-geographical divisions with four justices each.
 
 
-</div></div><p>
+</div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-CALIFORNIA COURTS OF APPEAL
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  CALIFORNIA COURTS OF APPEAL
 </b><a name="body_ca_courts_of_appeal" href="#body_ca_courts_of_appeal">
-¶</a><br/>
+¶</a><br/><span data-i18n="asdf">(
+      Corte de Apelación
+    )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_ca_courts_of_appeal</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca">State of California</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_court_appeal">Appellate Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
-(Corte de Apelación)
+Seats
+
+</b></div><div class="col-md-10">
 
 
-
-
-
+Unknown
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
-District Type
-</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_court_appeal">
-Courts of Appeal Districts
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Term Length
 
@@ -827,30 +893,53 @@ Partisan
 </b></div><div class="col-md-10">
 
 
-False
+Nonpartisan
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.courts.ca.gov/courtsofappeal.htm">
-http://www.courts.ca.gov/courtsofappeal.htm
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.courts.ca.gov/courtsofappeal.htm">http://www.courts.ca.gov/courtsofappeal.htm</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/California_courts_of_appeal">
-http://en.wikipedia.org/wiki/California_courts_of_appeal
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/California_courts_of_appeal">http://en.wikipedia.org/wiki/California_courts_of_appeal</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-SUPERIOR COURT OF SAN FRANCISCO
+Notes
+
+</b></div><div class="col-md-10">
+
+
+This may be better viewed as a type of office rather than a body.
+
+
+</div></div></p>
+
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  SUPERIOR COURT OF SAN FRANCISCO
 </b><a name="body_sf_sc" href="#body_sf_sc">
-¶</a><br/>
+¶</a><br/><span data-i18n="asdf">(
+      Tribunal Superior
+    )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_sf_sc</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
 
-(Tribunal Superior)
+
+
+Single
 
 
 
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Seats
+
+</b></div><div class="col-md-10">
 
 
+52
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
@@ -864,35 +953,48 @@ Term Length
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Nonpartisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.sfsuperiorcourt.org/">
-http://www.sfsuperiorcourt.org/
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.sfsuperiorcourt.org/">http://www.sfsuperiorcourt.org/</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/San_Francisco_County_Superior_Court">
-http://en.wikipedia.org/wiki/San_Francisco_County_Superior_Court
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/San_Francisco_County_Superior_Court">http://en.wikipedia.org/wiki/San_Francisco_County_Superior_Court</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Notes
 
 </b></div><div class="col-md-10">
 
 
-The San Francisco Superior Court Bench is comprised of 52 Judges and one Commissioner.
+Wikipedia says that the San Francisco Superior Court Bench comprises 52 Judges and one Commissioner.  We do not know if the Commissioner faces election.
 
 
-</div></div><p>
+</div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-SUPREME COURT OF CALIFORNIA
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  SUPREME COURT OF CALIFORNIA
 </b><a name="body_ca_court_supreme" href="#body_ca_court_supreme">
-¶</a><br/>
+¶</a><br/><span data-i18n="asdf">(
+      Corte Suprema
+    )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_ca_court_supreme</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_state_ca">State of California</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
 
-(Corte Suprema)
 
 
-
-
+Single
 
 
 
@@ -917,14 +1019,20 @@ Term Length
 
 
 </div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Nonpartisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://www.courts.ca.gov/supremecourt.htm">
-http://www.courts.ca.gov/supremecourt.htm
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://www.courts.ca.gov/supremecourt.htm">http://www.courts.ca.gov/supremecourt.htm</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/Supreme_Court_of_California">
-http://en.wikipedia.org/wiki/Supreme_Court_of_California
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/Supreme_Court_of_California">http://en.wikipedia.org/wiki/Supreme_Court_of_California</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Notes
 
@@ -934,84 +1042,219 @@ Notes
 The Court has six Associate Justices and one Chief Justice. Each is appointed by the Governor and subject to retention elections.
 
 
-</div></div><p>
+</div></div></p>
 
 
 
+      
+      </div>
+    </div>
+  
+  </div>
 
-<hr>
+  <div class="panel panel-default">
+  
+    
+      <div class="panel-heading" role="tab" id="category_party" data-toggle="collapse" data-parent="#offices" data-target="#collapse_category_party"><h3>
 
 
+  PARTY
 
-
-
-<div class="row text-center"><h3>
-
-
-PARTY
 
 <a name="category_party" href="#category_party">
 ¶</a></h3>
 </div>
 
+    
+  
+  
+    <div id="collapse_category_party" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+      
+        
 
 
 
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-DEMOCRATIC COUNTY CENTRAL COMMITTEE
-</b><a name="body_sf_dccc" href="#body_sf_dccc">
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  DEMOCRATIC COUNTY CENTRAL COMMITTEE
+</b><a name="body_sf_party_democratic" href="#body_sf_party_democratic">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-Web
-</b></div><div class="col-md-10"><a href="http://www.sfdemocrats.org/">
-http://www.sfdemocrats.org/
-</a></div></div><p>
+ID
+</b></div><div class="col-md-10"><code>body_sf_party_democratic</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10"><a href="district_types.html#district_type_ca_state_assembly">State Assembly Districts</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-GREEN COUNTY COUNCIL
-</b><a name="body_sf_gcc" href="#body_sf_gcc">
+Seats
+
+</b></div><div class="col-md-10">
+
+
+24
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Partisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Web
+</b></div><div class="col-md-10"><a href="http://www.sfdemocrats.org/">http://www.sfdemocrats.org/</a></div></div></p>
+
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  GREEN COUNTY COUNCIL
+</b><a name="body_sf_party_green" href="#body_sf_party_green">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-Web
-</b></div><div class="col-md-10"><a href="http://sfgreenparty.org/">
-http://sfgreenparty.org/
-</a></div></div><p>
+ID
+</b></div><div class="col-md-10"><code>body_sf_party_green</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-PEACE AND FREEDOM COUNTY CENTRAL COMMITTEE
-</b><a name="body_sf_pfccc" href="#body_sf_pfccc">
+
+
+Single
+
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Seats
+
+</b></div><div class="col-md-10">
+
+
+Unknown
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Partisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Web
+</b></div><div class="col-md-10"><a href="http://sfgreenparty.org/">http://sfgreenparty.org/</a></div></div></p>
+
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  PEACE AND FREEDOM COUNTY CENTRAL COMMITTEE
+</b><a name="body_sf_party_peace_freedom" href="#body_sf_party_peace_freedom">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
-Web
-</b></div><div class="col-md-10"><a href="http://www.peaceandfreedom.org">
-http://www.peaceandfreedom.org
-</a></div></div><p>
+ID
+</b></div><div class="col-md-10"><code>body_sf_party_peace_freedom</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-REPUBLICAN COUNTY CENTRAL COMMITTEE
-</b><a name="body_sf_rccc" href="#body_sf_rccc">
+
+
+Single
+
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Seats
+
+</b></div><div class="col-md-10">
+
+
+Unknown
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Partisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Web
+</b></div><div class="col-md-10"><a href="http://www.peaceandfreedom.org">http://www.peaceandfreedom.org</a></div></div></p>
+
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  REPUBLICAN COUNTY CENTRAL COMMITTEE
+</b><a name="body_sf_party_republican" href="#body_sf_party_republican">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>body_sf_party_republican</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Jurisdiction
+</b></div><div class="col-md-10"><a href="areas.html#area_county_sf">City and County of San Francisco</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+Districts
+</b></div><div class="col-md-10">
+
+
+
+Single
+
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Seats
+
+</b></div><div class="col-md-10">
+
+
+Unknown
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
+
+Partisan
+
+</b></div><div class="col-md-10">
+
+
+Partisan
+
+
+</div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Web
-</b></div><div class="col-md-10"><a href="http://sfgop.org/">
-http://sfgop.org/
-</a></div></div><p>
+</b></div><div class="col-md-10"><a href="http://sfgop.org/">http://sfgop.org/</a></div></div></p>
+
+
+
+      
+      </div>
+    </div>
+  
+  </div>
 
 
 
 
-<hr>
+    </div>
 
-
-
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Latest compiled and minified JavaScript -->
-<!-- JS is needed for the collapsable navigation bar. -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- JS is needed for the collapsable navigation bar. -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </div>
 
 </body>
+
 </html>

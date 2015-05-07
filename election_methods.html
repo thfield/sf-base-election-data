@@ -1,121 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>SFBED - Election Methods</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <!--
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>SFBED - Election Methods</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <!--
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     -->
+  <!-- Custom styling -->
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
+
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="page-header">
+        <h1>SF Base Election Data (SFBED)</h1>
+        <p>
+          This is a sample web site to illustrate using the data from the
+          <a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a> open data project.
+        </p>
+        <p>
+          The data for this web site comes from a single, static JSON file of structured data about San Francisco elections, which can be seen here:
+          <a href="data/sf.json">data/sf.json</a>. This file is made available under the Public Domain Dedication and License v1.0, which can be read here:
+          <a href="data/LICENSE.txt">data/LICENSE.txt</a>.
+        </p>
+        <p>
+          If you notice any issues about the data or have a suggestion, please file an issue in the
+          <a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+        </p>
+      </div>
+    </div>
 
-<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">SFBED</a>
+          <p class="navbar-text">Election Methods</p>
+        </div>
 
-<h1>SF Base Election Data (SFBED)</h1>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="index.html">Offices</a></li>
+  <li><a href="bodies.html">Bodies</a></li>
+  <li><a href="districts.html">Districts</a></li>
+  <li><a href="district_types.html">District Types</a></li>
+  <li><a href="phrases.html">Translated Phrases</a></li>
+  <li><a href="languages.html">Languages</a></li>
+  <li><a href="areas.html">Areas</a></li>
+  <li><a href="election_methods.html">Election Methods</a></li>
+ 
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<p>
-This is a sample web site to illustrate using the data from the
-<a href="https://github.com/cjerdonek/sf-base-election-data">SFBED</a>
-open data project.
+    <h2 class="text-center">Election Methods</h2>
 
-The data for this web site comes from a single, static
-<a href="data/sf.json">JSON file</a>
-of structured data about San Francisco elections.
-<p>
-If you notice any issues about the data or have a suggestion,
-please file an issue in the
-<a href="https://github.com/cjerdonek/sf-base-election-data/issues">issue tracker</a>.
+    
+      <p>
+        
+          
+          Below are the election methods included in the JSON file.
+        
+      </p>
+      <p>
+        Current count:
+        
+          
+            2
+          
+          election methods
+        
+      </p>
+    
 
-<h3 class="text-center">Site Contents</h3>
+    <div class="body-start">
 
-
-<div class="row">
-<div class="col-md-12">
-<a href="index.html">Offices</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="bodies.html">Bodies</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="district_types.html">District Types</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="phrases.html">Translated Phrases</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="languages.html">Languages</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12">
-<a href="areas.html">Areas</a>
-</div>
-</div>
-
-
-<div class="row">
-<div class="col-md-12 bg-info">
-<a href="election_methods.html">Election Methods</a>
-</div>
-</div>
-
-
-
-<h2 class="text-center">Election Methods</h2>
-
-
-<p>
-
-
-Below are the election methods included in the JSON file.
-
-<p>
-Current count: 
-2
-election methods
+    
+      
 
 
 
-
-
-
-
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-PRESIDENTIAL PRIMARY
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  PRESIDENTIAL PRIMARY
 </b><a name="election_method_presidential" href="#election_method_presidential">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>election_method_presidential</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Notes
 
@@ -125,16 +122,17 @@ Notes
 There is a Presidential Primary followed by a General Election in November.  The winner in November receives all 55 of California&#39;s electoral votes.
 
 
-</div></div><p>
+</div></div></p>
 
-<div class="row"><div class="col-md-10 col-md-offset-2"><b>
-TOP-TWO PRIMARY
+
+  <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
+  TOP-TWO PRIMARY
 </b><a name="election_method_top_two" href="#election_method_top_two">
 ¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+ID
+</b></div><div class="col-md-10"><code>election_method_top_two</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Wikipedia
-</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/Nonpartisan_blanket_primary">
-http://en.wikipedia.org/wiki/Nonpartisan_blanket_primary
-</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b></div><div class="col-md-10"><a href="http://en.wikipedia.org/wiki/Nonpartisan_blanket_primary">http://en.wikipedia.org/wiki/Nonpartisan_blanket_primary</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
 Notes
 
@@ -144,18 +142,22 @@ Notes
 All candidates run against each other in a primary election.  Then the top two advance to the general election in November.
 
 
-</div></div><p>
+</div></div></p>
 
 
 
+    
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- Latest compiled and minified JavaScript -->
-<!-- JS is needed for the collapsable navigation bar. -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-</div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- JS is needed for the collapsable navigation bar. -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </div>
 
 </body>
+
 </html>
