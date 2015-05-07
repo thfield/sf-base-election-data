@@ -22,3 +22,11 @@ body {
 .sidebar.affix {
   top: 50px;
 }
+
+.offset:before {
+	display: block;
+  content: " ";
+	height: 70px;      /* Give height of your fixed element */
+  margin-top: -70px; /* Give negative margin of your fixed element */
+  visibility: hidden;
+}
