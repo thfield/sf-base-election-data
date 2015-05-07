@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+              <button class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Site Contents <span class="caret"></span></button>
               <ul class="dropdown-menu" role="menu">
                  <li><a href="index.html">Offices</a></li>
   <li><a href="bodies.html">Bodies</a></li>
@@ -74,6 +74,38 @@
   <li><a href="election_methods.html">Election Methods</a></li>
  
               </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="index.html">Offices</a></li>
+  <li><a href="bodies.html">Bodies</a></li>
+  <li><a href="districts.html">Districts</a></li>
+  <li><a href="district_types.html">District Types</a></li>
+  <li><a href="phrases.html">Translated Phrases</a></li>
+  <li><a href="languages.html">Languages</a></li>
+  <li><a href="areas.html">Areas</a></li>
+  <li><a href="election_methods.html">Election Methods</a></li>
+ 
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <p class="navbar-text">Translate available phrases into:</p>
+            </li>
+            <li>
+              <form class="navbar-form">
+                <select class="form-control" id="i18n-selector">
+                  <option value="en" selected>English</option>
+                  <option value="es">Spanish</option>
+                  <option value="zh">Chinese</option>
+                  <option value="fil">Filipino</option>
+                  <option value="jp">Japanese</option>
+                  <option value="ko">Korean</option>
+                  <option value="vi">Vietnamese</option>
+                </select>
+              </form>
             </li>
           </ul>
         </div>
@@ -109,8 +141,7 @@
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CHINESE
-</b><a name="language_chinese" href="#language_chinese">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_chinese" href="#language_chinese">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_chinese</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -137,8 +168,7 @@ Available on the default official ballot.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   ENGLISH
-</b><a name="language_english" href="#language_english">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_english" href="#language_english">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_english</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -165,8 +195,7 @@ Available on all official ballots.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   FILIPINO
-</b><a name="language_filipino" href="#language_filipino">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_filipino" href="#language_filipino">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_filipino</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -193,8 +222,7 @@ Available on an official ballot by request starting November 2015.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   JAPANESE
-</b><a name="language_japanese" href="#language_japanese">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_japanese" href="#language_japanese">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_japanese</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -221,8 +249,7 @@ Available on a translated &quot;facsimile&quot; ballot by request.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   KOREAN
-</b><a name="language_korean" href="#language_korean">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_korean" href="#language_korean">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_korean</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -249,8 +276,7 @@ Available on a translated &quot;facsimile&quot; ballot by request.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   SPANISH
-</b><a name="language_spanish" href="#language_spanish">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_spanish" href="#language_spanish">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_spanish</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -277,8 +303,7 @@ Available on an official ballot by request.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   VIETNAMESE
-</b><a name="language_vietnamese" href="#language_vietnamese">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="language_vietnamese" href="#language_vietnamese">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>language_vietnamese</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -314,6 +339,7 @@ Available on a translated &quot;facsimile&quot; ballot by request.
     <!-- Latest compiled and minified JavaScript -->
     <!-- JS is needed for the collapsable navigation bar. -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="js/translate.js"></script>
   </div>
 
 </body>

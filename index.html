@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+              <button class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Site Contents <span class="caret"></span></button>
               <ul class="dropdown-menu" role="menu">
                  <li><a href="index.html">Offices</a></li>
   <li><a href="bodies.html">Bodies</a></li>
@@ -74,6 +74,38 @@
   <li><a href="election_methods.html">Election Methods</a></li>
  
               </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="index.html">Offices</a></li>
+  <li><a href="bodies.html">Bodies</a></li>
+  <li><a href="districts.html">Districts</a></li>
+  <li><a href="district_types.html">District Types</a></li>
+  <li><a href="phrases.html">Translated Phrases</a></li>
+  <li><a href="languages.html">Languages</a></li>
+  <li><a href="areas.html">Areas</a></li>
+  <li><a href="election_methods.html">Election Methods</a></li>
+ 
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <p class="navbar-text">Translate available phrases into:</p>
+            </li>
+            <li>
+              <form class="navbar-form">
+                <select class="form-control" id="i18n-selector">
+                  <option value="en" selected>English</option>
+                  <option value="es">Spanish</option>
+                  <option value="zh">Chinese</option>
+                  <option value="fil">Filipino</option>
+                  <option value="jp">Japanese</option>
+                  <option value="ko">Korean</option>
+                  <option value="vi">Vietnamese</option>
+                </select>
+              </form>
             </li>
           </ul>
         </div>
@@ -155,8 +187,7 @@ ballot in a San Francisco election.
   FEDERAL
 
 
-<a name="category_federal" href="#category_federal">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_federal" href="#category_federal">¶</a><br/><span data-i18n="text_category_federal">(
       聯邦 | FEDERAL
     )</span></h3>
 </div>
@@ -178,8 +209,7 @@ ballot in a San Francisco election.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   PRESIDENT OF THE UNITED STATES
-</b><a name="office_usa_president_of_the_united_states" href="#office_usa_president_of_the_united_states">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_usa_president_of_the_united_states" href="#office_usa_president_of_the_united_states">¶</a><br/><span data-i18n="text_office_usa_president_of_the_united_states">(
       美國總統 | PRESIDENTE DE ESTADOS UNIDOS
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -226,8 +256,8 @@ Wikipedia
   United States House of Representatives
 
 
-<a name="body_usa_house" href="#body_usa_house">
-¶</a>
+<a name="body_usa_house" href="#body_usa_house">¶</a>
+
 
 
 
@@ -246,8 +276,7 @@ Wikipedia
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   U.S. REPRESENTATIVE, DISTRICT 12
-</b><a name="office_usa_house_12" href="#office_usa_house_12">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_usa_house_12" href="#office_usa_house_12">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_usa_house_12</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -268,8 +297,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   U.S. REPRESENTATIVE, DISTRICT 14
-</b><a name="office_usa_house_14" href="#office_usa_house_14">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_usa_house_14" href="#office_usa_house_14">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_usa_house_14</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -298,8 +326,8 @@ Next Election
   United States Senate
 
 
-<a name="body_usa_senate" href="#body_usa_senate">
-¶</a>
+<a name="body_usa_senate" href="#body_usa_senate">¶</a>
+
 
 
 
@@ -318,8 +346,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   U.S. SENATOR, STATE OF CALIFORNIA (CLASS 1)
-</b><a name="office_usa_senate_1" href="#office_usa_senate_1">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_usa_senate_1" href="#office_usa_senate_1">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_usa_senate_1</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -350,8 +377,7 @@ Class 1
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   U.S. SENATOR, STATE OF CALIFORNIA (CLASS 3)
-</b><a name="office_usa_senate_2" href="#office_usa_senate_2">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_usa_senate_2" href="#office_usa_senate_2">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_usa_senate_2</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -397,8 +423,7 @@ Class 3
   STATE
 
 
-<a name="category_state" href="#category_state">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_state" href="#category_state">¶</a><br/><span data-i18n="text_category_state">(
       州 | ESTADO
     )</span></h3>
 </div>
@@ -420,8 +445,7 @@ Class 3
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   ATTORNEY GENERAL
-</b><a name="office_ca_attorney_general" href="#office_ca_attorney_general">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_attorney_general" href="#office_ca_attorney_general">¶</a><br/><span data-i18n="text_office_state_attorney_general">(
       司法部長 | PROCURADOR GENERAL | Pangkalahatang Abugado
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -452,8 +476,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CONTROLLER
-</b><a name="office_ca_controller" href="#office_ca_controller">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_controller" href="#office_ca_controller">¶</a><br/><span data-i18n="text_office_state_controller">(
       主計長 | CONTRALOR | Kontroler
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -484,8 +507,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   GOVERNOR
-</b><a name="office_ca_governor" href="#office_ca_governor">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_governor" href="#office_ca_governor">¶</a><br/><span data-i18n="text_office_state_governor">(
       州長 | GOBERNADOR | Gobernador
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -526,8 +548,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   INSURANCE COMMISSIONER
-</b><a name="office_ca_insurance_commissioner" href="#office_ca_insurance_commissioner">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_insurance_commissioner" href="#office_ca_insurance_commissioner">¶</a><br/><span data-i18n="text_office_state_insurance_commissioner">(
       保險部長 | COMISIONADO DE SEGUROS | Komisyonado ng Seguro
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -558,8 +579,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   LIEUTENANT GOVERNOR
-</b><a name="office_ca_lieutenant_governor" href="#office_ca_lieutenant_governor">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_lieutenant_governor" href="#office_ca_lieutenant_governor">¶</a><br/><span data-i18n="text_office_state_lieutenant_governor">(
       副州長 | VICEGOBERNADOR | Tenyente Gobernador
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -600,8 +620,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   SECRETARY OF STATE
-</b><a name="office_ca_secretary" href="#office_ca_secretary">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_secretary" href="#office_ca_secretary">¶</a><br/><span data-i18n="text_office_state_secretary">(
       州務卿 | SECRETARIO DE ESTADO | Kalihim ng Estado
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -646,8 +665,7 @@ Twitter
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   SUPERINTENDENT OF PUBLIC INSTRUCTION
-</b><a name="office_ca_superintendent_of_public_instruction" href="#office_ca_superintendent_of_public_instruction">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_ca_superintendent_of_public_instruction" href="#office_ca_superintendent_of_public_instruction">¶</a><br/><span data-i18n="text_office_state_superintendent_of_public_instruction">(
       教育部長 | SUPERINTENDENTE DE INSTRUCCIÓN PÚBLICA | Superintendente ng Pampublikong Pagtuturo
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -688,8 +706,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   STATE TREASURER
-</b><a name="office_ca_treasurer" href="#office_ca_treasurer">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_ca_treasurer" href="#office_ca_treasurer">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_ca_treasurer</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 
@@ -726,8 +743,8 @@ Web
   California State Assembly
 
 
-<a name="body_ca_state_assembly" href="#body_ca_state_assembly">
-¶</a>
+<a name="body_ca_state_assembly" href="#body_ca_state_assembly">¶</a>
+
 
 
 
@@ -746,8 +763,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER OF THE STATE ASSEMBLY
-</b><a name="office_ca_state_assembly_17" href="#office_ca_state_assembly_17">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_ca_state_assembly_17" href="#office_ca_state_assembly_17">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_ca_state_assembly_17</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -758,8 +774,7 @@ District
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER OF THE STATE ASSEMBLY
-</b><a name="office_ca_state_assembly_19" href="#office_ca_state_assembly_19">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_ca_state_assembly_19" href="#office_ca_state_assembly_19">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_ca_state_assembly_19</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -778,8 +793,8 @@ District
   California State Senate
 
 
-<a name="body_ca_state_senate" href="#body_ca_state_senate">
-¶</a>
+<a name="body_ca_state_senate" href="#body_ca_state_senate">¶</a>
+
 
 
 
@@ -798,8 +813,7 @@ District
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   STATE SENATOR
-</b><a name="office_ca_state_senate_11" href="#office_ca_state_senate_11">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_ca_state_senate_11" href="#office_ca_state_senate_11">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_ca_state_senate_11</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -825,8 +839,7 @@ District
   CITY AND COUNTY
 
 
-<a name="category_city_county" href="#category_city_county">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_city_county" href="#category_city_county">¶</a><br/><span data-i18n="text_category_city_county">(
       市縣 | CIUDAD Y CONDADO
     )</span></h3>
 </div>
@@ -848,8 +861,7 @@ District
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   ASSESSOR-RECORDER
-</b><a name="office_sf_assessor_recorder" href="#office_sf_assessor_recorder">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_assessor_recorder" href="#office_sf_assessor_recorder">¶</a><br/><span data-i18n="text_office_city_assessor_recorder">(
       估值官-記錄官 | TASADOR-REGISTRADOR
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -890,8 +902,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CITY ATTORNEY
-</b><a name="office_sf_city_attorney" href="#office_sf_city_attorney">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_city_attorney" href="#office_sf_city_attorney">¶</a><br/><span data-i18n="text_office_city_attorney">(
       市府律師 | ABOGADO DE LA CIUDAD
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -936,8 +947,7 @@ Twitter
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   DISTRICT ATTORNEY
-</b><a name="office_sf_district_attorney" href="#office_sf_district_attorney">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_district_attorney" href="#office_sf_district_attorney">¶</a><br/><span data-i18n="text_office_city_district_attorney">(
       地方檢察官 | FISCAL DEL DISTRITO
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -982,8 +992,7 @@ Twitter
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MAYOR
-</b><a name="office_sf_mayor" href="#office_sf_mayor">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_mayor" href="#office_sf_mayor">¶</a><br/><span data-i18n="text_office_city_mayor">(
       市長 | ALCALDE
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -1024,8 +1033,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   PUBLIC DEFENDER
-</b><a name="office_sf_public_defender" href="#office_sf_public_defender">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_public_defender" href="#office_sf_public_defender">¶</a><br/><span data-i18n="text_office_city_public_defender">(
       公共辯護律師 | DEFENSOR PÚBLICO
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -1070,8 +1078,7 @@ Twitter
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   SHERIFF
-</b><a name="office_sf_sheriff" href="#office_sf_sheriff">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_sheriff" href="#office_sf_sheriff">¶</a><br/><span data-i18n="text_office_city_sheriff">(
       縣警長 | ALGUACIL
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -1116,8 +1123,7 @@ Twitter
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   TREASURER
-</b><a name="office_sf_treasurer" href="#office_sf_treasurer">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="office_sf_treasurer" href="#office_sf_treasurer">¶</a><br/><span data-i18n="text_office_city_treasurer">(
       財政官 | TESORERO
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -1170,15 +1176,15 @@ Twitter
   Board of Supervisors
 
 
-<a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">
-¶</a>
+<a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">¶</a>
+
 
 
 
 
   <br/>
     
-<span data-i18n="asdf">(
+<span data-i18n="text_body_city_board_of_supervisors">(
       Consejo de Supervisores
     )</span>
 
@@ -1196,8 +1202,7 @@ Twitter
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 1
-</b><a name="office_sf_board_of_supervisors_01" href="#office_sf_board_of_supervisors_01">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_01" href="#office_sf_board_of_supervisors_01">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_01</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1218,8 +1223,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 2
-</b><a name="office_sf_board_of_supervisors_02" href="#office_sf_board_of_supervisors_02">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_02" href="#office_sf_board_of_supervisors_02">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_02</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1240,8 +1244,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 3
-</b><a name="office_sf_board_of_supervisors_03" href="#office_sf_board_of_supervisors_03">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_03" href="#office_sf_board_of_supervisors_03">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_03</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1262,8 +1265,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 4
-</b><a name="office_sf_board_of_supervisors_04" href="#office_sf_board_of_supervisors_04">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_04" href="#office_sf_board_of_supervisors_04">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_04</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1284,8 +1286,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 5
-</b><a name="office_sf_board_of_supervisors_05" href="#office_sf_board_of_supervisors_05">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_05" href="#office_sf_board_of_supervisors_05">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_05</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1306,8 +1307,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 6
-</b><a name="office_sf_board_of_supervisors_06" href="#office_sf_board_of_supervisors_06">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_06" href="#office_sf_board_of_supervisors_06">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_06</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1328,8 +1328,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 7
-</b><a name="office_sf_board_of_supervisors_07" href="#office_sf_board_of_supervisors_07">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_07" href="#office_sf_board_of_supervisors_07">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_07</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1350,8 +1349,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 8
-</b><a name="office_sf_board_of_supervisors_08" href="#office_sf_board_of_supervisors_08">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_08" href="#office_sf_board_of_supervisors_08">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_08</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1372,8 +1370,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 9
-</b><a name="office_sf_board_of_supervisors_09" href="#office_sf_board_of_supervisors_09">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_09" href="#office_sf_board_of_supervisors_09">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_09</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1394,8 +1391,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 10
-</b><a name="office_sf_board_of_supervisors_10" href="#office_sf_board_of_supervisors_10">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_10" href="#office_sf_board_of_supervisors_10">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_10</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1416,8 +1412,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF SUPERVISORS, DISTRICT 11
-</b><a name="office_sf_board_of_supervisors_11" href="#office_sf_board_of_supervisors_11">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_supervisors_11" href="#office_sf_board_of_supervisors_11">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_supervisors_11</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1453,8 +1448,7 @@ Next Election
   SCHOOL
 
 
-<a name="category_school" href="#category_school">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_school" href="#category_school">¶</a><br/><span data-i18n="text_category_school">(
       學校 | ESCUELA
     )</span></h3>
 </div>
@@ -1475,15 +1469,15 @@ Next Election
   Board of Education
 
 
-<a name="body_sf_board_of_education" href="#body_sf_board_of_education">
-¶</a>
+<a name="body_sf_board_of_education" href="#body_sf_board_of_education">¶</a>
+
 
 
 
 
   <br/>
     
-<span data-i18n="asdf">(
+<span data-i18n="text_body_city_board_of_education">(
       Consejo de Educación
     )</span>
 
@@ -1501,8 +1495,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF EDUCATION
-</b><a name="office_sf_board_of_education_seats_3" href="#office_sf_board_of_education_seats_3">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_education_seats_3" href="#office_sf_board_of_education_seats_3">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_education_seats_3</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1521,8 +1514,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, BOARD OF EDUCATION
-</b><a name="office_sf_board_of_education_seats_4" href="#office_sf_board_of_education_seats_4">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_board_of_education_seats_4" href="#office_sf_board_of_education_seats_4">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_board_of_education_seats_4</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1549,15 +1541,15 @@ Next Election
   Community College Board
 
 
-<a name="body_sf_college_board" href="#body_sf_college_board">
-¶</a>
+<a name="body_sf_college_board" href="#body_sf_college_board">¶</a>
+
 
 
 
 
   <br/>
     
-<span data-i18n="asdf">(
+<span data-i18n="text_body_city_college_board">(
       Consejo del Colegio Comunitario
     )</span>
 
@@ -1575,8 +1567,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, COMMUNITY COLLEGE BOARD
-</b><a name="office_sf_college_board_seats_3" href="#office_sf_college_board_seats_3">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_college_board_seats_3" href="#office_sf_college_board_seats_3">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_college_board_seats_3</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1595,8 +1586,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   MEMBER, COMMUNITY COLLEGE BOARD
-</b><a name="office_sf_college_board_seats_4" href="#office_sf_college_board_seats_4">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_sf_college_board_seats_4" href="#office_sf_college_board_seats_4">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_sf_college_board_seats_4</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1630,8 +1620,7 @@ Next Election
   TRANSIT
 
 
-<a name="category_transit" href="#category_transit">
-¶</a></h3>
+<a name="category_transit" href="#category_transit">¶</a></h3>
 </div>
 
         
@@ -1650,8 +1639,8 @@ Next Election
   BART Board of Directors
 
 
-<a name="body_bart" href="#body_bart">
-¶</a>
+<a name="body_bart" href="#body_bart">¶</a>
+
 
 
 
@@ -1670,8 +1659,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   BART DIRECTOR, DISTRICT 7
-</b><a name="office_bart_7" href="#office_bart_7">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_bart_7" href="#office_bart_7">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_bart_7</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1692,8 +1680,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   BART DIRECTOR, DISTRICT 8
-</b><a name="office_bart_8" href="#office_bart_8">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_bart_8" href="#office_bart_8">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_bart_8</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1714,8 +1701,7 @@ Next Election
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   BART DIRECTOR, DISTRICT 9
-</b><a name="office_bart_9" href="#office_bart_9">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="office_bart_9" href="#office_bart_9">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>office_bart_9</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Body
@@ -1755,6 +1741,7 @@ Next Election
     <!-- Latest compiled and minified JavaScript -->
     <!-- JS is needed for the collapsable navigation bar. -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="js/translate.js"></script>
   </div>
 
 </body>

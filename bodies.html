@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents<span class="caret"></span></a>
+              <button class="btn btn-default navbar-btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Site Contents <span class="caret"></span></button>
               <ul class="dropdown-menu" role="menu">
                  <li><a href="index.html">Offices</a></li>
   <li><a href="bodies.html">Bodies</a></li>
@@ -74,6 +74,38 @@
   <li><a href="election_methods.html">Election Methods</a></li>
  
               </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Site Contents <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="index.html">Offices</a></li>
+  <li><a href="bodies.html">Bodies</a></li>
+  <li><a href="districts.html">Districts</a></li>
+  <li><a href="district_types.html">District Types</a></li>
+  <li><a href="phrases.html">Translated Phrases</a></li>
+  <li><a href="languages.html">Languages</a></li>
+  <li><a href="areas.html">Areas</a></li>
+  <li><a href="election_methods.html">Election Methods</a></li>
+ 
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <p class="navbar-text">Translate available phrases into:</p>
+            </li>
+            <li>
+              <form class="navbar-form">
+                <select class="form-control" id="i18n-selector">
+                  <option value="en" selected>English</option>
+                  <option value="es">Spanish</option>
+                  <option value="zh">Chinese</option>
+                  <option value="fil">Filipino</option>
+                  <option value="jp">Japanese</option>
+                  <option value="ko">Korean</option>
+                  <option value="vi">Vietnamese</option>
+                </select>
+              </form>
             </li>
           </ul>
         </div>
@@ -170,8 +202,7 @@ can be on a San Francisco ballot.
   FEDERAL
 
 
-<a name="category_federal" href="#category_federal">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_federal" href="#category_federal">¶</a><br/><span data-i18n="text_category_federal">(
       聯邦 | FEDERAL
     )</span></h3>
 </div>
@@ -188,8 +219,7 @@ can be on a San Francisco ballot.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   UNITED STATES HOUSE OF REPRESENTATIVES
-</b><a name="body_usa_house" href="#body_usa_house">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_usa_house" href="#body_usa_house">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_usa_house</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -266,8 +296,7 @@ There are also 6 non-voting members.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   UNITED STATES SENATE
-</b><a name="body_usa_senate" href="#body_usa_senate">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_usa_senate" href="#body_usa_senate">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_usa_senate</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -338,8 +367,7 @@ Wikipedia
   STATE
 
 
-<a name="category_state" href="#category_state">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_state" href="#category_state">¶</a><br/><span data-i18n="text_category_state">(
       州 | ESTADO
     )</span></h3>
 </div>
@@ -356,8 +384,7 @@ Wikipedia
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CALIFORNIA STATE ASSEMBLY
-</b><a name="body_ca_state_assembly" href="#body_ca_state_assembly">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_ca_state_assembly" href="#body_ca_state_assembly">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_ca_state_assembly</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -402,8 +429,7 @@ Wikipedia
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CALIFORNIA STATE SENATE
-</b><a name="body_ca_state_senate" href="#body_ca_state_senate">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_ca_state_senate" href="#body_ca_state_senate">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_ca_state_senate</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -448,8 +474,7 @@ Wikipedia
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   STATE BOARD OF EQUALIZATION
-</b><a name="body_ca_board_of_equalization" href="#body_ca_board_of_equalization">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_ca_board_of_equalization" href="#body_ca_board_of_equalization">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_ca_board_of_equalization</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -518,8 +543,7 @@ The State Controller is the fifth member of this body.
   CITY AND COUNTY
 
 
-<a name="category_city_county" href="#category_city_county">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_city_county" href="#category_city_county">¶</a><br/><span data-i18n="text_category_city_county">(
       市縣 | CIUDAD Y CONDADO
     )</span></h3>
 </div>
@@ -536,8 +560,7 @@ The State Controller is the fifth member of this body.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   BOARD OF SUPERVISORS
-</b><a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="body_sf_board_of_supervisors" href="#body_sf_board_of_supervisors">¶</a><br/><span data-i18n="text_body_city_board_of_supervisors">(
       Consejo de Supervisores
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -608,8 +631,7 @@ Wikipedia
   SCHOOL
 
 
-<a name="category_school" href="#category_school">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_school" href="#category_school">¶</a><br/><span data-i18n="text_category_school">(
       學校 | ESCUELA
     )</span></h3>
 </div>
@@ -626,8 +648,7 @@ Wikipedia
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   BOARD OF EDUCATION
-</b><a name="body_sf_board_of_education" href="#body_sf_board_of_education">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="body_sf_board_of_education" href="#body_sf_board_of_education">¶</a><br/><span data-i18n="text_body_city_board_of_education">(
       Consejo de Educación
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -682,8 +703,7 @@ Wikipedia
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   COMMUNITY COLLEGE BOARD
-</b><a name="body_sf_college_board" href="#body_sf_college_board">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="body_sf_college_board" href="#body_sf_college_board">¶</a><br/><span data-i18n="text_body_city_college_board">(
       Consejo del Colegio Comunitario
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -760,8 +780,7 @@ This is also known as the San Francisco Community College Board of Trustees.
   TRANSIT
 
 
-<a name="category_transit" href="#category_transit">
-¶</a></h3>
+<a name="category_transit" href="#category_transit">¶</a></h3>
 </div>
 
         
@@ -776,8 +795,7 @@ This is also known as the San Francisco Community College Board of Trustees.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   BART BOARD OF DIRECTORS
-</b><a name="body_bart" href="#body_bart">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_bart" href="#body_bart">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_bart</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -844,8 +862,7 @@ Web
   JUDICIAL
 
 
-<a name="category_judicial" href="#category_judicial">
-¶</a><br/><span data-i18n="asdf">(
+<a name="category_judicial" href="#category_judicial">¶</a><br/><span data-i18n="text_category_judicial">(
       司法 | JUDICIAL
     )</span></h3>
 </div>
@@ -862,8 +879,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CALIFORNIA COURT OF APPEAL, FIRST DISTRICT
-</b><a name="body_ca_courts_of_appeal_d1" href="#body_ca_courts_of_appeal_d1">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_ca_courts_of_appeal_d1" href="#body_ca_courts_of_appeal_d1">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_ca_courts_of_appeal_d1</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -912,8 +928,7 @@ This body is divided into five non-geographical divisions with four justices eac
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   CALIFORNIA COURTS OF APPEAL
-</b><a name="body_ca_courts_of_appeal" href="#body_ca_courts_of_appeal">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="body_ca_courts_of_appeal" href="#body_ca_courts_of_appeal">¶</a><br/><span data-i18n="text_body_ca_courts_of_appeal">(
       Corte de Apelación
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -970,8 +985,7 @@ This may be better viewed as a type of office rather than a body.
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   SUPERIOR COURT OF SAN FRANCISCO
-</b><a name="body_sf_sc" href="#body_sf_sc">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="body_sf_sc" href="#body_sf_sc">¶</a><br/><span data-i18n="text_body_city_sc">(
       Tribunal Superior
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -1036,8 +1050,7 @@ Wikipedia says that the San Francisco Superior Court Bench comprises 52 Judges a
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   SUPREME COURT OF CALIFORNIA
-</b><a name="body_ca_court_supreme" href="#body_ca_court_supreme">
-¶</a><br/><span data-i18n="asdf">(
+</b><a name="body_ca_court_supreme" href="#body_ca_court_supreme">¶</a><br/><span data-i18n="text_body_ca_court_supreme">(
       Corte Suprema
     )</span></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
@@ -1116,8 +1129,7 @@ The Court has six Associate Justices and one Chief Justice. Each is appointed by
   PARTY
 
 
-<a name="category_party" href="#category_party">
-¶</a></h3>
+<a name="category_party" href="#category_party">¶</a></h3>
 </div>
 
         
@@ -1132,8 +1144,7 @@ The Court has six Associate Justices and one Chief Justice. Each is appointed by
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   DEMOCRATIC COUNTY CENTRAL COMMITTEE
-</b><a name="body_sf_party_democratic" href="#body_sf_party_democratic">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_sf_party_democratic" href="#body_sf_party_democratic">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_sf_party_democratic</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -1166,8 +1177,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   GREEN COUNTY COUNCIL
-</b><a name="body_sf_party_green" href="#body_sf_party_green">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_sf_party_green" href="#body_sf_party_green">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_sf_party_green</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -1208,8 +1218,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   PEACE AND FREEDOM COUNTY CENTRAL COMMITTEE
-</b><a name="body_sf_party_peace_freedom" href="#body_sf_party_peace_freedom">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_sf_party_peace_freedom" href="#body_sf_party_peace_freedom">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_sf_party_peace_freedom</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -1250,8 +1259,7 @@ Web
 
   <p><div class="row subheader-item"><div class="col-md-10 col-md-offset-2"><b>
   REPUBLICAN COUNTY CENTRAL COMMITTEE
-</b><a name="body_sf_party_republican" href="#body_sf_party_republican">
-¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
+</b><a name="body_sf_party_republican" href="#body_sf_party_republican">¶</a></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 ID
 </b></div><div class="col-md-10"><code>body_sf_party_republican</code></div></div><div class="row"><div class="col-md-2 bg-info"><b>
 Jurisdiction
@@ -1310,6 +1318,7 @@ Web
     <!-- Latest compiled and minified JavaScript -->
     <!-- JS is needed for the collapsable navigation bar. -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="js/translate.js"></script>
   </div>
 
 </body>
